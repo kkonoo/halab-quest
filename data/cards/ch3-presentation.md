@@ -9,8 +9,8 @@
 
 | 미팅 | 언제 | 무엇을 |
 |---|---|---|
-| 랩미팅 | 매주 금요일 오전 10시 | Progress report (영어) + Journal club (한국어) |
-| 개인 미팅 | 매주 금요일 오후 | 연구 진행 점검 |
+| 랩미팅 | 주 1회 | Progress report (영어) + Journal club (한국어) |
+| 개인 미팅 | 주 1회 | 연구 진행 점검 |
 
 **발표 자료 올리기**
 - 파일 이름: `YYMMDD_project_title.pptx` / `YYMMDD_journal_title.pptx`
