@@ -506,10 +506,10 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .cat-idle { display: inline-block; aspect-ratio: 159 / 200; overflow: hidden; }
 .cat-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: cat-idle 3s step-end infinite; }
 @keyframes cat-idle { 0% { transform: none; } 20% { transform: translateX(-50%); } 42% { transform: none; } 58% { transform: translateX(-25%); } 65% { transform: none; } 78% { transform: translateX(-75%); } 92%, 100% { transform: none; } }
-/* 학생 뒷모습 대기 동작: 네 칸 띠를 한 칸 창으로 넘김 (기본 → 머리카락 살랑 → 왼쪽 둘러보기 → 오른쪽 둘러보기). 제자리라 움직임 줄이기 설정에서도 그대로 */
+/* 학생 뒷모습 대기 동작: 네 칸 띠를 한 칸 창으로 넘김. 고개 까딱까딱 (기본 → 갸웃 → 찰랑 → 기본 → 반대로 갸웃 → 찰랑). 제자리라 움직임 줄이기 설정에서도 그대로 */
 .stu-idle { display: inline-block; overflow: hidden; }
-.stu-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: stu-idle 5s step-end infinite; }
-@keyframes stu-idle { 0% { transform: none; } 18% { transform: translateX(-25%); } 34% { transform: none; } 48% { transform: translateX(-50%); } 62% { transform: none; } 70% { transform: translateX(-25%); } 78% { transform: none; } 84% { transform: translateX(-75%); } 96%, 100% { transform: none; } }
+.stu-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: stu-idle 3.2s step-end infinite; }
+@keyframes stu-idle { 0% { transform: none; } 14% { transform: translateX(-25%); } 31% { transform: translateX(-75%); } 38% { transform: none; } 52% { transform: translateX(-50%); } 69% { transform: translateX(-75%); } 76%, 100% { transform: none; } }
 /* 챕터 지도의 걷는 고양이 (12초 한 바퀴, 거리는 고양이 폭 기준 %):
    제자리에 앉아 있다가 → 오른쪽으로 조금 걷고 → 앉아 쉬고 → 돌아서 학생 앞을 지나 왼쪽까지 → 앉아 쉬고 → 돌아서 제자리로.
    걸을 때는 cat-walk-strip.png 네 칸(다리 번갈아)을 넘기고, 쉴 때는 앉은 고양이(cat-idle)를 보여 줌 */
