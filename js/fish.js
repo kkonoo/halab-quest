@@ -24,6 +24,9 @@ const totalDays = sub => dayNum(subStatus(sub) === 'accepted' ? lastEvent(lastCa
 
 let fishPick = null, fishTip = '';
 
+// 물고기 색 5가지(img/char/fish-1~5.png). 원고 id로 정해서 같은 원고는 늘 같은 색
+const fishImg = (sub, cls, alt = '') => h('img', { class: cls, alt, src: `img/char/fish-${[...sub.id].reduce((n, c) => n + c.charCodeAt(0), 0) % 5 + 1}.png` });
+
 function fishTips() { return QUESTS.get('ch4-submit')?.fishTips || ['기다리는 동안 다음 분석을 준비해요.']; }
 
 function castForm(sub) {
@@ -79,9 +82,9 @@ function bobber(sub) {
   const s = subStatus(sub), cast = lastCast(sub);
   return h('button', { class: `bobber s-${s}${sub.id === fishPick ? ' on' : ''}`, onclick: () => { fishPick = sub.id; const t = fishTips(); fishTip = t[Math.floor(Math.random() * t.length)]; render(); } },
     h('span', 'line'),
-    s === 'rejected' ? h('span', 'hook', '🪝') : h('span', 'float'),
-    s === 'revision' ? h('span', 'fish-on', '🐟') : null,
-    h('span', 'tagline', h('b', null, sub.title), h('small', null, `${cast.journal} · ${FISH_STATUS[s].label}`), h('em', null, `D+${castDays(cast)}`)));
+    s === 'rejected' ? h('img', { class: 'hook', src: 'img/char/hook.png', alt: '빈 바늘' }) : h('img', { class: 'float', src: 'img/char/float.png', alt: '찌' }),
+    s === 'revision' ? fishImg(sub, 'fish-on', '입질') : null,
+    h('span', 'tagline', h('b', null, sub.title), h('small', null, `${cast.journal} · ${FISH_STATUS[s].label.replace(/ /g, '\u00a0')}`), h('em', null, `D+${castDays(cast)}`)));
 }
 
 function viewFish() {
@@ -99,9 +102,9 @@ function viewFish() {
       h('div', 'row', h('button', { class: 'btn primary', onclick: () => castForm() }, '새 원고 던지기'), h('a', { class: 'btn', href: '#/q/ch4-submit' }, '← 투고와 리뷰'))),
     h('div', 'fish-side',
       pick ? fishDetail(pick) : panel('낚시 일지', h('p', 'hint', '원고를 던지면 저널 · 상태 · 기다린 날수가 여기에 쌓여요.')),
-      panel(`어망 🐟 ${net.length}`,
+      panel(['어망 ', h('img', { class: 'head-fish', src: 'img/char/fish-1.png', alt: '' }), ` ${net.length}`],
         net.length ? h('div', 'net', net.map(x => h('button', { class: 'net-item', onclick: () => { fishPick = x.id; fishTip = ''; render(); } },
-          h('span', 'big-fish', '🐟'), h('b', null, x.title), h('small', null, `${lastCast(x).journal} · 총 ${totalDays(x)}일 · ${x.casts.length}번 던짐`))))
+          fishImg(x, 'big-fish'), h('b', null, x.title), h('small', null, `${lastCast(x).journal} · 총 ${totalDays(x)}일 · ${x.casts.length}번 던짐`))))
           : h('p', 'hint', 'Accept 된 원고가 여기에 모여요.'))),
     h('div', 'q-dialog', dialogBox(['투고하고 기다리는 시간도 연구의 일부예요.', '찌만 보고 있지 말고, 기다리는 동안 다음 분석을 준비해요.', '리젝되면 리뷰 코멘트로 다듬어서 다시 던지면 돼요.'], 'cheer')));
 }
