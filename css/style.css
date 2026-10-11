@@ -419,3 +419,4 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .scene.has-bg { background-size: cover; background-position: center 70%; }
 .chapter-scene.has-bg { min-height: 0; aspect-ratio: 16 / 8; }
 @media (max-width: 900px) { .chapter-scene.has-bg { aspect-ratio: auto; min-height: 420px; } }
+.quest-scene.has-bg { min-height: 0; aspect-ratio: 2048 / 900; background-position: center; }

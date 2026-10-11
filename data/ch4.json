@@ -31,6 +31,7 @@
       "title": "Figure 스토리보드",
       "icon": "🖼️",
       "place": "스토리보드 화랑",
+      "bg": "img/bg/ch4-storyboard.jpg",
       "scene": "🖼️ ➜ 🖼️ ➜ 🖼️ ➜ 🖼️",
       "bubble": "Figure마다 결론을 한 문장으로 써 보세요.",
       "dialog": [
