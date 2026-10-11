@@ -510,7 +510,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
    제자리에 앉아 있다가 → 오른쪽으로 조금 걷고 → 앉아 쉬고 → 돌아서 학생 앞을 지나 왼쪽까지 → 앉아 쉬고 → 돌아서 제자리로.
    걸을 때는 cat-walk-strip.png 네 칸(다리 번갈아)을 넘기고, 쉴 때는 앉은 고양이(cat-idle)를 보여 줌 */
 .cat-roam { display: inline-block; position: relative; animation: cat-roam 12s linear infinite; }
-.cat-walk { display: inline-block; vertical-align: bottom; aspect-ratio: 214 / 200; overflow: hidden; animation: cat-walk-vis 12s step-end infinite; }
+.cat-walk { display: inline-block; vertical-align: bottom; aspect-ratio: 215 / 200; overflow: hidden; animation: cat-walk-vis 12s step-end infinite; }
 .cat-walk img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: cat-walk-frames .5s steps(4) infinite; }
 .cat-roam .cat-idle { position: absolute; bottom: 0; left: 50%; translate: -50% 0; animation: cat-sit-vis 12s step-end infinite; }
 @keyframes cat-walk-frames { to { transform: translateX(-100%); } }
