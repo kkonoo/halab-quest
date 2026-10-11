@@ -468,8 +468,16 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .signs.pinned .sign { position: absolute; width: max-content; transform: translate(-50%, -50%); }
 .signs.pinned .sign { font-size: clamp(12px, 1.05vw, 15px); }
 .signs.pinned .sign-icon { font-size: 2em; }
+.chapter-scene.has-bg .walker { bottom: 13%; } /* 전경 그림 아래 가운데 길 위에 */
 @media (max-width: 900px) {
-  .chapter-scene.has-bg { aspect-ratio: auto; min-height: 480px; }
+  /* 폰 · 그림 있는 챕터 맵: 월드맵처럼 그림을 위에 다 보여 주고, 이름표와 길 버튼은 그 아래에 (그림 높이 = 폭 × 941/1672) */
+  .chapter-scene.has-bg { --img-h: calc((100vw - 26px) * 941 / 1672); aspect-ratio: auto; min-height: 0; padding: calc(var(--img-h) + 8px) 8px 8px; background-size: 100% auto; background-position: top; background-repeat: no-repeat; background-color: var(--bg-2); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .chapter-scene.has-bg .signs { grid-column: 1 / -1; }
+  .chapter-scene.has-bg .way { position: static; text-align: center; word-break: keep-all; font-size: .9em; }
+  .chapter-scene.has-bg .way.right { grid-column: 2; }
+  .chapter-scene.has-bg .walker { top: calc(var(--img-h) - 62px); bottom: auto; }
+  .chapter-scene.has-bg .walker .sprite.student { height: 56px; }
+  .chapter-scene.has-bg .walker .sprite.cat { height: 30px; }
   /* 폰: 이름표를 두 줄로 놓아 그림이 보이게, 캐릭터는 길 버튼 위에 */
   .signs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .sign { gap: 6px; font-size: .85em; }

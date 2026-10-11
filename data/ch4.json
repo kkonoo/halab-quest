@@ -30,6 +30,7 @@
   "quests": [
     {
       "id": "ch4-storyboard",
+      "mapPos": [30, 54],
       "title": "Figure 스토리보드",
       "icon": "🖼️",
       "place": "스토리보드 화랑",
@@ -77,6 +78,7 @@
     },
     {
       "id": "ch4-manuscript",
+      "mapPos": [72, 41],
       "title": "논문 원고 쓰기",
       "icon": "📝",
       "place": "원고 집필실",
@@ -137,6 +139,7 @@
     },
     {
       "id": "ch4-submit",
+      "mapPos": [35, 29],
       "title": "투고와 리뷰",
       "icon": "✉️",
       "place": "투고 우체국",
@@ -204,6 +207,7 @@
     },
     {
       "id": "ch4-conference",
+      "mapPos": [55, 17],
       "title": "학회 발표",
       "icon": "🎤",
       "place": "학회 대강당",
