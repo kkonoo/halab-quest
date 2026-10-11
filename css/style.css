@@ -153,6 +153,8 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .region b { font-size: calc(21px * var(--fs)); }
 .region small { color: var(--muted); }
 .region-prog { font-weight: 700; color: var(--good); }
+.region > .medal { position: absolute; top: -27px; right: -27px; width: 34px; height: 34px; filter: drop-shadow(0 2px 0 rgba(0,0,0,.3)); } /* 수료한 장: 이름판 오른쪽 위 모서리에 메달 */
+.region b { word-break: keep-all; }
 .region .chip { position: absolute; top: 12px; right: 12px; }
 .bottom-row { display: grid; grid-template-columns: 1fr minmax(280px, 420px); gap: 14px; align-items: stretch; }
 /* 월드맵 아래 오른쪽: My Journey · My CV 두 칸 (아이콘 위, 이름 아래), 로그인은 아래 한 줄 */
