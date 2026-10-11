@@ -4,7 +4,7 @@
 // 저장 위치 (학생 구글 이메일을 소문자로 문서 이름에 씀 — 교수님이 멤버 이메일로 바로 찾을 수 있게)
 //   quest/{email}              { email, name, updatedAt } 요약 — 교수님 목록에 보임
 //   quest/{email}/rec/{키}      { j: JSON 글 } 기록 하나 = 문서 하나
-//     p:퀘스트id 진행도 · r:id 발표 기록 · c:id My CV · d:챕터id 챕터 완료 · s:id 투고 낚시터 원고 · f Figure 순서 카드 · n 이름
+//     p:퀘스트id 진행도 · r:id 발표 기록 · c:id My CV · d:챕터id 챕터 완료 · s:id 투고 낚시터 원고 · f Figure 순서 카드 · n 이름 · a 내 캐릭터
 //   labs/{PI uid}              Lab Manager가 만든 랩 문서 { owner, members: [학생 이메일] } — 여기서는 읽기만
 // app.js 의 db, fresh, persistLocal, render, toast 를 그대로 씀
 import { firebaseConfig } from './firebase-config.js';
@@ -23,6 +23,7 @@ function units(d) {
   for (const x of d.subs || []) out.set(`s:${x.id}`, JSON.stringify(x));
   if (d.figcards?.length) out.set('f', JSON.stringify(d.figcards));
   if (d.name) out.set('n', JSON.stringify(d.name));
+  if (d.avatar) out.set('a', JSON.stringify(d.avatar));
   return out;
 }
 function apply(d, key, j) { // j == null 이면 지움
@@ -36,6 +37,7 @@ function apply(d, key, j) { // j == null 이면 지움
     case 's': if (v) upsert(d.subs, v); else d.subs = d.subs.filter(x => x.id !== id); break;
     case 'f': d.figcards = v || []; break;
     case 'n': d.name = v || ''; break;
+    case 'a': d.avatar = v || 'intern-f'; break;
   }
 }
 

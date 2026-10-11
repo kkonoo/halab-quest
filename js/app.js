@@ -28,7 +28,7 @@ const fmtDate = ms => { const d = new Date(ms); return `${d.getFullYear()}.${Str
 // ---------- 저장 ----------
 // 같은 주소(kkonoo.github.io)의 다른 앱과 저장소를 같이 쓰므로 이름은 halab-quest* 로만
 const KEY = 'halab-quest', VERSION = 1;
-const fresh = () => ({ version: VERSION, owner: null, name: '', progress: {}, records: [], figcards: [], cv: [], chapterDone: {}, subs: [] });
+const fresh = () => ({ version: VERSION, owner: null, name: '', progress: {}, records: [], figcards: [], cv: [], chapterDone: {}, subs: [], avatar: 'intern-f' });
 let db = fresh(), idb = null;
 const readJSON = k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } };
 
@@ -89,6 +89,10 @@ function chapterCount(ch) {
   for (const q of ch.quests) { if (prog(q.id).check) check++; if (prog(q.id).star) star++; }
   return { check, star, total: ch.quests.length };
 }
+
+// ---------- 내 캐릭터 (img/char/{id}-front|back.png) ----------
+const AVATARS = [['intern-f', '인턴 (여)'], ['intern-m', '인턴 (남)'], ['grad-f', '대학원생 (여)'], ['grad-m', '대학원생 (남)']];
+const studentImg = (view = 'back') => h('img', { class: 'sprite student', src: `img/char/${db.avatar || 'intern-f'}-${view}.png`, alt: '나' });
 
 // ---------- 화면 공통 ----------
 function setTitle(main, sub) {
@@ -174,6 +178,8 @@ addEventListener('hashchange', () => {
 // ---------- 메뉴 ----------
 $('menuBtn').onclick = () => {
   $('nameInput').value = db.name || '';
+  $('avatarPick').replaceChildren(...AVATARS.map(([id, label]) => h('button', { class: `avatar-opt${(db.avatar || 'intern-f') === id ? ' on' : ''}`, onclick: () => { db.avatar = id; persist(); render(); $('menuBtn').click(); } },
+    h('img', { src: `img/char/${id}-front.png`, alt: label }), h('small', null, label))));
   const u = window.cloud?.user;
   $('accountPanel').replaceChildren(
     !window.cloud ? '로그인 기능이 꺼져 있어요. 진행도는 이 브라우저에만 저장돼요.'

@@ -408,3 +408,10 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 @media (max-width: 900px) { .walker .sprite { height: 90px; } }
 .walker .sprite.cat { height: 54px; margin-left: 2px; }
 @media (max-width: 900px) { .walker .sprite.cat { height: 42px; } }
+.walker .sprite.student { height: 108px; }
+@media (max-width: 900px) { .walker .sprite.student { height: 80px; } }
+.avatar-pick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.avatar-opt { display: grid; justify-items: center; gap: 2px; padding: 6px 2px; background: #FBF4E2; border: 2px solid var(--line); border-radius: 8px; cursor: pointer; }
+.avatar-opt img { height: 72px; image-rendering: pixelated; }
+.avatar-opt small { font-size: .75em; color: var(--muted); }
+.avatar-opt.on { border-color: var(--accent); background: var(--accent-soft); }
