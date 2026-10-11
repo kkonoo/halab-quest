@@ -506,13 +506,26 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .cat-idle { display: inline-block; aspect-ratio: 159 / 200; overflow: hidden; }
 .cat-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: cat-idle 3s step-end infinite; }
 @keyframes cat-idle { 0% { transform: none; } 20% { transform: translateX(-50%); } 42% { transform: none; } 58% { transform: translateX(-25%); } 65% { transform: none; } 78% { transform: translateX(-75%); } 92%, 100% { transform: none; } }
-/* 챕터 지도의 걷는 고양이: 학생 오른쪽 → 더 오른쪽 → 돌아서 학생 앞을 지나 왼쪽 → 다시 제자리. 걸음은 위아래로 콩콩 (거리는 고양이 폭 기준 %) */
-.cat-roam { display: inline-block; animation: cat-roam 9s linear infinite; }
-.cat-roam img { display: block; animation: cat-step .4s steps(2) infinite; }
-@keyframes cat-roam { 0% { translate: 0; scale: 1 1; } 12% { translate: 90% 0; scale: 1 1; } 14% { translate: 90% 0; scale: -1 1; } 62% { translate: -260% 0; scale: -1 1; } 64% { translate: -260% 0; scale: 1 1; } 100% { translate: 0; scale: 1 1; } }
-@keyframes cat-step { 50% { translate: 0 -2px; } }
-/* 움직임 줄이기 설정: 화면을 가로지르는 걷는 고양이만 멈춤 (앉은 고양이는 제자리에서 그림만 바뀌어서 그대로) */
-@media (prefers-reduced-motion: reduce) { .cat-roam, .cat-roam img { animation: none; } }
+/* 챕터 지도의 걷는 고양이 (12초 한 바퀴, 거리는 고양이 폭 기준 %):
+   제자리에 앉아 있다가 → 오른쪽으로 조금 걷고 → 앉아 쉬고 → 돌아서 학생 앞을 지나 왼쪽까지 → 앉아 쉬고 → 돌아서 제자리로.
+   걸을 때는 cat-walk-strip.png 네 칸(다리 번갈아)을 넘기고, 쉴 때는 앉은 고양이(cat-idle)를 보여 줌 */
+.cat-roam { display: inline-block; position: relative; animation: cat-roam 12s linear infinite; }
+.cat-walk { display: inline-block; vertical-align: bottom; aspect-ratio: 214 / 200; overflow: hidden; animation: cat-walk-vis 12s step-end infinite; }
+.cat-walk img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: cat-walk-frames .5s steps(4) infinite; }
+.cat-roam .cat-idle { position: absolute; bottom: 0; left: 50%; translate: -50% 0; animation: cat-sit-vis 12s step-end infinite; }
+@keyframes cat-walk-frames { to { transform: translateX(-100%); } }
+@keyframes cat-roam {
+  0%, 12.5% { translate: 0; scale: 1 1; }
+  20%, 32.4% { translate: 90% 0; scale: 1 1; }
+  32.5% { translate: 90% 0; scale: -1 1; }
+  61.67%, 74.1% { translate: -260% 0; scale: -1 1; }
+  74.17% { translate: -260% 0; scale: 1 1; }
+  95.83%, 100% { translate: 0; scale: 1 1; }
+}
+@keyframes cat-walk-vis { 0% { opacity: 0; } 12.5% { opacity: 1; } 20% { opacity: 0; } 32.5% { opacity: 1; } 61.67% { opacity: 0; } 74.17% { opacity: 1; } 95.83%, 100% { opacity: 0; } }
+@keyframes cat-sit-vis { 0% { opacity: 1; } 12.5% { opacity: 0; } 20% { opacity: 1; } 32.5% { opacity: 0; } 61.67% { opacity: 1; } 74.17% { opacity: 0; } 95.83%, 100% { opacity: 1; } }
+/* 움직임 줄이기 설정: 걷는 고양이는 제자리에 앉아 있기만 (앉은 고양이의 깜빡 · 꼬리 · 귀는 제자리라 그대로) */
+@media (prefers-reduced-motion: reduce) { .cat-roam, .cat-walk, .cat-walk img, .cat-roam .cat-idle { animation: none; } .cat-walk { opacity: 0; } }
 @media (max-width: 900px) { .walker .sprite.cat { height: 42px; } }
 .walker .sprite.student { height: 108px; }
 @media (max-width: 900px) { .walker .sprite.student { height: 80px; } }
