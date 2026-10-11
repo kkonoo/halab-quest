@@ -511,6 +511,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 @keyframes glow { 0%, 100% { opacity: .35; } 18% { opacity: .75; } 30% { opacity: .5; } 46% { opacity: .9; } 60% { opacity: .55; } 78% { opacity: .8; } }
 /* 장 지도: 등불이 작고 많아서 빛을 훨씬 은은하게 */
 .chapter-scene .glow { animation-name: glow-soft; }
+.glow.gl-1 { animation-duration: 5.3s; animation-delay: -1.4s; } .glow.gl-2 { animation-duration: 3.8s; animation-delay: -2.3s; } .glow.gl-3 { animation-duration: 4.9s; animation-delay: -0.7s; } .glow.gl-4 { animation-duration: 6s; animation-delay: -3.5s; } /* 층마다 박자 · 시작이 달라 건물끼리 시간차 */
 @keyframes glow-soft { 0%, 100% { opacity: .12; } 18% { opacity: .28; } 30% { opacity: .18; } 46% { opacity: .34; } 60% { opacity: .2; } 78% { opacity: .3; } }
 /* 교수님 가리키는 자세: 네 칸 띠 (기본 → 까딱 → 기본 → 눈웃음 → 눈웃음+까딱 → 눈웃음 → 기본). 제자리라 움직임 줄이기 설정에서도 그대로 */
 .prof-idle { display: inline-block; aspect-ratio: 218 / 300; overflow: hidden; }

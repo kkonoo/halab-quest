@@ -122,8 +122,14 @@ const bigBtn = (label, href, cls = 'big-btn') => h('a', { class: cls, href }, la
 // 앉은 고양이: img/char/cat-idle.png 네 칸(기본 · 깜빡 · 꼬리 · 귀)을 CSS로 넘겨요 (.cat-idle)
 const catIdle = () => h('span', { class: 'sprite cat cat-idle', role: 'img', 'aria-label': '고양이' }, h('img', { src: 'img/char/cat-idle.png', alt: '' }));
 // 등불 빛: img/glow/{배경 이름}.png (배경 속 등불 자리만 밝은 층)을 배경 위에 겹쳐 밝았다 어두워졌다 하게. 그 배경에 등불 층이 있을 때만
-const GLOWS = new Set(["ch1-compass", "ch1-done", "ch1-guide", "ch1-lab", "ch1-map", "ch1-papers", "ch1-wiki", "ch2-design", "ch2-done", "ch2-gap", "ch2-hypo", "ch2-map", "ch2-meeting", "ch2-proposal", "ch2-topic", "ch3-ai", "ch3-done", "ch3-figure", "ch3-map", "ch3-methods", "ch3-passport", "ch3-present", "ch3-skills", "ch3-stats", "ch4-conference", "ch4-done", "ch4-manuscript", "ch4-map", "ch4-storyboard", "ch4-submit", "fish-pond"]);
-const glowLayer = bg => { const n = (bg || '').split('/').pop().replace(/\.jpg$/, ''); return GLOWS.has(n) ? h('div', { class: 'glow', style: `background-image:url(img/glow/${n}.png)`, 'aria-hidden': 'true' }) : null; };
+const GLOWS = new Set(["ch1-compass", "ch1-done", "ch1-guide", "ch1-lab", "ch1-papers", "ch1-wiki", "ch2-design", "ch2-done", "ch2-gap", "ch2-hypo", "ch2-meeting", "ch2-proposal", "ch2-topic", "ch3-ai", "ch3-done", "ch3-figure", "ch3-methods", "ch3-passport", "ch3-present", "ch3-skills", "ch3-stats", "ch4-conference", "ch4-done", "ch4-manuscript", "ch4-storyboard", "ch4-submit", "fish-pond"]);
+// 장 지도: 건물마다 등불을 묶어 층 5개로 나눔 (img/glow/{이름}-0~4.png). 같은 건물 등불은 같은 층이라 함께, 층마다 박자가 달라 건물끼리는 시간차로 깜빡여요
+const GLOW_LAYERS = { 'ch1-map': 5, 'ch2-map': 5, 'ch3-map': 5, 'ch4-map': 5 };
+const glowLayer = bg => {
+  const n = (bg || '').split('/').pop().replace(/\.jpg$/, '');
+  if (GLOW_LAYERS[n]) return Array.from({ length: GLOW_LAYERS[n] }, (_, i) => h('div', { class: `glow gl-${i}`, style: `background-image:url(img/glow/${n}-${i}.png)`, 'aria-hidden': 'true' }));
+  return GLOWS.has(n) ? h('div', { class: 'glow', style: `background-image:url(img/glow/${n}.png)`, 'aria-hidden': 'true' }) : null;
+};
 // 교수님: 가리키는 자세(point)는 img/char/prof-point-idle.png 네 칸(기본 · 손가락 까딱 · 눈웃음 · 눈웃음+까딱)을 넘김, 다른 자세는 한 장 그림
 const profImg = (pose = 'point') => pose === 'point'
   ? h('span', { class: 'sprite prof-idle', role: 'img', 'aria-label': '교수님' }, h('img', { src: 'img/char/prof-point-idle.png', alt: '' }))
