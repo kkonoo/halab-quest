@@ -53,7 +53,7 @@ function stageScene(q) {
       q.place ? h('span', 'place', q.place) : null,
       q.bubble ? h('div', 'bubble', q.bubble) : null,
       h('div', 'props', q.scene || q.icon),
-      h('div', 'walker', '👩‍🏫', ' ', '🧑‍🎓', h('span', 'cat', '🐈'))),
+      h('div', 'walker', h('img', { class: 'sprite', src: `img/char/prof-${q.pose || 'point'}.png`, alt: '교수님' }), ' ', '🧑‍🎓', h('span', 'cat', '🐈'))),
     h('div', { class: 'card overview', html: md(q.overview || '') }));
 }
 
