@@ -95,7 +95,14 @@ const stampCount = () => Object.keys(db.progress).filter(k => k.startsWith('tb:'
 
 // ---------- 내 캐릭터 (img/char/{id}-front|back.png) ----------
 const AVATARS = [['intern-f', '인턴 (여)'], ['intern-m', '인턴 (남)'], ['grad-f', '대학원생 (여)'], ['grad-m', '대학원생 (남)']];
-const studentImg = (view = 'back') => h('img', { class: 'sprite student', src: `img/char/${db.avatar || 'intern-f'}-${view}.png`, alt: '나' });
+// 뒷모습 대기 동작이 있는 캐릭터: img/char/{id}-back-idle.png 네 칸(기본 · 머리카락 · 왼쪽 · 오른쪽) 띠, 값 = 한 칸 폭 (높이 270 기준)
+const STUDENT_IDLE = { 'grad-f': 183 };
+const studentImg = (view = 'back') => {
+  const id = db.avatar || 'intern-f';
+  if (view === 'back' && STUDENT_IDLE[id]) return h('span', { class: 'sprite student stu-idle', role: 'img', 'aria-label': '나', style: `aspect-ratio:${STUDENT_IDLE[id]}/270` },
+    h('img', { src: `img/char/${id}-back-idle.png`, alt: '' }));
+  return h('img', { class: 'sprite student', src: `img/char/${id}-${view}.png`, alt: '나' });
+};
 
 // ---------- 화면 공통 ----------
 function setTitle(main, sub) {
