@@ -11,7 +11,8 @@ function viewWorld() {
         return h('a', { class: `region r-${ch.id}`, href: `#/ch/${ch.id}`, style: ch.mapPos ? `left:${ch.mapPos[0]}%;top:${ch.mapPos[1]}%` : null },
           h('b', null, `${ch.no}장. ${ch.title}`),
           h('small', null, ch.region),
-          h('span', 'region-prog', h('span', { class: 'ck', title: '학습 완료' }), ` ${c.check} / ${c.total}`, chapterAllDone(ch) ? medal(ch, true) : null),
+          h('span', 'region-prog', h('span', { class: 'ck', title: '학습 완료' }), ` ${c.check} / ${c.total}`),
+          chapterAllDone(ch) ? medal(ch, true) : null,
           ch.ready ? null : h('span', 'chip', '준비 중'));
       }),
       // 가운데 섬 = 투고 낚시터
