@@ -360,3 +360,24 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .big-fish { grid-row: span 2; font-size: 28px; align-self: center; }
 .link.hl { background: #DCEBF3; border-color: #9EC3D8; font-weight: 600; }
 @media (max-width: 900px) { .screen.fish { grid-template-columns: 1fr; } .pond { min-height: 360px; } }
+
+/* ---------- 그림 UI 부품 (img/ui/) — 테두리 그림을 잘라 늘려 씀 (border-image) ---------- */
+:root { --panel-img: url(../img/ui/panel.png); }
+.panel, .dialog-box, .region, .banner, .stat-card, .side-link:not(.login) {
+  border: 20px solid transparent;
+  border-image: var(--panel-img) 40 fill / 20px stretch;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.panel { padding: 4px 6px; }
+.dialog-box { padding: 2px; }
+.region { padding: 6px 8px; }
+.banner { padding: 4px; }
+.stat-card { padding: 2px; }
+.side-link:not(.login) { padding: 4px 6px; }
+.check-box { border: 14px solid transparent; border-image: var(--panel-img) 40 fill / 14px stretch; border-radius: 0; background: none; box-shadow: none; padding: 2px 4px; }
+.check-box.on { background: none; filter: none; }
+.check-box.on .mk.ok { box-shadow: 0 0 0 3px #CFE6C6; }
+.check-box.star.on .mk.star { text-shadow: 0 0 6px #F3D27A; }
+.card.reading, .card.overview { border: 20px solid transparent; border-image: var(--panel-img) 40 fill / 20px stretch; box-shadow: none; background: none; border-radius: 0; padding: 4px 8px; }
