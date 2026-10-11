@@ -415,3 +415,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .avatar-opt img { height: 72px; image-rendering: pixelated; }
 .avatar-opt small { font-size: .75em; color: var(--muted); }
 .avatar-opt.on { border-color: var(--accent); background: var(--accent-soft); }
+/* 배경 그림이 있는 장면 (img/bg/) */
+.scene.has-bg { background-size: cover; background-position: center 70%; }
+.chapter-scene.has-bg { min-height: 0; aspect-ratio: 16 / 8; }
+@media (max-width: 900px) { .chapter-scene.has-bg { aspect-ratio: auto; min-height: 420px; } }

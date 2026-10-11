@@ -49,10 +49,10 @@ function viewQuest(q, sec) {
 
 function stageScene(q) {
   return h('div', 'stage',
-    h('div', { class: 'scene quest-scene', style: q.bg ? `background-image:url(${q.bg})` : null },
+    h('div', { class: `scene quest-scene${q.bg ? ' has-bg' : ''}`, style: q.bg ? `background-image:url(${q.bg})` : null },
       q.place ? h('span', 'place', q.place) : null,
       q.bubble ? h('div', 'bubble', q.bubble) : null,
-      h('div', 'props', q.scene || q.icon),
+      q.bg ? null : h('div', 'props', q.scene || q.icon),
       h('div', 'walker', h('img', { class: 'sprite', src: `img/char/prof-${q.pose || 'point'}.png`, alt: '교수님' }), ' ', studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' }))),
     h('div', { class: 'card overview', html: md(q.overview || '') }));
 }

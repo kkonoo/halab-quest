@@ -29,7 +29,7 @@ function viewChapter(ch) {
   const prev = CHAPTERS[ch.no - 2], next = CHAPTERS[ch.no];
   const firstTodo = ch.quests.find(q => !prog(q.id).check) || ch.quests[0];
   return h('div', `screen chapter c-${ch.id}`,
-    h('div', 'scene chapter-scene',
+    h('div', { class: `scene chapter-scene${ch.bg ? ' has-bg' : ''}`, style: ch.bg ? `background-image:url(${ch.bg})` : null },
       h('div', 'signs', ch.quests.map((q, i) => h('a', { class: 'sign', href: `#/q/${q.id}` },
         h('span', 'sign-icon', q.icon), h('b', null, q.place || q.title), h('small', null, `${i + 1}. ${q.title}`),
         prog(q.id).check ? h('span', 'sign-done', '✓') : null))),
