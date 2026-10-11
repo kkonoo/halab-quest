@@ -159,7 +159,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .signs { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; position: relative; z-index: 1; }
 .sign { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: #8B5E3C; color: #FBF1DA; border: 3px solid var(--wood-2); border-radius: 8px; text-decoration: none; box-shadow: 0 3px 0 rgba(0,0,0,.25); position: relative; }
 .sign-icon { font-size: 30px; flex: none; }
-.sign-text { display: grid; }
+.sign-text { display: grid; word-break: keep-all; }
 .sign small { opacity: .85; }
 .sign-done { position: absolute; top: -8px; right: -8px; background: var(--good); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #fff; }
 .way { position: absolute; bottom: 14px; background: #8B5E3C; color: #FBF1DA; padding: 8px 14px; border: 3px solid var(--wood-2); border-radius: 8px; text-decoration: none; font-family: var(--pixel); z-index: 2; }
@@ -460,7 +460,14 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 /* 배경 그림이 있는 장면 (img/bg/) */
 .scene.has-bg { background-size: cover; background-position: center 70%; }
 .chapter-scene.has-bg { min-height: 0; aspect-ratio: 16 / 8; }
-@media (max-width: 900px) { .chapter-scene.has-bg { aspect-ratio: auto; min-height: 420px; } }
+@media (max-width: 900px) {
+  .chapter-scene.has-bg { aspect-ratio: auto; min-height: 480px; }
+  /* 폰: 이름표를 두 줄로 놓아 그림이 보이게, 캐릭터는 길 버튼 위에 */
+  .signs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .sign { gap: 6px; font-size: .85em; }
+  .sign-icon { font-size: 22px; }
+  .chapter-scene .walker { bottom: 62px; }
+}
 .quest-scene.has-bg { min-height: 0; aspect-ratio: 2048 / 900; background-position: center; }
 /* 월드맵: 그림 위 네 지역에 이름표를 올림 (data/chN.json의 mapPos = [가로%, 세로%]) */
 .map-area.world-map { position: relative; padding: 0; aspect-ratio: 1672 / 941; background: url(../img/bg/world.jpg) center / cover; }
