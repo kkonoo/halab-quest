@@ -458,7 +458,12 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .avatar-opt.on { border-color: var(--accent); background: var(--accent-soft); }
 /* 배경 그림이 있는 장면 (img/bg/) */
 .scene.has-bg { background-size: cover; background-position: center 70%; }
-.chapter-scene.has-bg { min-height: 0; aspect-ratio: 16 / 8; }
+.chapter-scene.has-bg { min-height: 0; aspect-ratio: 1672 / 941; background-position: center; }
+/* 챕터 맵 이름표를 그림 속 건물 위에 (data/chN.json 퀘스트의 mapPos = [가로%, 세로%], 이름표 가운데 기준) */
+.signs.pinned { position: absolute; inset: 0; display: block; }
+.signs.pinned .sign { position: absolute; width: max-content; transform: translate(-50%, -50%); }
+.signs.pinned .sign { font-size: clamp(12px, 1.05vw, 15px); }
+.signs.pinned .sign-icon { font-size: 2em; }
 @media (max-width: 900px) {
   .chapter-scene.has-bg { aspect-ratio: auto; min-height: 480px; }
   /* 폰: 이름표를 두 줄로 놓아 그림이 보이게, 캐릭터는 길 버튼 위에 */
@@ -466,6 +471,9 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   .sign { gap: 6px; font-size: .85em; }
   .sign-icon { font-size: 22px; }
   .chapter-scene .walker { bottom: 62px; }
+  /* 폰에서는 그림이 작아서 건물 위에 올리지 않고 위쪽에 두 칸씩 */
+  .signs.pinned { position: relative; inset: auto; display: grid; }
+  .signs.pinned .sign { position: relative; width: auto; transform: none; left: auto !important; top: auto !important; }
 }
 .quest-scene.has-bg { min-height: 0; aspect-ratio: 2048 / 900; background-position: center; }
 /* 월드맵: 그림 위 네 지역에 이름표를 올림 (data/chN.json의 mapPos = [가로%, 세로%]) */

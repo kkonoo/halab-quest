@@ -30,6 +30,7 @@
   "quests": [
     {
       "id": "ch3-passport",
+      "mapPos": [22, 38],
       "title": "교재 여권",
       "icon": "📘",
       "place": "교재 여권 센터",
@@ -91,6 +92,7 @@
     },
     {
       "id": "ch3-skills",
+      "mapPos": [33, 14],
       "title": "분석 스킬 트리",
       "icon": "📊",
       "place": "분석 스킬 트리관",
@@ -162,6 +164,7 @@
     },
     {
       "id": "ch3-stats",
+      "mapPos": [82, 41],
       "title": "통계 실습실",
       "icon": "∑",
       "place": "통계 실습실",
@@ -240,6 +243,7 @@
     },
     {
       "id": "ch3-methods",
+      "mapPos": [75, 75],
       "title": "Methods 해부하기",
       "icon": "⚗️",
       "place": "Methods 공방",
@@ -302,6 +306,7 @@
     },
     {
       "id": "ch3-figure",
+      "mapPos": [65, 41],
       "title": "Figure 제작소",
       "icon": "🎨",
       "place": "Figure 제작소",
@@ -344,6 +349,7 @@
     },
     {
       "id": "ch3-ai",
+      "mapPos": [50, 27],
       "title": "AI 연구 도우미",
       "icon": "🤖",
       "place": "AI 연구 도우미실",
@@ -386,6 +392,7 @@
     },
     {
       "id": "ch3-present",
+      "mapPos": [91, 66],
       "title": "발표 연습실",
       "icon": "🎓",
       "place": "발표 홀",

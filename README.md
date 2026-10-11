@@ -33,7 +33,7 @@ HaLab 연구실 인턴 · 대학원생 온보딩용 쯔꾸르풍 웹 RPG예요. 
 | `data/ch1.json` ~ `data/ch4.json` | 챕터 소개 · 퀘스트 목록 · 설명 · 정보 패널 · 핵심 UI · 자료 링크 · ✓/★ 문구 · 교수님 대사 |
 | `data/cards/*.md` | 게임 안 가이드 카드 (`## 1. 제목` 하나가 카드 한 장 = 퀘스트 메뉴 한 칸) |
 
-퀘스트 항목에서 쓰는 칸: `overview`(개요) · `sections` 또는 `cards`(메뉴 칸) · `info`(우측 정보 패널) · `widget`(아래) · `links`(`url` 바깥 링크 / `quest` 다른 퀘스트 / `href` 게임 안 주소 / `note` 글만) · `warn` · `records`(발표 기록 종류) · `check` · `star` · `noStar` · `dialog` · `bubble` · `face` · `pose` · `bg`(장면 그림 주소, 그림이 생기면).
+퀘스트 항목에서 쓰는 칸: `overview`(개요) · `sections` 또는 `cards`(메뉴 칸) · `info`(우측 정보 패널) · `widget`(아래) · `links`(`url` 바깥 링크 / `quest` 다른 퀘스트 / `href` 게임 안 주소 / `note` 글만) · `warn` · `records`(발표 기록 종류) · `check` · `star` · `noStar` · `dialog` · `bubble` · `face` · `pose` · `bg`(장면 그림 주소, 그림이 생기면) · `mapPos`(챕터 맵 그림 속 이름표 위치 [가로%, 세로%], 이름표 가운데 기준. 없으면 이름표를 위쪽에 나란히).
 
 `widget` 종류:
 - `flow` 흐름 — 칸마다 `icon` `label` `sub`, 눌러서 갈 곳 `url`(새 탭) 또는 `href`(게임 안), 나란한 두 길은 `{ "branch": [칸, 칸] }`
