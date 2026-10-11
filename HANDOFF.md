@@ -74,7 +74,7 @@ HaLab Quest는 새로운 교육 플랫폼(LMS)이 아니다.
 - HaLab Textbooks: https://kkonoo.github.io/halab-textbooks/ (교재 목록: GitHub kkonoo/halab-textbooks의 data/textbooks.json)
 - Notion Lab manual: https://app.notion.com/p/Lab-manual-1b76f5e0b4f98163ba82cd33112efc66 (정기 미팅, Progress report·Journal club·Individual meeting 준비, 졸업 요건, 학회·워크숍 지원)
 - 연구실 Linux 매뉴얼: https://app.notion.com/p/3d76f5e0b4f9811ea521d772f76192fe
-- HaLab Plots: 주소는 구현 단계에서 받기
+- HaLab Plots: https://kkonoo.github.io/halab-plots/
 
 접근할 수 없는 사이트는 추측하지 말고 나에게 물어봐.
 
@@ -284,7 +284,7 @@ E. 4장 완료 (장소: 탑 꼭대기 테라스)
 11. 아직 정할 것 · 받을 것
 
 - 교수님이 할 일: Firestore 규칙 붙여 넣기, 학생 이메일이 Lab Manager 랩 멤버에 있는지 확인, 교수님·학생 계정으로 로그인·진행도 보기 직접 확인 (여기서는 Firebase에 연결할 수 없어 동기화를 실제로 확인하지 못함)
-- 받을 것: HaLab Plots 주소, 통계 스테이션별 교재 URL(새 통계 교재 완성 후), Nature Communications 공개 리뷰 기록 예시 논문 1편
+- 받을 것: 통계 스테이션별 교재 URL(교수님이 새 통계 교재를 만든 뒤), Python 기초 자료(교수님이 만들 예정, 지금은 "준비 중"), Nature Communications 공개 리뷰 기록 예시 논문 1편
 - AI 연구 도우미: 연구실 고유 AI 사용 규칙·IRB 기준이 있으면 반영
 - 발표 연습실: 개인 미팅 체크리스트를 그대로 둘지
 - 캐릭터 고르기: 지금은 메뉴에서만. 시작 화면(시작 경로 → 캐릭터 선택)을 넣을지

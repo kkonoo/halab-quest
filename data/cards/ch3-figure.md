@@ -59,7 +59,7 @@
 
 ## 5. HaLab Plots로 다듬기
 
-**알맹이는 코드에서, 보기는 HaLab Plots에서.**
+**알맹이는 코드에서, 보기는 [HaLab Plots](https://kkonoo.github.io/halab-plots/)에서.**
 
 | 코드에서 정하기 (알맹이) | HaLab Plots에서 다듬기 (보기) |
 |---|---|

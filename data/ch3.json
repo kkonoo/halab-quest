@@ -345,7 +345,7 @@
       "links": [
         { "label": "Lab Manager · 그림 만들기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/figures.md" },
         { "label": "Lab Manager · 통계 검정 · plot 매칭표", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" },
-        { "label": "HaLab Plots", "note": "주소 준비 중" },
+        { "label": "HaLab Plots", "url": "https://kkonoo.github.io/halab-plots/" },
         { "label": "4장 Figure 스토리보드", "quest": "ch4-storyboard" }
       ],
       "check": "가이드를 읽고 예시를 따라 그려봤다면 체크해보세요!",
