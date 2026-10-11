@@ -204,6 +204,7 @@
       "mapPos": [30, 9],
       "title": "연구비 제안서 쓰기",
       "icon": "✍️",
+      "bg": "img/bg/ch2-proposal.jpg",
       "bubble": "gap과 디자인이 딱 맞는지 봐요.",
       "dialog": [
         "지금까지 만든 주제 · gap · 가설 · 디자인을 제안서 한 편으로 엮어요.",
