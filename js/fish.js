@@ -29,7 +29,7 @@ function fishTips() { return QUESTS.get('ch4-submit')?.fishTips || ['기다리�
 function castForm(sub) {
   const again = !!sub;
   openForm({
-    title: again ? `🎣 다시 던지기 · ${sub.title}` : '🎣 새 원고 던지기',
+    title: again ? `다시 던지기 · ${sub.title}` : '새 원고 던지기',
     fields: [
       ...(again ? [] : [{ key: 'title', label: '원고 이름 (짧게)', placeholder: '예: FSGS snRNA-seq' }]),
       { key: 'journal', label: '저널', placeholder: '예: Nature Communications' },
@@ -96,7 +96,7 @@ function viewFish() {
         fishTip ? h('div', 'bubble', fishTip) : null,
         h('div', 'water', pond.length ? pond.map(bobber) : h('p', 'empty-pond', '아직 던진 원고가 없어요. 투고했다면 던져 보세요!')),
         h('div', 'walker', studentImg('back'), h('img', { class: 'sprite rod', src: 'img/char/rod.png', alt: '낚싯대' }), h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' }))),
-      h('div', 'row', h('button', { class: 'btn primary', onclick: () => castForm() }, '🎣 새 원고 던지기'), h('a', { class: 'btn', href: '#/q/ch4-submit' }, '← 투고와 리뷰'))),
+      h('div', 'row', h('button', { class: 'btn primary', onclick: () => castForm() }, '새 원고 던지기'), h('a', { class: 'btn', href: '#/q/ch4-submit' }, '← 투고와 리뷰'))),
     h('div', 'fish-side',
       pick ? fishDetail(pick) : panel('낚시 일지', h('p', 'hint', '원고를 던지면 저널 · 상태 · 기다린 날수가 여기에 쌓여요.')),
       panel(`어망 🐟 ${net.length}`,
@@ -111,7 +111,7 @@ function fishDetail(sub) {
   return panel(`낚시 일지 · ${sub.title}`,
     h('div', 'fish-now', h('span', `status-chip s-${s}`, FISH_STATUS[s].label), h('b', null, cast.journal), h('span', null, `D+${castDays(cast)}`)),
     FISH_STATUS[s].next.length ? h('div', 'row', h('span', 'hint', '상태 바꾸기:'), FISH_STATUS[s].next.map(n => h('button', { class: `btn small s-${n}`, onclick: () => statusForm(sub, n) }, FISH_STATUS[n].label))) : null,
-    s === 'rejected' ? h('div', 'row', h('button', { class: 'btn primary', onclick: () => castForm(sub) }, '🎣 다른 저널로 다시 던지기')) : null,
+    s === 'rejected' ? h('div', 'row', h('button', { class: 'btn primary', onclick: () => castForm(sub) }, '다른 저널로 다시 던지기')) : null,
     s === 'accepted' ? h('div', 'row', sub.cvId && db.cv.some(c => c.id === sub.cvId) ? h('a', { class: 'btn', href: '#/cv' }, '📜 My CV에 들어 있어요')
       : h('button', { class: 'btn primary', onclick: () => addToCV(sub) }, '📜 My CV에 넣기')) : null,
     h('ol', 'fish-log', sub.casts.map((c, i) => h('li', null,

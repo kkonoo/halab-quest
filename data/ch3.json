@@ -18,6 +18,7 @@
     "title": "3장. 실험실 마을 완료!",
     "sub": "실제 연구를 해내는 힘을 길렀어요.",
     "badge": "실험실 마을 수료 배지",
+    "badgeImg": "img/ui/medal-ch3.png",
     "badgeIcon": "⚗️",
     "bg": "img/bg/ch3-done.jpg",
     "stamps": true,

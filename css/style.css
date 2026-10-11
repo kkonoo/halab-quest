@@ -56,6 +56,7 @@ h1, h2, h3, .panel-head, .big-btn, .tool b, .title, .region b, .sign b, .who, .p
 .tool { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 0; background: none; color: var(--text); text-decoration: none; cursor: pointer; border-radius: 6px; }
 .tool:hover { background: var(--surface-2); }
 .tool span { font-size: 1.25em; }
+.tool .ti { width: 28px; height: 28px; }
 .btn, .avatar { cursor: pointer; }
 .avatar { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--wood); background: var(--navy); color: #fff; font-weight: 700; }
 
@@ -157,7 +158,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 /* 월드맵 아래 오른쪽: My Journey · My CV 두 칸 (아이콘 위, 이름 아래), 로그인은 아래 한 줄 */
 .side-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: stretch; }
 .side-link { display: grid; justify-items: center; align-content: center; gap: 14px; padding: 14px 16px; background: var(--surface); border: 3px solid var(--wood); border-radius: var(--radius); text-decoration: none; color: var(--text); font-family: var(--pixel); font-size: 1.1em; text-align: center; cursor: pointer; }
-.sl-icon { font-size: 34px; line-height: 1; }
+.sl-icon { width: 44px; height: 44px; }
 .side-link.login { grid-column: 1 / -1; background: var(--accent); color: var(--on-accent); }
 
 /* ---------- 챕터 맵 ---------- */
@@ -332,6 +333,10 @@ a.step:hover { border-color: var(--wood); background: #FFF8E6; }
 .badge { display: grid; justify-items: center; gap: 6px; margin: 12px 0 4px; }
 .medal { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; font-size: 46px; background: radial-gradient(#F7D774, #C99A2E); border: 4px solid #A87414; box-shadow: 0 4px 0 #7A5233; }
 .medal.small { width: 34px; height: 34px; font-size: 18px; border-width: 2px; box-shadow: none; }
+/* 장 수료 메달 그림 (data/chN.json의 done.badgeImg) */
+.medal.pic { background: none; border: 0; box-shadow: none; }
+.medal.pic img, .mk.pic img { width: 100%; height: 100%; }
+.mk.pic { width: 1.8em; height: 1.8em; }
 .btn-col { display: grid; gap: 10px; align-content: stretch; }
 
 /* ---------- My Journey · CV · 교수님 ---------- */

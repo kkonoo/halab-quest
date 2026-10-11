@@ -18,6 +18,7 @@
     "title": "4장. 논문의 탑 완료!",
     "sub": "결과를 모아 논문으로 엮는 길을 걸었어요.",
     "badge": "논문의 탑 수료 배지",
+    "badgeImg": "img/ui/medal-ch4.png",
     "badgeIcon": "🏰",
     "bg": "img/bg/ch4-done.jpg",
     "lines": [
@@ -191,7 +192,7 @@
         { "label": "🎣 투고 낚시터 (내 투고 기록)", "href": "#/fish", "hl": true },
         { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
         { "label": "저널 Guide for Authors", "note": "투고할 저널 사이트에서" },
-        { "label": "공개 리뷰 기록 예시 (Nature Communications)", "note": "링크 준비 중" }
+        { "label": "공개 리뷰 기록 예시 · Weinand (Nature Communications, 2024)", "url": "https://www.nature.com/articles/s41467-024-48620-7" }
       ],
       "warn": "심사 중 · 미발표 원고는 AI에 넣지 않기",
       "fishTips": [

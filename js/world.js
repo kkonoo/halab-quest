@@ -20,8 +20,8 @@ function viewWorld() {
       dialogBox(['안녕하세요. 반가워요! 여기는 HaLab이에요.', '연구는 긴 여정이지만, 작은 탐험부터 시작하면 누구나 해낼 수 있어요.',
         '가고 싶은 곳을 골라보세요. 순서는 추천일 뿐, 어디든 먼저 가도 돼요.'], 'smile'),
       h('div', 'side-links',
-        h('a', { class: 'side-link', href: '#/journey' }, h('span', 'sl-icon', '🎒'), 'My Journey'),
-        h('a', { class: 'side-link', href: '#/cv' }, h('span', 'sl-icon', '📜'), 'My CV'),
+        h('a', { class: 'side-link', href: '#/journey' }, h('img', { class: 'sl-icon', src: 'img/ui/icon-bag.png', alt: '' }), 'My Journey'),
+        h('a', { class: 'side-link', href: '#/cv' }, h('img', { class: 'sl-icon', src: 'img/ui/icon-cv.png', alt: '' }), 'My CV'),
         window.cloud && !u ? h('button', { class: 'side-link login', onclick: () => window.cloud.login() }, '🔑 Google 로그인') : null)));
 }
 
@@ -74,7 +74,7 @@ function viewDone(ch) {
         h('div', 'stat', h('span', 'mk star', '★'), '실전 적용', h('b', null, c.star)),
         d.stamps ? h('div', 'stat', h('span', 'mk', '📘'), '교재 스탬프', h('b', null, stampCount())) : null,
         h('p', 'hint center', 'My Journey에 저장됐어요'),
-        h('div', 'badge', h('span', 'medal', d.badgeIcon || ch.icon), h('b', null, d.badge)),
+        h('div', 'badge', medal(ch), h('b', null, d.badge)),
         d.cvNote ? h('p', 'hint center', h('a', { href: '#/cv' }, d.cvNote)) : null)),
     h('div', 'bottom-row',
       dialogBox(d.lines, 'smile'),

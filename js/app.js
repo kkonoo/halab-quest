@@ -112,6 +112,9 @@ function dialogBox(lines, face = 'default') {
     h('div', 'speech', h('div', 'who', '교수님'), ...(Array.isArray(lines) ? lines : [lines]).map(l => h('p', null, l))));
 }
 const bigBtn = (label, href, cls = 'big-btn') => h('a', { class: cls, href }, label, '\u00a0›'); // › 만 다음 줄로 떨어지지 않게
+// 장 수료 메달: done.badgeImg 그림이 있으면 그림, 없으면 이모지
+const medal = (ch, small) => h('span', { class: `medal${small ? ' small' : ''}${ch.done.badgeImg ? ' pic' : ''}`, title: ch.done.badge },
+  ch.done.badgeImg ? h('img', { src: ch.done.badgeImg, alt: '' }) : ch.done.badgeIcon || ch.icon);
 
 let toastTimer;
 function toast(text, ms = 2000) {

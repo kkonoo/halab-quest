@@ -17,6 +17,7 @@
     "title": "1장. 탐험의 숲 완료!",
     "sub": "연구실의 세계를 탐험하고, 연구의 기초를 배웠어요.",
     "badge": "탐험의 숲 수료 배지",
+    "badgeImg": "img/ui/medal-ch1.png",
     "badgeIcon": "🌲",
     "bg": "img/bg/ch1-done.jpg",
     "lines": [
