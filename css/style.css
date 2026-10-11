@@ -511,7 +511,8 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .cat-roam img { display: block; animation: cat-step .4s steps(2) infinite; }
 @keyframes cat-roam { 0% { translate: 0; scale: 1 1; } 12% { translate: 90% 0; scale: 1 1; } 14% { translate: 90% 0; scale: -1 1; } 62% { translate: -260% 0; scale: -1 1; } 64% { translate: -260% 0; scale: 1 1; } 100% { translate: 0; scale: 1 1; } }
 @keyframes cat-step { 50% { translate: 0 -2px; } }
-@media (prefers-reduced-motion: reduce) { .cat-idle img, .cat-roam, .cat-roam img { animation: none; } }
+/* 움직임 줄이기 설정: 화면을 가로지르는 걷는 고양이만 멈춤 (앉은 고양이는 제자리에서 그림만 바뀌어서 그대로) */
+@media (prefers-reduced-motion: reduce) { .cat-roam, .cat-roam img { animation: none; } }
 @media (max-width: 900px) { .walker .sprite.cat { height: 42px; } }
 .walker .sprite.student { height: 108px; }
 @media (max-width: 900px) { .walker .sprite.student { height: 80px; } }
