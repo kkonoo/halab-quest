@@ -4,8 +4,8 @@
 // 던지기(cast) 하나 = 저널 하나에 투고한 기록. Reject 되면 새 저널로 다시 던져서 casts에 하나 더 쌓여요
 
 const FISH_STATUS = {
-  submitted: { label: '투고', next: ['editor', 'review', 'rejected'] },
-  editor: { label: '에디터 검토', next: ['review', 'rejected'] },
+  submitted: { label: '투고', next: ['review', 'rejected'] },
+  editor: { label: '에디터 검토', next: ['review', 'rejected'] }, // 지금은 고를 수 없음 (예전 기록을 보여 주려고만 남김)
   review: { label: '리뷰 중', next: ['revision', 'accepted', 'rejected'] },
   revision: { label: '수정 요청', next: ['resubmitted'] },
   resubmitted: { label: '재투고', next: ['review', 'revision', 'accepted', 'rejected'] },
