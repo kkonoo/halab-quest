@@ -506,6 +506,9 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .cat-idle { display: inline-block; aspect-ratio: 159 / 200; overflow: hidden; }
 .cat-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: cat-idle 3s step-end infinite; }
 @keyframes cat-idle { 0% { transform: none; } 20% { transform: translateX(-50%); } 42% { transform: none; } 58% { transform: translateX(-25%); } 65% { transform: none; } 78% { transform: translateX(-75%); } 92%, 100% { transform: none; } }
+/* 등불 빛 층: 배경과 같은 크기 · 위치로 겹쳐서(inherit) 밝게 더함. 천천히 불규칙하게 밝았다 어두워졌다 (제자리 효과라 움직임 줄이기 설정에서도 그대로) */
+.glow { position: absolute; inset: 0; pointer-events: none; background-size: inherit; background-position: inherit; background-repeat: inherit; mix-blend-mode: screen; opacity: .45; animation: glow 4.5s ease-in-out infinite; }
+@keyframes glow { 0%, 100% { opacity: .35; } 18% { opacity: .75; } 30% { opacity: .5; } 46% { opacity: .9; } 60% { opacity: .55; } 78% { opacity: .8; } }
 /* 학생 뒷모습 대기 동작: 네 칸 띠를 한 칸 창으로 넘김. 고개 까딱까딱 (기본 → 갸웃 → 찰랑 → 기본 → 반대로 갸웃 → 찰랑). 제자리라 움직임 줄이기 설정에서도 그대로 */
 .stu-idle { display: inline-block; overflow: hidden; }
 .stu-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: stu-idle 3.2s step-end infinite; }

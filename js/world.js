@@ -30,7 +30,7 @@ function viewChapter(ch) {
   const prev = CHAPTERS[ch.no - 2], next = CHAPTERS[ch.no];
   const firstTodo = ch.quests.find(q => !prog(q.id).check) || ch.quests[0];
   return h('div', `screen chapter c-${ch.id}`,
-    h('div', { class: `scene chapter-scene${ch.bg ? ' has-bg' : ''}`, style: ch.bg ? `background-image:url(${ch.bg})` : null },
+    h('div', { class: `scene chapter-scene${ch.bg ? ' has-bg' : ''}`, style: ch.bg ? `background-image:url(${ch.bg})` : null }, glowLayer(ch.bg),
       // 이름표는 한 줄: '번호. 장소' (장소가 없으면 '번호. 퀘스트'), 그림이 장소를 보여 주므로 이모지 없이
       // 퀘스트에 mapPos([가로%, 세로%])가 있으면 그림 속 건물 위에 이름표를 올림 (월드맵처럼), 없으면 위쪽에 나란히
       h('div', `signs${ch.quests.some(q => q.mapPos) ? ' pinned' : ''}`, ch.quests.map((q, i) =>
@@ -62,7 +62,7 @@ function viewDone(ch) {
   if (!rec || rec.check !== c.check || rec.star !== c.star) { db.chapterDone[ch.id] = { at: Date.now(), check: c.check, star: c.star }; persist(); }
   const next = d.next && CHAPTERS.find(x => x.id === d.next);
   return h('div', `screen done c-${ch.id}`,
-    d.bg ? h('div', { class: 'scene done-scene has-bg', style: `background-image:url(${d.bg})` },
+    d.bg ? h('div', { class: 'scene done-scene has-bg', style: `background-image:url(${d.bg})` }, glowLayer(d.bg),
       h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),
       h('div', 'walker', h('img', { class: 'sprite', src: 'img/char/prof-point.png', alt: '교수님' }), studentImg('back'), catIdle()))
       : h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),

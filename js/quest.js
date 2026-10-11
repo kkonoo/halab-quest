@@ -54,6 +54,7 @@ function viewQuest(q, sec) {
 
 function stageScene(q) {
   return h('div', { class: `scene quest-scene${q.bg ? ' has-bg' : ''}`, style: q.bg ? `background-image:url(${q.bg})` : null },
+      glowLayer(q.bg),
       q.place ? h('span', 'place', q.place) : null,
       q.bubble ? h('div', 'bubble', q.bubble) : null,
       q.bg ? null : h('div', 'props', q.scene || q.icon),

@@ -94,7 +94,7 @@ function viewFish() {
   const pick = db.subs.find(x => x.id === fishPick) || pond[0] || net[0];
   return h('div', 'screen fish c-ch4',
     h('div', 'fish-main',
-      h('div', 'scene pond',
+      h('div', 'scene pond', glowLayer('fish-pond.jpg'),
         h('span', 'place', '투고 낚시터'),
         fishTip ? h('div', 'bubble', fishTip) : null,
         h('div', 'water', pond.length ? pond.map(bobber) : h('p', 'empty-pond', '아직 던진 원고가 없어요. 투고했다면 던져 보세요!')),
