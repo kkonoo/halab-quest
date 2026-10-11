@@ -410,7 +410,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .fish-side { display: grid; gap: 14px; }
 .pond { min-height: 0; aspect-ratio: 1890 / 832; background-image: url(../img/bg/fish-pond.jpg) !important; background-size: cover; background-position: center; }
 .water { position: absolute; inset: 36% 12% 26%; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 18px 34px; padding: 30px 20px 0; }
-.empty-pond { color: #F6ECD2; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
+.empty-pond { color: #F6ECD2; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,.4); word-break: keep-all; }
 .bobber { position: relative; display: grid; justify-items: center; background: none; border: 0; cursor: pointer; padding: 0; color: var(--text); }
 .bobber .line { width: 2px; height: 34px; background: rgba(255,255,255,.7); }
 .bobber .float { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(#D9483F 50%, #FFF 50%); border: 2px solid #5A3B24; animation: float 2.6s ease-in-out infinite; }
@@ -492,6 +492,8 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 @media (max-width: 900px) { .walker .sprite.cat { height: 42px; } }
 .walker .sprite.student { height: 108px; }
 @media (max-width: 900px) { .walker .sprite.student { height: 80px; } }
+.walker .sprite.rod { height: 92px; }
+@media (max-width: 900px) { .walker .sprite.rod { height: 68px; } }
 .avatar-pick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .avatar-opt { display: grid; justify-items: center; gap: 2px; padding: 6px 2px; background: #FBF4E2; border: 2px solid var(--line); border-radius: 8px; cursor: pointer; }
 .avatar-opt img { height: 72px; image-rendering: pixelated; }

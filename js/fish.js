@@ -95,7 +95,7 @@ function viewFish() {
         h('span', 'place', '투고 낚시터'),
         fishTip ? h('div', 'bubble', fishTip) : null,
         h('div', 'water', pond.length ? pond.map(bobber) : h('p', 'empty-pond', '아직 던진 원고가 없어요. 투고했다면 던져 보세요!')),
-        h('div', 'walker', studentImg('back'), '🎣', h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' }))),
+        h('div', 'walker', studentImg('back'), h('img', { class: 'sprite rod', src: 'img/char/rod.png', alt: '낚싯대' }), h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' }))),
       h('div', 'row', h('button', { class: 'btn primary', onclick: () => castForm() }, '🎣 새 원고 던지기'), h('a', { class: 'btn', href: '#/q/ch4-submit' }, '← 투고와 리뷰'))),
     h('div', 'fish-side',
       pick ? fishDetail(pick) : panel('낚시 일지', h('p', 'hint', '원고를 던지면 저널 · 상태 · 기다린 날수가 여기에 쌓여요.')),
