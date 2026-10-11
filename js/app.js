@@ -3,6 +3,7 @@
 // 퀘스트 내용은 data/ch1~4.json 과 data/cards/*.md 에서 읽어요 (화면 코드에 문구를 넣지 않기)
 // db.progress[퀘스트 id] = { check, star, note }  check·star 는 체크한 시각(ms), note 는 ★ 실전 적용 한 줄
 // db.records 발표 기록 · db.figcards Figure 순서 카드 · db.cv My CV · db.chapterDone[챕터 id] 챕터 완료 기록
+// db.subs 투고 낚시터 원고 { id, title, casts: [{ journal, events: [{ s, d, note }] }], cvId }
 
 const $ = id => document.getElementById(id);
 function h(tag, attrs, ...kids) {
@@ -27,7 +28,7 @@ const fmtDate = ms => { const d = new Date(ms); return `${d.getFullYear()}.${Str
 // ---------- 저장 ----------
 // 같은 주소(kkonoo.github.io)의 다른 앱과 저장소를 같이 쓰므로 이름은 halab-quest* 로만
 const KEY = 'halab-quest', VERSION = 1;
-const fresh = () => ({ version: VERSION, owner: null, name: '', progress: {}, records: [], figcards: [], cv: [], chapterDone: {} });
+const fresh = () => ({ version: VERSION, owner: null, name: '', progress: {}, records: [], figcards: [], cv: [], chapterDone: {}, subs: [] });
 let db = fresh(), idb = null;
 const readJSON = k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } };
 
@@ -140,7 +141,7 @@ function openForm({ title, fields, onSave, onDelete, saveLabel = '저장' }) {
   inputs[fields[0]?.key]?.focus();
 }
 
-// ---------- 화면 이동: #/  #/ch/ch4  #/q/퀘스트id[/칸 번호]  #/done/ch4  #/journey  #/cv  #/admin ----------
+// ---------- 화면 이동: #/  #/ch/ch4  #/q/퀘스트id[/칸 번호]  #/done/ch4  #/journey  #/cv  #/admin  #/fish ----------
 function render() {
   if (!CHAPTERS.length) return;
   const [, page = '', a, b] = location.hash.replace(/^#/, '').split('/');
@@ -152,6 +153,7 @@ function render() {
     else if (page === 'journey') el = viewJourney();
     else if (page === 'cv') el = viewCV();
     else if (page === 'admin') el = viewAdmin();
+    else if (page === 'fish') el = viewFish();
     else el = viewWorld();
   } catch (e) {
     console.error(e);

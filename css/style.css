@@ -320,3 +320,42 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   .title #titleMain { display: none; }
   .title .sep { display: none; }
 }
+
+/* ---------- 투고 낚시터 ---------- */
+.screen.fish { grid-template-columns: minmax(0, 1fr) minmax(300px, 400px); align-items: start; }
+.screen.fish .q-dialog { grid-column: 1 / -1; }
+.fish-side { display: grid; gap: 14px; }
+.pond { min-height: 420px; background-image: linear-gradient(#F2B27A, #E9A07E 22%, #6FA7C9 23%, #3F7FA8 100%) !important; }
+.water { position: absolute; inset: 24% 0 70px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 18px 34px; padding: 30px 20px 0; }
+.empty-pond { color: #F6ECD2; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
+.bobber { position: relative; display: grid; justify-items: center; background: none; border: 0; cursor: pointer; padding: 0; color: var(--text); }
+.bobber .line { width: 2px; height: 34px; background: rgba(255,255,255,.7); }
+.bobber .float { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(#D9483F 50%, #FFF 50%); border: 2px solid #5A3B24; animation: float 2.6s ease-in-out infinite; }
+.bobber .hook { font-size: 24px; opacity: .85; }
+.bobber .fish-on { position: absolute; top: 30px; left: calc(50% + 16px); z-index: 1; font-size: 26px; animation: wiggle .5s ease-in-out infinite alternate; }
+.bobber.s-editor .float { animation: wobble 1.4s ease-in-out infinite; }
+.bobber.s-review .float, .bobber.s-resubmitted .float { animation: bite 1.8s ease-in-out infinite; }
+.bobber.s-revision .float { animation: bite .7s ease-in-out infinite; }
+.bobber .tagline { margin-top: 8px; display: grid; justify-items: center; gap: 1px; padding: 5px 10px; background: var(--surface); border: 2px solid var(--wood); border-radius: 8px; max-width: 190px; }
+.bobber.on .tagline { box-shadow: 0 0 0 3px var(--gold); }
+.bobber .tagline small { color: var(--muted); font-size: .8em; text-align: center; }
+.bobber .tagline em { font-style: normal; font-family: var(--pixel); color: var(--accent); }
+@keyframes float { 50% { transform: translateY(4px); } }
+@keyframes wobble { 25% { transform: rotate(-14deg); } 75% { transform: rotate(14deg); } }
+@keyframes bite { 0%, 60%, 100% { transform: translateY(0); } 70% { transform: translateY(10px); } 80% { transform: translateY(2px); } }
+@keyframes wiggle { to { transform: rotate(18deg) translateY(-3px); } }
+@media (prefers-reduced-motion: reduce) { .bobber * { animation: none !important; } }
+.fish-now { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 1.05em; }
+.fish-now span:last-child { margin-left: auto; font-family: var(--pixel); color: var(--accent); font-size: 1.2em; }
+.status-chip, .ev { padding: 2px 10px; border-radius: 99px; background: var(--surface-2); border: 1px solid var(--line); font-size: .85em; white-space: nowrap; }
+.s-accepted.status-chip, .ev.s-accepted, .btn.s-accepted { background: #E5F1DF; color: var(--good); border-color: #A9CFA0; }
+.s-rejected.status-chip, .ev.s-rejected, .btn.s-rejected { background: #F6E0DC; color: var(--bad); border-color: #DDA79E; }
+.s-revision.status-chip, .ev.s-revision { background: #FBF0D2; color: #A87414; border-color: #E5C98A; }
+.fish-log { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 8px; }
+.log-events { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.net { display: grid; gap: 6px; }
+.net-item { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; text-align: left; padding: 8px 12px; background: #FBF4E2; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+.net-item small { grid-column: 2; color: var(--muted); }
+.big-fish { grid-row: span 2; font-size: 28px; align-self: center; }
+.link.hl { background: #DCEBF3; border-color: #9EC3D8; font-weight: 600; }
+@media (max-width: 900px) { .screen.fish { grid-template-columns: 1fr; } .pond { min-height: 360px; } }

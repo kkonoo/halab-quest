@@ -17,6 +17,8 @@ function viewJourney() {
     if (p.check) events.push({ t: p.check, icon: '✓', cls: 'ok', text: `학습 완료 · ${where}` });
     if (p.star) events.push({ t: p.star, icon: '★', cls: 'star', text: `실전 적용 · ${where}${p.note ? ` — ${p.note}` : ''}` });
   }
+  for (const x of db.subs) for (const c of x.casts) for (const e of c.events) if (e.s === 'submitted' || e.s === 'accepted')
+    events.push({ t: Date.parse(e.d) || 0, icon: e.s === 'accepted' ? '🐟' : '🎣', text: `${e.s === 'accepted' ? 'Accept' : '투고'} · ${x.title} → ${c.journal}` });
   for (const r of db.records) events.push({ t: Date.parse(r.date) || 0, icon: '🎤', text: `${r.kind} 발표 · ‘${r.text}’` });
   for (const ch of badges) events.push({ t: db.chapterDone[ch.id].at, icon: ch.done.badgeIcon || ch.icon, text: `${ch.done.badge}` });
   events.sort((a, b) => b.t - a.t);
@@ -40,7 +42,7 @@ function viewJourney() {
       events.length ? h('ul', 'timeline', events.slice(0, 60).map(e => h('li', null,
         h('span', `mk ${e.cls || ''}`, e.icon), h('span', 'tl-text', e.text), h('small', null, e.t ? fmtDate(e.t) : ''))))
         : h('p', 'hint', '퀘스트를 하나 끝내고 체크하면 여기에 기록이 쌓여요.')),
-    h('div', 'row end', h('a', { class: 'btn', href: '#/cv' }, '📜 My CV'), bigBtn('월드맵으로', '#/')));
+    h('div', 'row end', h('a', { class: 'btn', href: '#/fish' }, '🎣 투고 낚시터'), h('a', { class: 'btn', href: '#/cv' }, '📜 My CV'), bigBtn('월드맵으로', '#/')));
 }
 
 const CV_TYPES = ['논문', '학회 발표', '수상', '연구비', '기타'];

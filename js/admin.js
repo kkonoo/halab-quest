@@ -31,10 +31,11 @@ function viewAdmin() {
     panel(`학생 ${list.length}명`,
       h('p', 'hint', '학생 명단은 Lab Manager의 랩 멤버 목록을 그대로 써요. 아직 로그인하지 않은 학생은 비어 있어요.'),
       h('div', 'table-wrap', h('table', 'admin-table',
-        h('thead', null, h('tr', null, h('th', null, '학생'), CHAPTERS.map(ch => h('th', null, `${ch.no}장`)), h('th', null, '발표'), h('th', null, 'CV'), h('th', null, '최근'))),
+        h('thead', null, h('tr', null, h('th', null, '학생'), CHAPTERS.map(ch => h('th', null, `${ch.no}장`)), h('th', null, '투고 중'), h('th', null, '발표'), h('th', null, 'CV'), h('th', null, '최근'))),
         h('tbody', null, list.map(s => h('tr', { class: s.email === adminPick ? 'on' : null, onclick: () => { adminPick = s.email; render(); } },
           h('td', null, h('b', null, s.name || s.email.split('@')[0]), h('small', null, s.email)),
           CHAPTERS.map(ch => { const c = countIn(s.db, ch); return h('td', null, `✓ ${c.check}/${ch.quests.length}`, c.star ? h('span', 'star-txt', ` ★${c.star}`) : null); }),
+          h('td', null, (s.db.subs || []).filter(x => !['accepted', 'rejected'].includes(subStatus(x))).map(x => h('div', null, `${FISH_STATUS[subStatus(x)].label} D+${castDays(lastCast(x))}`)), (s.db.subs || []).every(x => ['accepted', 'rejected'].includes(subStatus(x))) ? '—' : null),
           h('td', null, s.db.records?.length || 0),
           h('td', null, s.db.cv?.length || 0),
           h('td', null, s.updatedAt ? fmtDate(s.updatedAt) : '—')))))),
@@ -52,6 +53,7 @@ function adminDetail(s) {
         return h('li', null, h('span', `mk ${p.check ? 'ok' : 'empty'}`, p.check ? '✓' : '○'), p.star ? h('span', 'mk star', '★') : null, ' ', q.title,
           p.check ? h('small', null, ` ${fmtDate(p.check)}`) : null, p.note ? h('em', null, ` — ${p.note}`) : null);
       })))),
+    d.subs?.length ? [h('h3', null, '🎣 투고 낚시터'), h('ul', null, d.subs.map(x => h('li', null, h('b', null, x.title), ` · ${lastCast(x).journal} · ${FISH_STATUS[subStatus(x)].label} · D+${castDays(lastCast(x))}`, x.casts.length > 1 ? h('small', null, ` (${x.casts.length}번째 저널: ${x.casts.map(c => c.journal).join(' → ')})`) : null)))] : null,
     d.records?.length ? [h('h3', null, '🎤 발표 기록'), h('ul', null, [...d.records].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(r => h('li', null, `${r.date} · ${r.kind} · ‘${r.text}’`)))] : null,
     d.figcards?.length ? [h('h3', null, '🖼️ Figure 순서 카드'), h('ol', null, d.figcards.map(f => h('li', null, f.text)))] : null,
     d.cv?.length ? [h('h3', null, '📜 My CV'), h('ul', null, d.cv.map(x => h('li', null, `[${x.type}] ${x.title}${x.venue ? ` · ${x.venue}` : ''}${x.role ? ` · ${x.role}` : ''}`)))] : null);

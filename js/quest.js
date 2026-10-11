@@ -131,7 +131,7 @@ function linksPanel(q) {
   return panel('자료',
     h('div', 'links', (q.links || []).map(l =>
       l.url ? h('a', { class: 'link', href: l.url, target: '_blank', rel: 'noopener' }, l.label, h('span', null, '↗'))
-        : l.quest ? h('a', { class: 'link', href: `#/q/${l.quest}` }, l.label, h('span', null, '›'))
+        : l.quest || l.href ? h('a', { class: `link${l.hl ? ' hl' : ''}`, href: l.href || `#/q/${l.quest}` }, l.label, h('span', null, '›'))
           : h('div', 'link plain', l.label, h('small', null, l.note || ''))),
     !(q.links || []).length ? h('p', 'hint', '연결할 자료는 곧 채워요.') : null),
     q.warn ? h('p', 'warn', '🚫 ', q.warn) : null);

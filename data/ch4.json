@@ -179,11 +179,20 @@
         "band": "동의하지 않으면 데이터와 문헌으로 정중하게"
       },
       "links": [
+        { "label": "🎣 투고 낚시터 (내 투고 기록)", "href": "#/fish", "hl": true },
         { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
         { "label": "저널 Guide for Authors", "note": "투고할 저널 사이트에서" },
         { "label": "공개 리뷰 기록 예시 (Nature Communications)", "note": "링크 준비 중" }
       ],
       "warn": "심사 중 · 미발표 원고는 AI에 넣지 않기",
+      "fishTips": [
+        "기다리는 동안 다음 분석을 준비해요.",
+        "리뷰가 오면 지적을 하나도 빠뜨리지 말고 번호 매겨 답해요.",
+        "리젝은 흔한 일이에요. 리뷰 코멘트로 원고를 다듬어서 다시 던져요.",
+        "다음 저널의 Guide for Authors를 미리 읽어 두면 다시 던지기가 빨라요.",
+        "에디터 검토가 길어지면 교수님과 같이 문의 메일을 보낼지 정해요.",
+        "심사 중인 원고와 리뷰 내용은 AI에 넣지 않아요."
+      ],
       "check": "공개된 리뷰 기록 하나를 읽고 답변 구조를 확인해봤다면 체크해보세요!",
       "star": "실제 투고나 리뷰어 답변 작성에 참여해보세요."
     },
