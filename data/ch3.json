@@ -312,6 +312,7 @@
       "title": "Figure 만들기",
       "icon": "🎨",
       "place": "Figure 제작소",
+      "bg": "img/bg/ch3-figure.jpg",
       "bubble": "그리기 전에 결론부터 한 문장으로 써요.",
       "dialog": [
         "그림은 결과 하나를 한눈에 보여주는 도구예요.",
