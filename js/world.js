@@ -62,7 +62,7 @@ function viewDone(ch) {
   return h('div', `screen done c-${ch.id}`,
     d.bg ? h('div', { class: 'scene done-scene has-bg', style: `background-image:url(${d.bg})` },
       h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),
-      h('div', 'walker', h('img', { class: 'sprite', src: 'img/char/prof-point.png', alt: '교수님' }), studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' })))
+      h('div', 'walker', h('img', { class: 'sprite', src: 'img/char/prof-point.png', alt: '교수님' }), studentImg('back'), catIdle()))
       : h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),
     h('div', 'done-grid',
       panel(`${ch.no}장에서 해낸 일`,

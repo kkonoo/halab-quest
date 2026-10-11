@@ -57,7 +57,7 @@ function stageScene(q) {
       q.place ? h('span', 'place', q.place) : null,
       q.bubble ? h('div', 'bubble', q.bubble) : null,
       q.bg ? null : h('div', 'props', q.scene || q.icon),
-      h('div', 'walker', h('img', { class: 'sprite', src: `img/char/prof-${q.pose || 'point'}.png`, alt: '교수님' }), ' ', studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' })));
+      h('div', 'walker', h('img', { class: 'sprite', src: `img/char/prof-${q.pose || 'point'}.png`, alt: '교수님' }), ' ', studentImg('back'), catIdle()));
 }
 
 function readingCard(s, q) {

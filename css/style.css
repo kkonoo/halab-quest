@@ -502,6 +502,11 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .walker .sprite { height: 120px; width: auto; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0,0,0,.15)); }
 @media (max-width: 900px) { .walker .sprite { height: 90px; } }
 .walker .sprite.cat { height: 54px; margin-left: 2px; }
+/* 앉은 고양이 대기 동작: 네 칸 띠 그림을 한 칸 크기 창으로 보며 옆으로 넘김. 대부분 가만히, 가끔 깜빡 · 꼬리 · 귀 */
+.cat-idle { display: inline-block; aspect-ratio: 159 / 200; overflow: hidden; }
+.cat-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: cat-idle 7s step-end infinite; }
+@keyframes cat-idle { 0% { transform: none; } 40% { transform: translateX(-25%); } 43% { transform: none; } 62% { transform: translateX(-50%); } 74% { transform: none; } 85% { transform: translateX(-75%); } 91% { transform: none; } 96% { transform: translateX(-25%); } 98.5%, 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .cat-idle img { animation: none; } }
 @media (max-width: 900px) { .walker .sprite.cat { height: 42px; } }
 .walker .sprite.student { height: 108px; }
 @media (max-width: 900px) { .walker .sprite.student { height: 80px; } }
