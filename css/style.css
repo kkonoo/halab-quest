@@ -152,8 +152,8 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .region:hover { transform: translateY(-2px); }
 .region b { font-size: calc(21px * var(--fs)); }
 .region small { color: var(--muted); }
-.region-prog { font-weight: 700; color: var(--good); }
-.region > .medal { position: absolute; top: -27px; right: -27px; width: 34px; height: 34px; filter: drop-shadow(0 2px 0 rgba(0,0,0,.3)); } /* 수료한 장: 이름판 오른쪽 위 모서리에 메달 */
+.region-prog { font-weight: 700; color: var(--good); position: relative; }
+.region-prog .medal { position: absolute; left: calc(100% + 6px); top: 50%; translate: 0 -50%; width: 26px; height: 26px; } /* 수료한 장: 개수 옆에 메달 (겹쳐 올려서 이름판 크기는 그대로) */
 .region b { word-break: keep-all; }
 .region .chip { position: absolute; top: 12px; right: 12px; }
 .bottom-row { display: grid; grid-template-columns: 1fr minmax(280px, 420px); gap: 14px; align-items: stretch; }
