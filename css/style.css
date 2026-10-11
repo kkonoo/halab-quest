@@ -225,6 +225,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
   padding: 10px 8px; background: #FBF4E2; border: 2px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--text); position: relative;
 }
 .step.hl { border: 3px solid var(--accent); }
+.step b { word-break: keep-all; }
 .step-icon { font-size: 28px; }
 .step small { color: var(--muted); font-size: .82em; }
 .step .tag { background: var(--accent); color: var(--on-accent); font-size: .78em; padding: 1px 8px; border-radius: 4px; text-decoration: none; }
@@ -502,4 +503,4 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 /* 챕터 완료: 탑 꼭대기 배경 위에 배너와 캐릭터 */
 .done-scene { aspect-ratio: 1672 / 700; background-position: center 35%; display: grid; align-content: start; justify-items: center; padding-top: 18px; }
 .done-scene .banner { max-width: 640px; }
-@media (max-width: 900px) { .done-scene { aspect-ratio: auto; min-height: 320px; } }
+@media (max-width: 900px) { .done-scene { aspect-ratio: auto; min-height: 360px; padding: 10px 10px 0; } .done-scene .banner h1 { font-size: calc(19px * var(--fs)); } .done-scene .banner p { font-size: .85em; } }
