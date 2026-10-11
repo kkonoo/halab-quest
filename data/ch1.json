@@ -225,6 +225,7 @@
       "mapPos": [56, 6],
       "title": "논문 탐험",
       "icon": "📰",
+      "bg": "img/bg/ch1-papers.jpg",
       "bubble": "초록의 주장은 그림에서 확인해요.",
       "dialog": [
         "논문 한 편은 하나의 탐험 지도예요.",
