@@ -248,7 +248,8 @@
       "title": "Methods 해부하기",
       "icon": "⚗️",
       "place": "Methods 공방",
-      "bubble": "무엇을 했는지보다 왜 그렇게 했는지를 먼저 찾아요.",
+      "bg": "img/bg/ch3-methods.jpg",
+      "bubble": "What보다 Why를 먼저 찾아요.",
       "dialog": [
         "Methods는 가장 덜 읽히지만, 분석하는 사람에게는 가장 중요한 부분이에요.",
         "단계마다 What(무엇을)과 Why(왜)를 한 줄씩 적어 봐요.",
