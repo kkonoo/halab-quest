@@ -78,6 +78,7 @@
       "title": "논문 원고 쓰기",
       "icon": "📝",
       "place": "원고 집필실",
+      "bg": "img/bg/ch4-manuscript.jpg",
       "scene": "🪶 📜 📚",
       "bubble": "문단 첫 문장만 읽어도 논리가 보이게 써요.",
       "dialog": [
@@ -137,6 +138,7 @@
       "title": "투고와 리뷰",
       "icon": "✉️",
       "place": "투고 우체국",
+      "bg": "img/bg/ch4-submit.jpg",
       "scene": "📮 ✉️ 📬",
       "bubble": "지적마다 감사, 한 일, 바뀐 위치 순서로 답해요.",
       "dialog": [
@@ -203,6 +205,7 @@
       "title": "학회 발표",
       "icon": "🎤",
       "place": "학회 대강당",
+      "bg": "img/bg/ch4-conference.jpg",
       "scene": "🧑‍🎓 🪧 👥",
       "bubble": "1분 설명과 3분 설명을 따로 준비해요.",
       "dialog": [

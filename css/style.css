@@ -326,8 +326,8 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .screen.fish { grid-template-columns: minmax(0, 1fr) minmax(300px, 400px); align-items: start; }
 .screen.fish .q-dialog { grid-column: 1 / -1; }
 .fish-side { display: grid; gap: 14px; }
-.pond { min-height: 420px; background-image: linear-gradient(#F2B27A, #E9A07E 22%, #6FA7C9 23%, #3F7FA8 100%) !important; }
-.water { position: absolute; inset: 24% 0 70px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 18px 34px; padding: 30px 20px 0; }
+.pond { min-height: 0; aspect-ratio: 1890 / 832; background-image: url(../img/bg/fish-pond.jpg) !important; background-size: cover; background-position: center; }
+.water { position: absolute; inset: 36% 12% 26%; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 18px 34px; padding: 30px 20px 0; }
 .empty-pond { color: #F6ECD2; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
 .bobber { position: relative; display: grid; justify-items: center; background: none; border: 0; cursor: pointer; padding: 0; color: var(--text); }
 .bobber .line { width: 2px; height: 34px; background: rgba(255,255,255,.7); }
@@ -359,7 +359,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .net-item small { grid-column: 2; color: var(--muted); }
 .big-fish { grid-row: span 2; font-size: 28px; align-self: center; }
 .link.hl { background: #DCEBF3; border-color: #9EC3D8; font-weight: 600; }
-@media (max-width: 900px) { .screen.fish { grid-template-columns: 1fr; } .pond { min-height: 360px; } }
+@media (max-width: 900px) { .screen.fish { grid-template-columns: 1fr; } .pond { aspect-ratio: auto; min-height: 380px; } }
 
 /* ---------- 그림 UI 부품 (img/ui/) — 테두리 그림을 잘라 늘려 씀 (border-image) ---------- */
 :root { --panel-img: url(../img/ui/panel.png); }
