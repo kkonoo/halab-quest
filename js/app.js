@@ -124,6 +124,10 @@ const catIdle = () => h('span', { class: 'sprite cat cat-idle', role: 'img', 'ar
 // 등불 빛: img/glow/{배경 이름}.png (배경 속 등불 자리만 밝은 층)을 배경 위에 겹쳐 밝았다 어두워졌다 하게. 그 배경에 등불 층이 있을 때만
 const GLOWS = new Set(["ch1-compass", "ch1-done", "ch1-guide", "ch1-lab", "ch1-map", "ch1-papers", "ch1-wiki", "ch2-design", "ch2-done", "ch2-gap", "ch2-hypo", "ch2-map", "ch2-meeting", "ch2-proposal", "ch2-topic", "ch3-ai", "ch3-done", "ch3-figure", "ch3-map", "ch3-methods", "ch3-passport", "ch3-present", "ch3-skills", "ch3-stats", "ch4-conference", "ch4-done", "ch4-manuscript", "ch4-map", "ch4-storyboard", "ch4-submit", "fish-pond"]);
 const glowLayer = bg => { const n = (bg || '').split('/').pop().replace(/\.jpg$/, ''); return GLOWS.has(n) ? h('div', { class: 'glow', style: `background-image:url(img/glow/${n}.png)`, 'aria-hidden': 'true' }) : null; };
+// 교수님: 가리키는 자세(point)는 img/char/prof-point-idle.png 네 칸(기본 · 손가락 까딱 · 눈웃음 · 눈웃음+까딱)을 넘김, 다른 자세는 한 장 그림
+const profImg = (pose = 'point') => pose === 'point'
+  ? h('span', { class: 'sprite prof-idle', role: 'img', 'aria-label': '교수님' }, h('img', { src: 'img/char/prof-point-idle.png', alt: '' }))
+  : h('img', { class: 'sprite', src: `img/char/prof-${pose}.png`, alt: '교수님' });
 // 장 수료 메달: done.badgeImg 그림이 있으면 그림, 없으면 이모지
 const medal = (ch, small) => h('span', { class: `medal${small ? ' small' : ''}${ch.done.badgeImg ? ' pic' : ''}`, title: ch.done.badge },
   ch.done.badgeImg ? h('img', { src: ch.done.badgeImg, alt: '' }) : ch.done.badgeIcon || ch.icon);

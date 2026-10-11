@@ -512,6 +512,10 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 /* 장 지도: 등불이 작고 많아서 빛을 훨씬 은은하게 */
 .chapter-scene .glow { animation-name: glow-soft; }
 @keyframes glow-soft { 0%, 100% { opacity: .12; } 18% { opacity: .28; } 30% { opacity: .18; } 46% { opacity: .34; } 60% { opacity: .2; } 78% { opacity: .3; } }
+/* 교수님 가리키는 자세: 네 칸 띠 (기본 → 까딱 → 기본 → 눈웃음 → 눈웃음+까딱 → 눈웃음 → 기본). 제자리라 움직임 줄이기 설정에서도 그대로 */
+.prof-idle { display: inline-block; aspect-ratio: 218 / 300; overflow: hidden; }
+.prof-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: prof-idle 4s step-end infinite; }
+@keyframes prof-idle { 0% { transform: none; } 22% { transform: translateX(-25%); } 30% { transform: none; } 38% { transform: translateX(-25%); } 46% { transform: none; } 60% { transform: translateX(-50%); } 72% { transform: translateX(-75%); } 80% { transform: translateX(-50%); } 88%, 100% { transform: none; } }
 /* 학생 뒷모습 대기 동작: 네 칸 띠를 한 칸 창으로 넘김. 고개 까딱까딱 (기본 → 갸웃 → 찰랑 → 기본 → 반대로 갸웃 → 찰랑). 제자리라 움직임 줄이기 설정에서도 그대로 */
 .stu-idle { display: inline-block; overflow: hidden; }
 .stu-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: stu-idle 3.2s step-end infinite; }
