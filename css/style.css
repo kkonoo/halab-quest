@@ -420,3 +420,19 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .chapter-scene.has-bg { min-height: 0; aspect-ratio: 16 / 8; }
 @media (max-width: 900px) { .chapter-scene.has-bg { aspect-ratio: auto; min-height: 420px; } }
 .quest-scene.has-bg { min-height: 0; aspect-ratio: 2048 / 900; background-position: center; }
+/* 월드맵: 그림 위 네 지역에 이름표를 올림 (data/chN.json의 mapPos = [가로%, 세로%]) */
+.map-area.world-map { position: relative; padding: 0; aspect-ratio: 1672 / 941; background: url(../img/bg/world.jpg) center / cover; }
+.world-map .map-grid { display: block; position: absolute; inset: 0; }
+.world-map .region { position: absolute; transform: translate(-50%, -50%); grid-template-columns: auto auto; column-gap: 8px; align-items: center; justify-items: start; min-width: 180px; }
+.world-map .region-icon { grid-row: span 3; font-size: 30px; }
+.world-map .region b { font-size: calc(17px * var(--fs)); }
+.world-map .region .chip { top: -10px; right: -6px; }
+@media (max-width: 900px) {
+  .map-area.world-map { aspect-ratio: auto; padding: 46vw 10px 10px; background-size: 100% auto; background-position: top; background-repeat: no-repeat; background-color: #5E8C55; }
+  .world-map .map-grid { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .world-map .region { position: relative; transform: none; left: auto !important; top: auto !important; min-width: 0; }
+}
+/* 챕터 완료: 탑 꼭대기 배경 위에 배너와 캐릭터 */
+.done-scene { aspect-ratio: 1672 / 700; background-position: center 35%; display: grid; align-content: start; justify-items: center; padding-top: 18px; }
+.done-scene .banner { max-width: 640px; }
+@media (max-width: 900px) { .done-scene { aspect-ratio: auto; min-height: 320px; } }

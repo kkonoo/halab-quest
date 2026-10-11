@@ -5,10 +5,10 @@ function viewWorld() {
   setTitle('HaLab Quest', 'HaLab World Map');
   const u = window.cloud?.user;
   return h('div', 'screen world',
-    h('div', 'map-area',
+    h('div', 'map-area world-map',
       h('div', 'map-grid', CHAPTERS.map(ch => {
         const c = chapterCount(ch);
-        return h('a', { class: `region r-${ch.id}`, href: `#/ch/${ch.id}` },
+        return h('a', { class: `region r-${ch.id}`, href: `#/ch/${ch.id}`, style: ch.mapPos ? `left:${ch.mapPos[0]}%;top:${ch.mapPos[1]}%` : null },
           h('span', 'region-icon', ch.icon),
           h('b', null, `${ch.no}장. ${ch.title}`),
           h('small', null, ch.region),
@@ -56,7 +56,10 @@ function viewDone(ch) {
   if (!rec || rec.check !== c.check || rec.star !== c.star) { db.chapterDone[ch.id] = { at: Date.now(), check: c.check, star: c.star }; persist(); }
   const next = d.next && CHAPTERS.find(x => x.id === d.next);
   return h('div', `screen done c-${ch.id}`,
-    h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),
+    d.bg ? h('div', { class: 'scene done-scene has-bg', style: `background-image:url(${d.bg})` },
+      h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),
+      h('div', 'walker', h('img', { class: 'sprite', src: 'img/char/prof-point.png', alt: '교수님' }), studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' })))
+      : h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),
     h('div', 'done-grid',
       panel(`${ch.no}장에서 해낸 일`,
         h('div', 'flow', ch.quests.map((q, i) => [i ? h('span', 'arrow', '→') : null,

@@ -5,6 +5,7 @@
   "subtitle": "주제 찾기",
   "icon": "⛰️",
   "region": "주제 찾기",
+  "mapPos": [72, 22],
   "ready": false,
   "intro": [
     "2장, 질문의 언덕에 왔어요.",

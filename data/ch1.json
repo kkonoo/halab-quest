@@ -5,6 +5,7 @@
   "subtitle": "분야 탐색",
   "icon": "🌲",
   "region": "분야 탐색",
+  "mapPos": [30, 26],
   "ready": false,
   "intro": [
     "HaLab에 온 걸 환영해요!",

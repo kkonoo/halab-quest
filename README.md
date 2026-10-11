@@ -70,3 +70,6 @@ powershell tools/serve.ps1     # http://localhost:8767/
 | `js/firebase-config.js` | Firebase 설정 (null이면 로그인 꺼짐) |
 | `firestore.rules` | 보안 규칙 (Lab Manager와 같이 씀) |
 | `data/` | 챕터 · 퀘스트 내용, 가이드 카드 |
+| `img/ui/` | UI 부품 그림 (패널 테두리 · 붉은 버튼 · 녹색 헤더 판) — CSS border-image로 늘려 씀 |
+| `img/char/` | 캐릭터 (교수님 대화창 표정 4 · 전신 3, 학생 4종 정면·뒷모습, 고양이) |
+| `img/bg/` | 배경 (월드맵, 챕터 맵, 퀘스트 장면, 낚시터, 챕터 완료). 데이터의 `bg` 칸으로 연결 |

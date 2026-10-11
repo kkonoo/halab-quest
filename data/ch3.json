@@ -5,6 +5,7 @@
   "subtitle": "데이터와 실험의 현장",
   "icon": "🏘️",
   "region": "연구하기",
+  "mapPos": [30, 79],
   "ready": false,
   "intro": [
     "드디어 3장, 실험실 마을에 도착했어요!",
