@@ -122,7 +122,7 @@ const bigBtn = (label, href, cls = 'big-btn') => h('a', { class: cls, href }, la
 // 앉은 고양이: img/char/cat-idle.png 네 칸(기본 · 깜빡 · 꼬리 · 귀)을 CSS로 넘겨요 (.cat-idle)
 const catIdle = () => h('span', { class: 'sprite cat cat-idle', role: 'img', 'aria-label': '고양이' }, h('img', { src: 'img/char/cat-idle.png', alt: '' }));
 // 등불 빛: img/glow/{배경 이름}.png (배경 속 등불 자리만 밝은 층)을 배경 위에 겹쳐 밝았다 어두워졌다 하게. 그 배경에 등불 층이 있을 때만
-const GLOWS = new Set(["ch1-compass", "ch1-done", "ch1-guide", "ch1-lab", "ch1-papers", "ch1-wiki", "ch2-design", "ch2-done", "ch2-gap", "ch2-hypo", "ch2-meeting", "ch2-proposal", "ch2-topic", "ch3-ai", "ch3-done", "ch3-figure", "ch3-map", "ch3-methods", "ch3-passport", "ch3-present", "ch3-skills", "ch3-stats", "ch4-conference", "ch4-done", "ch4-manuscript", "ch4-map", "ch4-storyboard", "ch4-submit", "fish-pond"]);
+const GLOWS = new Set(["ch1-compass", "ch1-done", "ch1-guide", "ch1-lab", "ch1-map", "ch1-papers", "ch1-wiki", "ch2-design", "ch2-done", "ch2-gap", "ch2-hypo", "ch2-map", "ch2-meeting", "ch2-proposal", "ch2-topic", "ch3-ai", "ch3-done", "ch3-figure", "ch3-map", "ch3-methods", "ch3-passport", "ch3-present", "ch3-skills", "ch3-stats", "ch4-conference", "ch4-done", "ch4-manuscript", "ch4-map", "ch4-storyboard", "ch4-submit", "fish-pond"]);
 const glowLayer = bg => { const n = (bg || '').split('/').pop().replace(/\.jpg$/, ''); return GLOWS.has(n) ? h('div', { class: 'glow', style: `background-image:url(img/glow/${n}.png)`, 'aria-hidden': 'true' }) : null; };
 // 장 수료 메달: done.badgeImg 그림이 있으면 그림, 없으면 이모지
 const medal = (ch, small) => h('span', { class: `medal${small ? ' small' : ''}${ch.done.badgeImg ? ' pic' : ''}`, title: ch.done.badge },

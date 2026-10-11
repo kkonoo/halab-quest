@@ -1,6 +1,7 @@
 # 배경 그림에서 등불(하얗게 빛나는 심지 + 둘레의 주황 빛무리)을 찾아 빛 번짐 층(저해상도 PNG)을 만듦
-# 쓰는 법: KEEP="x,y;x,y" python3 -I tools/glow.py <배경 jpg> <저장할 png | -> [미리보기 png | -] (KEEP = 등불 위치, 그림 % 좌표. tools/glow-keep.txt 참고)
-import sys
+# 쓰는 법: KEEP="x,y;x,y" [SPOTS="x,y;x,y"] [LOOSE=1] python3 -I tools/glow.py <배경 jpg> <저장할 png | -> [미리보기 png | -]
+# KEEP = 찾은 등불 중 남길 위치, SPOTS = 작아서 못 찾은 등불 자리에 직접 찍을 위치 (둘 다 그림 % 좌표. tools/glow-keep.txt · glow-spots.txt 참고)
+import sys, os
 from PIL import Image, ImageFilter, ImageDraw
 import numpy as np
 src, out = sys.argv[1], sys.argv[2]; prev = sys.argv[3] if len(sys.argv) > 3 and sys.argv[3] != '-' else None
@@ -12,7 +13,10 @@ blur = lambda m, r: np.asarray(Image.fromarray((m * 255).astype(np.uint8)).filte
 orange = ((R > 225) & (G > 120) & (G < 228) & (B < 140) & (R - B > 110)).astype(float)
 dens = blur(orange, max(4, W // 150))
 local = blur(L / 255, max(8, W // 60)) * 255
-core = (L > 238) & (B > 140) & (dens > 0.22) & (L - local > 62)
+if os.environ.get('LOOSE'):  # 지도처럼 등불이 작을 때: 덜 하얀 노란 심지도
+    core = (L > 205) & (R > 235) & (G > 175) & (L - local > 45) & (dens > 0.08)
+else:
+    core = (L > 238) & (B > 140) & (dens > 0.22) & (L - local > 62)
 c = core.astype(np.uint8); n = sum(np.roll(np.roll(c, dy, 0), dx, 1) for dy in (-1, 0, 1) for dx in (-1, 0, 1))
 core = core & (n >= 3)
 S_ = 4; h, w = H // S_, W // S_
@@ -39,14 +43,19 @@ if os.environ.get('KEEP'):
     pts = [tuple(map(float, p.split(','))) for p in os.environ['KEEP'].split(';')]
     drop |= {k for k, cx, cy, sz in blobs if not any(abs(cx / w * 100 - px) < 3.5 and abs(cy / h * 100 - py) < 5 for px, py in pts)}
 keep = m & ~np.isin(lab, list(drop))
+# SPOTS='x,y;x,y' (그림 % 좌표): 찾지 못한 작은 등불 자리에 둥근 빛을 직접 찍음 (지도처럼 등불이 작을 때)
+spots = [tuple(map(float, p.split(','))) for p in os.environ.get('SPOTS', '').split(';') if p]
+if spots:
+    keep = keep.copy(); yy, xx = np.mgrid[0:h, 0:w]; rr = max(2, w * 0.0045)
+    for px, py in spots: keep |= (xx - px / 100 * w) ** 2 + (yy - py / 100 * h) ** 2 <= rr * rr
 g = np.asarray(Image.fromarray((keep * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(3))).astype(float)
 g = np.clip(g / max(g.max(), 1) * 1.8, 0, 1)
 alpha = (g * 230).astype(np.uint8)
 rgba = np.dstack([np.full_like(alpha, 255), np.full_like(alpha, 214), np.full_like(alpha, 130), alpha])
-if keep.any() and out != '-': Image.fromarray(rgba, 'RGBA').save(out, optimize=True)
+if (keep.any()) and out != '-': Image.fromarray(rgba, 'RGBA').save(out, optimize=True)
 print(src.split('/')[-1], 'blobs', len(blobs), 'kept', len([b for b in blobs if b[0] not in drop]), 'saved' if keep.any() else 'NONE')
 if prev:
-    t = im.resize((640, round(640 * H / W))).convert('RGBA'); f = 640 / w
+    PW = int(os.environ.get('PREVW', 640)); t = im.resize((PW, round(PW * H / W))).convert('RGBA'); f = PW / w
     d = ImageDraw.Draw(t)
     for k, cx, cy, sz in blobs:
         if k in drop: continue
