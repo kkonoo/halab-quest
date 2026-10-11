@@ -18,8 +18,8 @@ function viewWorld() {
       dialogBox(['안녕하세요. 반가워요! 여기는 HaLab이에요.', '연구는 긴 여정이지만, 작은 탐험부터 시작하면 누구나 해낼 수 있어요.',
         '가고 싶은 곳을 골라보세요. 순서는 추천일 뿐, 어디든 먼저 가도 돼요.'], 'smile'),
       h('div', 'side-links',
-        h('a', { class: 'side-link', href: '#/journey' }, '🎒 My Journey'),
-        h('a', { class: 'side-link', href: '#/cv' }, '📜 My CV'),
+        h('a', { class: 'side-link', href: '#/journey' }, h('span', 'sl-icon', '🎒'), 'My Journey'),
+        h('a', { class: 'side-link', href: '#/cv' }, h('span', 'sl-icon', '📜'), 'My CV'),
         window.cloud && !u ? h('button', { class: 'side-link login', onclick: () => window.cloud.login() }, '🔑 Google 로그인') : null)));
 }
 
