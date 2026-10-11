@@ -1,8 +1,7 @@
 'use strict';
 // 퀘스트 화면 하나로 모든 퀘스트를 그려요 (내용은 data/chN.json의 퀘스트 항목)
-// 칸: 좌측 메뉴 | 가운데 장면·읽기 카드 | 우측: 정보 패널 → 자료 링크(또는 발표 기록) → ✓·★
-//     핵심 UI(widget: flow · figcards · lights · passport) |
-//     이전 버튼 | 교수님 대화창                  | 다음 버튼
+// 칸: 좌측: 메뉴 → 장 지도 → 이전 · 다음 | 가운데: 장면 → 교수님 대화창 → 읽기 카드 | 우측: 정보 패널 → 자료(또는 발표 기록) → ✓·★
+//     가운데 아래: 핵심 UI(widget: flow · figcards · lights · passport)
 
 const cardData = new Map(); // 카드 md 파일 → [{ title, md }] (다 읽으면 다시 그림)
 function cardsNow(file) {
@@ -37,27 +36,28 @@ function viewQuest(q, sec) {
         h('h2', 'panel-head', q.title, h('span', 'qi', q.icon)),
         h('nav', null, secs.map((s, i) => h('a', { class: i === sec ? 'on' : null, href: `#/q/${q.id}/${i}` },
           s.overview ? '⚙️ ' : '', i && !s.records ? `${i}. ` : '', s.title)))),
-      h('a', { class: 'map-btn', href: `#/ch/${ch.id}` }, `← ${ch.no}장 지도`)),
-    h('div', 'q-stage', secs[sec].overview ? stageScene(q) : secs[sec].records ? recordsFull(q) : readingCard(secs[sec], q)),
+      h('a', { class: 'map-btn', href: `#/ch/${ch.id}` }, `← ${ch.no}장 지도`),
+      h('div', 'q-nav',
+        prev ? h('a', { class: 'big-btn', href: `#/q/${prev.id}` }, '‹\u00a0', `이전: ${prev.title}`) : null, // 첫 퀘스트는 바로 위 '장 지도' 버튼이 이전
+        next ? bigBtn(`다음: ${next.title}`, `#/q/${next.id}`) : bigBtn(`다음: ${ch.no}장 완료`, `#/done/${ch.id}`))),
+    // 가운데: (개요일 때) 장면 그림 → 교수님 대화창 → 읽을 내용
+    h('div', 'q-stage',
+      secs[sec].overview ? stageScene(q) : null,
+      h('div', 'q-dialog', dialogBox(q.dialog || DEFAULT_DIALOG, q.face || 'explain')),
+      secs[sec].overview ? h('div', { class: 'card overview', html: md(q.overview || '') }) : secs[sec].records ? recordsFull(q) : readingCard(secs[sec], q)),
     h('div', 'q-info',
       q.info ? infoPanel(q.info) : null,
       q.records ? recordsPanel(q) : linksPanel(q),
       checkBoxes(q)),
-    q.widget ? h('div', 'q-widget', widget(q.widget)) : null,
-    h('div', 'q-prev', prev ? h('a', { class: 'big-btn', href: `#/q/${prev.id}` }, '‹ ', `이전: ${prev.title}`)
-      : h('a', { class: 'big-btn', href: `#/ch/${ch.id}` }, '‹ ', `${ch.no}장 지도`)),
-    h('div', 'q-dialog', dialogBox(q.dialog || DEFAULT_DIALOG, q.face || 'explain')),
-    h('div', 'q-next', next ? bigBtn(`다음: ${next.title}`, `#/q/${next.id}`) : bigBtn(`다음: ${ch.no}장 완료`, `#/done/${ch.id}`)));
+    q.widget ? h('div', 'q-widget', widget(q.widget)) : null);
 }
 
 function stageScene(q) {
-  return h('div', 'stage',
-    h('div', { class: `scene quest-scene${q.bg ? ' has-bg' : ''}`, style: q.bg ? `background-image:url(${q.bg})` : null },
+  return h('div', { class: `scene quest-scene${q.bg ? ' has-bg' : ''}`, style: q.bg ? `background-image:url(${q.bg})` : null },
       q.place ? h('span', 'place', q.place) : null,
       q.bubble ? h('div', 'bubble', q.bubble) : null,
       q.bg ? null : h('div', 'props', q.scene || q.icon),
-      h('div', 'walker', h('img', { class: 'sprite', src: `img/char/prof-${q.pose || 'point'}.png`, alt: '교수님' }), ' ', studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' }))),
-    h('div', { class: 'card overview', html: md(q.overview || '') }));
+      h('div', 'walker', h('img', { class: 'sprite', src: `img/char/prof-${q.pose || 'point'}.png`, alt: '교수님' }), ' ', studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-sit.png', alt: '고양이' })));
 }
 
 function readingCard(s, q) {

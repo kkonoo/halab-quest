@@ -173,25 +173,23 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 /* ---------- 퀘스트 화면 ---------- */
 .screen.quest {
   grid-template-columns: minmax(200px, 250px) minmax(0, 1fr) minmax(280px, 360px);
-  grid-template-areas: "menu stage info" ". widget info" "prev dialog next";
+  grid-template-areas: "menu stage info" ". widget info";
   align-items: start;
 }
 .q-menu { grid-area: menu; display: grid; gap: 10px; align-content: start; }
-.q-stage { grid-area: stage; min-width: 0; }
+.q-stage { grid-area: stage; min-width: 0; display: grid; gap: 10px; }
 .q-info { grid-area: info; display: grid; gap: 12px; }
 .q-widget { grid-area: widget; min-width: 0; }
-.q-dialog { grid-area: dialog; }
-.q-prev { grid-area: prev; align-self: stretch; display: grid; }
-.q-prev .big-btn, .q-next .big-btn { word-break: keep-all; }
-.q-next { grid-area: next; align-self: stretch; display: grid; }
-.screen.quest:not(:has(.q-widget)) { grid-template-areas: "menu stage info" "prev dialog next"; }
-.q-menu .panel-head { word-break: keep-all; }
+/* 이전 · 다음: 장 지도 버튼 아래에 한 줄에 하나씩 */
+.q-nav { display: grid; gap: 8px; }
+.q-nav .big-btn { min-height: 64px; font-size: calc(16px * var(--fs)); word-break: keep-all; }
+.screen.quest:not(:has(.q-widget)) { grid-template-areas: "menu stage info"; }
+.q-menu .panel-head, .q-menu nav a { word-break: keep-all; }
 .q-menu nav { display: grid; gap: 4px; }
 .q-menu nav a { padding: 9px 10px; border-radius: 6px; text-decoration: none; color: var(--text); border: 1px solid transparent; }
 .q-menu nav a:hover { background: var(--surface-2); }
 .q-menu nav a.on { background: var(--accent); color: var(--on-accent); border-color: #7E2E2B; font-weight: 700; }
 .map-btn { display: block; text-align: center; color: #FBF1DA; text-decoration: none; font-family: var(--pixel); }
-.stage { display: grid; gap: 10px; }
 .quest-scene { min-height: 230px; }
 .card.overview p, .card.reading p { line-height: 1.6; }
 .card.reading { max-height: 560px; overflow: auto; border: 3px solid var(--wood); box-shadow: inset 0 0 0 2px var(--gold); }
@@ -349,14 +347,18 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   main { padding: 10px; }
   .title { font-size: calc(17px * var(--fs)); }
   .tool b { display: none; }
-  .screen.quest, .screen.quest:not(:has(.q-widget)) { grid-template-columns: 1fr 1fr; grid-template-areas: "menu menu" "stage stage" "info info" "widget widget" "dialog dialog" "prev next"; }
+  /* 폰: 한 줄로. 메뉴 묶음을 풀어서 이전 · 다음은 맨 아래로 */
+  .screen.quest, .screen.quest:not(:has(.q-widget)) { grid-template-columns: 1fr; grid-template-areas: "menu" "map" "stage" "info" "widget" "nav"; }
+  .q-menu { display: contents; }
+  .q-menu > .panel { grid-area: menu; }
+  .q-menu > .map-btn { grid-area: map; }
+  .q-menu > .q-nav { grid-area: nav; }
   .bottom-row, .done-grid { grid-template-columns: 1fr; }
   .map-grid { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .chapter-row { grid-template-columns: 1fr; }
   .checks { grid-template-columns: 1fr; }
   .lights { grid-template-columns: 1fr; }
-  .q-prev .big-btn, .q-next .big-btn { font-size: calc(17px * var(--fs)); }
   .pp-stamp { width: 50px; height: 50px; }
   .pp-num { font-size: 17px; }
   .portrait { width: 72px; }

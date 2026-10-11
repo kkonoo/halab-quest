@@ -110,7 +110,7 @@ function dialogBox(lines, face = 'default') {
     h('div', 'portrait', h('img', { src: `img/prof-${face}.png`, alt: '교수님' })),
     h('div', 'speech', h('div', 'who', '교수님'), ...(Array.isArray(lines) ? lines : [lines]).map(l => h('p', null, l))));
 }
-const bigBtn = (label, href, cls = 'big-btn') => h('a', { class: cls, href }, label, ' ›');
+const bigBtn = (label, href, cls = 'big-btn') => h('a', { class: cls, href }, label, '\u00a0›'); // › 만 다음 줄로 떨어지지 않게
 
 let toastTimer;
 function toast(text, ms = 2000) {
