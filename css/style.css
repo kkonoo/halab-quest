@@ -381,3 +381,16 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .check-box.on .mk.ok { box-shadow: 0 0 0 3px #CFE6C6; }
 .check-box.star.on .mk.star { text-shadow: 0 0 6px #F3D27A; }
 .card.reading, .card.overview { border: 20px solid transparent; border-image: var(--panel-img) 40 fill / 20px stretch; box-shadow: none; background: none; border-radius: 0; padding: 4px 8px; }
+:root { --btn-img: url(../img/ui/button.png); }
+.big-btn, .btn.primary, .side-link.login {
+  border: 16px solid transparent; border-width: 16px 24px;
+  border-image: var(--btn-img) 32 48 fill / 16px 24px stretch;
+  border-radius: 0; background: none; box-shadow: none;
+  color: #FFF4DE; text-shadow: 0 2px 0 #5A1E1C;
+}
+.big-btn { padding: 4px 6px; min-height: 76px; }
+.btn.primary { border-width: 12px 18px; border-image-width: 12px 18px; padding: 2px 8px; font-family: var(--pixel); font-weight: normal; }
+.side-link.login { padding: 2px 4px; }
+.big-btn:hover, .btn.primary:hover, .side-link.login:hover { filter: brightness(1.08); }
+.big-btn:active, .btn.primary:active { transform: translateY(1px); filter: brightness(.95); }
+.quest-list .row { flex-direction: column; align-items: stretch; }

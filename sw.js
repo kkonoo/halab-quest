@@ -6,7 +6,7 @@ const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/style.css',
   'js/md.js', 'js/app.js', 'js/world.js', 'js/quest.js', 'js/journey.js', 'js/admin.js', 'js/fish.js', 'js/sync.js', 'js/firebase-config.js', /* 새 js 파일은 여기에 꼭 추가 */
   'data/ch1.json', 'data/ch2.json', 'data/ch3.json', 'data/ch4.json', 'data/cards/ch3-presentation.md', 'data/cards/ch4-conference.md',
-  'img/ui/panel.png', 'img/prof-default.png', 'img/prof-smile.png', 'img/prof-explain.png', 'img/prof-cheer.png',
+  'img/ui/panel.png', 'img/ui/button.png', 'img/prof-default.png', 'img/prof-smile.png', 'img/prof-explain.png', 'img/prof-cheer.png',
   'icons/app-192.png', 'icons/app-512.png', 'icons/app-maskable-192.png', 'icons/app-maskable-512.png',
 ];
 self.addEventListener('install', e => {
