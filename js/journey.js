@@ -1,6 +1,8 @@
 'use strict';
 // My Journey (학습 진행도와 성장 기록) · My CV (실제 연구 실적)
 
+const TL_PER = 10; let tlPage = 0; // 나의 기록 페이지
+
 function viewJourney() {
   setTitle('My Journey', '나의 성장 기록');
   let check = 0, star = 0;
@@ -22,11 +24,10 @@ function viewJourney() {
   for (const r of db.records) events.push({ t: Date.parse(r.date) || 0, icon: '🎤', text: `${r.kind} 발표 · ‘${r.text}’` });
   for (const ch of badges) events.push({ t: badgeAt(ch), icon: medal(ch, true), cls: 'pic', text: `${ch.done.badge}` });
   events.sort((a, b) => b.t - a.t);
-  // 최근 한 달은 펼쳐 두고, 그보다 오래된 기록은 접어 둠
-  const monthAgo = Date.now() - 30 * 86400000;
-  const recent = events.filter(e => e.t >= monthAgo), older = events.filter(e => e.t < monthAgo);
-  const timeline = list => h('ul', 'timeline', list.map(e => h('li', null,
-    h('span', `mk ${e.cls || ''}`, e.icon), h('span', 'tl-text', e.text), h('small', null, e.t ? fmtDate(e.t) : ''))));
+  // 기록은 10개씩 페이지로 (최신이 1쪽)
+  const pages = Math.max(1, Math.ceil(events.length / TL_PER)); tlPage = Math.min(tlPage, pages - 1);
+  const shown = events.slice(tlPage * TL_PER, (tlPage + 1) * TL_PER);
+  const go = d => () => { tlPage += d; render(); };
 
   return h('div', 'screen journey',
     h('div', 'stats-row',
@@ -45,8 +46,12 @@ function viewJourney() {
       }))),
     panel('나의 기록',
       events.length ? [
-        recent.length ? timeline(recent) : h('p', 'hint', '최근 한 달 동안의 기록은 없어요.'),
-        older.length ? h('details', 'older', h('summary', null, `한 달 전 기록 ${older.length}개 더 보기`), timeline(older)) : null]
+        h('ul', 'timeline', shown.map(e => h('li', null,
+          h('span', `mk ${e.cls || ''}`, e.icon), h('span', 'tl-text', e.text), h('small', null, e.t ? fmtDate(e.t) : '')))),
+        pages > 1 ? h('div', 'tl-pager',
+          h('button', { class: 'btn small', disabled: tlPage === 0, onclick: go(-1) }, '‹ 최근'),
+          h('span', null, `${tlPage + 1} / ${pages}`),
+          h('button', { class: 'btn small', disabled: tlPage === pages - 1, onclick: go(1) }, '이전 ›')) : null]
         : h('p', 'hint', '퀘스트를 하나 끝내고 체크하면 여기에 기록이 쌓여요.')),
     h('div', 'row end', h('a', { class: 'btn', href: '#/fish' }, '🎣 투고 낚시터'), h('a', { class: 'btn', href: '#/cv' }, '📜 My CV'), bigBtn('월드맵으로', '#/')));
 }

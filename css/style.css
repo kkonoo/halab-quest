@@ -358,9 +358,8 @@ a.step:hover { border-color: var(--wood); background: #FFF8E6; }
 .timeline li { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--line); }
 .tl-text { flex: 1; word-break: keep-all; }
 .timeline small { color: var(--muted); }
-details.older { margin-top: 8px; } /* 한 달 전 기록: 접어 둠 */
-details.older summary { cursor: pointer; padding: 8px 0; color: var(--muted); font-family: var(--pixel); }
-details.older[open] summary { margin-bottom: 4px; }
+.tl-pager { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 10px; font-family: var(--pixel); }
+.tl-pager button:disabled { opacity: .4; cursor: default; }
 .cv-list { display: grid; gap: 6px; margin-bottom: 8px; }
 .cv-item { display: grid; gap: 2px; text-align: left; padding: 10px 12px; background: #FBF4E2; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
 .cv-item small { color: var(--muted); }
