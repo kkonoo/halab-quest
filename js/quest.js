@@ -43,7 +43,7 @@ function viewQuest(q, sec) {
       checkBoxes(q)),
     q.widget ? h('div', 'q-widget', widget(q.widget)) : null,
     h('div', 'q-side', q.records ? recordsPanel(q) : linksPanel(q)),
-    h('div', 'q-dialog', dialogBox(q.dialog || DEFAULT_DIALOG)),
+    h('div', 'q-dialog', dialogBox(q.dialog || DEFAULT_DIALOG, q.face || 'explain')),
     h('div', 'q-next', next ? bigBtn(`다음: ${next.title}`, `#/q/${next.id}`) : bigBtn(`다음: ${ch.no}장 완료`, `#/done/${ch.id}`)));
 }
 

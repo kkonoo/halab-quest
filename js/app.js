@@ -98,10 +98,11 @@ function setTitle(main, sub) {
   document.title = sub ? `${sub} · HaLab Quest` : 'HaLab Quest';
 }
 const panel = (title, ...kids) => h('section', 'panel', title ? h('h2', 'panel-head', title) : null, ...kids);
-function dialogBox(lines, who = '교수님') {
+// 교수님 초상화: img/prof-{default|smile|explain|cheer}.png (캐릭터 기준 시트에서 잘라 씀)
+function dialogBox(lines, face = 'default') {
   return h('div', 'dialog-box',
-    h('div', 'portrait', h('span', null, '👩‍🏫')),
-    h('div', 'speech', h('div', 'who', who), ...(Array.isArray(lines) ? lines : [lines]).map(l => h('p', null, l))));
+    h('div', 'portrait', h('img', { src: `img/prof-${face}.png`, alt: '교수님' })),
+    h('div', 'speech', h('div', 'who', '교수님'), ...(Array.isArray(lines) ? lines : [lines]).map(l => h('p', null, l))));
 }
 const bigBtn = (label, href, cls = 'big-btn') => h('a', { class: cls, href }, label, ' ›');
 

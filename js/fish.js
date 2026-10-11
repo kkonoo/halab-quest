@@ -103,7 +103,7 @@ function viewFish() {
         net.length ? h('div', 'net', net.map(x => h('button', { class: 'net-item', onclick: () => { fishPick = x.id; fishTip = ''; render(); } },
           h('span', 'big-fish', '🐟'), h('b', null, x.title), h('small', null, `${lastCast(x).journal} · 총 ${totalDays(x)}일 · ${x.casts.length}번 던짐`))))
           : h('p', 'hint', 'Accept 된 원고가 여기에 모여요.'))),
-    h('div', 'q-dialog', dialogBox(['투고하고 기다리는 시간도 연구의 일부예요.', '찌만 보고 있지 말고, 기다리는 동안 다음 분석을 준비해요.', '리젝되면 리뷰 코멘트로 다듬어서 다시 던지면 돼요.'])));
+    h('div', 'q-dialog', dialogBox(['투고하고 기다리는 시간도 연구의 일부예요.', '찌만 보고 있지 말고, 기다리는 동안 다음 분석을 준비해요.', '리젝되면 리뷰 코멘트로 다듬어서 다시 던지면 돼요.'], 'cheer')));
 }
 
 function fishDetail(sub) {

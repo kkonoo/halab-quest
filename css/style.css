@@ -112,7 +112,8 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
   box-shadow: inset 0 0 0 2px var(--gold), 0 3px 0 var(--wood-2);
   padding: 12px; min-width: 0;
 }
-.portrait { flex: none; width: 96px; display: grid; place-items: center; background: #E9D9B4; border-radius: 8px; border: 2px solid var(--line); font-size: 54px; }
+.portrait { flex: none; width: 104px; align-self: flex-start; background: #FBF1DC; border-radius: 8px; border: 2px solid var(--line); overflow: hidden; }
+.portrait img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
 .speech { min-width: 0; }
 .who { display: inline-block; background: var(--wood); color: #F6ECD2; padding: 3px 14px; border-radius: 6px; margin-bottom: 6px; }
 .speech p { margin: 3px 0; line-height: 1.55; }
@@ -313,7 +314,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .chapter-row { grid-template-columns: 1fr; }
   .checks { grid-template-columns: 1fr; }
-  .portrait { width: 64px; font-size: 38px; }
+  .portrait { width: 72px; }
   .bubble { max-width: 75%; font-size: .9em; }
 }
 @media (max-width: 520px) {
