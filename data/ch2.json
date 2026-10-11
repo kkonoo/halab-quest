@@ -5,6 +5,7 @@
   "subtitle": "주제 찾기",
   "icon": "⛰️",
   "region": "주제 찾기",
+  "bg": "img/bg/ch2-map.jpg",
   "mapPos": [72, 22],
   "ready": true,
   "intro": [
@@ -27,6 +28,7 @@
   "quests": [
     {
       "id": "ch2-topic",
+      "mapPos": [20, 62],
       "title": "연구 주제 찾기",
       "icon": "🪧",
       "bubble": "첫 아이디어는 의심부터 해요.",
@@ -67,6 +69,7 @@
     },
     {
       "id": "ch2-gap",
+      "mapPos": [82, 62],
       "title": "Research gap 찾기",
       "icon": "📚",
       "bubble": "'아무도 안 했다'는 정말 찾아봤을 때만 써요.",
@@ -108,6 +111,7 @@
     },
     {
       "id": "ch2-hypo",
+      "mapPos": [66, 30],
       "title": "가설 세우기",
       "icon": "💡",
       "bubble": "어떤 결과면 틀렸다고 할지 먼저 정해요.",
@@ -149,6 +153,7 @@
     },
     {
       "id": "ch2-design",
+      "mapPos": [22, 36],
       "title": "연구 디자인하기",
       "icon": "🧩",
       "bubble": "가장 위험한 가정을 가장 먼저 확인해요.",
@@ -192,6 +197,7 @@
     },
     {
       "id": "ch2-proposal",
+      "mapPos": [30, 9],
       "title": "연구비 제안서 쓰기",
       "icon": "✍️",
       "bubble": "gap과 디자인이 딱 맞는지 봐요.",
@@ -236,6 +242,7 @@
     },
     {
       "id": "ch2-meeting",
+      "mapPos": [74, 5],
       "title": "교수님과 면담하기",
       "icon": "👩‍🏫",
       "face": "smile",
