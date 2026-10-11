@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HaLab Quest</title>
+<meta name="description" content="HaLab 연구실 온보딩 RPG — 연구의 길을 퀘스트로 따라가요">
+<meta name="apple-mobile-web-app-title" content="HaLab Quest">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" id="themeColor" content="#23402E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/app-192.png">
+<link rel="apple-touch-icon" href="icons/app-maskable-192.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="title" id="title" href="#/"><span id="titleMain">HaLab Quest</span><span class="sep" id="titleSep" hidden>|</span><span id="titleSub"></span></a>
+    <nav class="tools">
+      <a class="tool" href="#/" title="월드맵"><span>🗺️</span><b>지도</b></a>
+      <a class="tool" href="#/journey" title="My Journey"><span>🎒</span><b>가방</b></a>
+      <button class="tool" id="menuBtn" title="메뉴"><span>☰</span><b>메뉴</b></button>
+      <button class="btn" id="accountBtn" hidden>로그인</button>
+    </nav>
+  </header>
+
+  <main id="view"></main>
+
+  <dialog id="menuDlg">
+    <h2>메뉴</h2>
+    <div class="menu-list">
+      <a href="#/journey">🎒 My Journey <small>학습 진행도와 성장 기록</small></a>
+      <a href="#/cv">📜 My CV <small>논문 · 학회 · 수상 실적</small></a>
+      <a href="#/admin" id="adminLink" hidden>👩‍🏫 진행도 보기 <small>교수님만 보여요</small></a>
+    </div>
+    <h3>계정</h3>
+    <div id="accountPanel" class="hint"></div>
+    <h3>내 이름</h3>
+    <div class="row"><input id="nameInput" placeholder="이름 (교수님 진행도 화면에 보여요)"><button class="btn" id="nameSave">저장</button></div>
+    <h3>데이터</h3>
+    <div class="row">
+      <button class="btn" id="exportBtn">백업 파일 저장</button>
+      <label class="btn">불러오기<input type="file" id="importInput" accept="application/json" hidden></label>
+    </div>
+    <div class="row end"><button class="btn primary" id="menuClose">닫기</button></div>
+  </dialog>
+
+  <dialog id="editDlg"><form method="dialog" id="editForm"></form></dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/md.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/quest.js"></script>
+  <script src="js/journey.js"></script>
+  <script src="js/admin.js"></script>
+  <script type="module" src="js/sync.js"></script>
+  <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script>
+</body>
+</html>

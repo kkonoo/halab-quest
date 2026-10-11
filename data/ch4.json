@@ -1,0 +1,230 @@
+{
+  "id": "ch4",
+  "no": 4,
+  "title": "논문의 탑",
+  "subtitle": "결과를 논문으로",
+  "icon": "🏰",
+  "region": "첫 논문 쓰기",
+  "ready": true,
+  "intro": [
+    "드디어 4장, 논문의 탑에 도착했어요!",
+    "이제 지금까지 만든 결과를 논문으로 엮어볼 차례예요.",
+    "그림 순서를 정하고, 원고를 쓰고, 투고와 학회 발표까지.",
+    "한 층씩 올라가다 보면 첫 논문이 완성될 거예요."
+  ],
+  "done": {
+    "title": "4장. 논문의 탑 완료!",
+    "sub": "결과를 모아 논문으로 엮는 길을 걸었어요.",
+    "badge": "논문의 탑 수료 배지",
+    "badgeIcon": "🏰",
+    "lines": [
+      "여기까지 함께 와 줘서 고마워요.",
+      "못 끝낸 퀘스트는 언제든 다시 와도 돼요.",
+      "이제 진짜 첫 논문을 향해 같이 걸어가요."
+    ],
+    "cvNote": "실제 논문 · 학회 실적은 My CV에 기록해요"
+  },
+  "quests": [
+    {
+      "id": "ch4-storyboard",
+      "title": "Figure 스토리보드",
+      "icon": "🖼️",
+      "place": "스토리보드 화랑",
+      "scene": "🖼️ ➜ 🖼️ ➜ 🖼️ ➜ 🖼️",
+      "bubble": "Figure마다 결론을 한 문장으로 써 보세요.",
+      "dialog": [
+        "논문은 그림이 먼저예요.",
+        "3장에서는 그림 한 장을 만들었다면, 이번엔 그림들을 한 줄로 세워 볼 차례예요.",
+        "그림 순서가 정해지면 논문의 이야기도 정해져요."
+      ],
+      "overview": "**목적** 논문 전체를 Figure의 순서와 흐름으로 설계해요.\n\n**할 일**\n- Figure마다 결론을 한 문장씩 쓰고 순서대로 늘어놓기\n- 투고할 저널의 그림 규격 확인하기",
+      "sections": [
+        {
+          "title": "그림이 먼저",
+          "md": "논문은 **그림·표 → Methods → Results → Introduction → Discussion → Abstract → Title** 순서로 써요.\n\n그림이 정해지면 이야기가 정해져요. 그림을 먼저 순서대로 늘어놓고, 각 그림의 결론을 한 문장씩 써 보면 그게 Results의 뼈대예요.\n\n> 3장 Figure 제작소 = 결과 하나를 그림 하나로\n> 4장 Figure 스토리보드 = 논문 전체 그림의 순서와 흐름"
+        },
+        {
+          "title": "Figure 순서 카드",
+          "md": "1. 그림마다 카드를 하나씩 만들어요.\n2. 카드에 그 그림의 **결론을 한 문장**으로 써요. (\"Fig 2 결과\" ✗ → \"환자군에서 염증 세포가 늘었어요\" ✓)\n3. 카드 순서를 바꿔 가며, 결론 문장만 이어 읽어도 이야기가 되는지 확인해요.\n\n여기서 쓴 문장은 **논문 원고 쓰기**에서 Results 각 단락의 첫 문장이 돼요.\n\n처음이라면 1장에서 읽은 논문 하나로 연습해 보세요."
+        },
+        {
+          "title": "저널 그림 규격",
+          "md": "> 투고할 저널의 그림 규정이 항상 먼저예요. 아래는 흔한 기준이에요.\n\n| 항목 | 기준 |\n|---|---|\n| 그림 폭 | 1단 약 85–89 mm, 1.5단 약 120–140 mm, 2단 약 174–183 mm |\n| 처음부터 | **최종 크기로** 만들기 (나중에 줄이면 글씨가 너무 작아져요) |\n| 글씨 | 최종 크기에서 6–8 pt, 패널 문자(A, B, C)는 8–10 pt 굵게 |\n| 글꼴 | Arial / Helvetica 한 가지 |\n| 해상도 | 사진 300 dpi 이상 · 사진+글자 600 dpi · 선 그림 1000 dpi 이상, 또는 벡터 |\n| 파일 | 그래프·모식도는 벡터(PDF, EPS, SVG), 사진은 TIFF |"
+        }
+      ],
+      "info": {
+        "title": "저널 그림 규격",
+        "rows": [
+          ["그림 폭", "1단 85–89 mm · 2단 174–183 mm"],
+          ["글씨", "최종 크기에서 6–8 pt"],
+          ["사진", "300 dpi 이상"],
+          ["그래프", "벡터 (PDF · SVG)"]
+        ],
+        "note": "처음부터 최종 크기로 만들기"
+      },
+      "widget": { "type": "figcards", "title": "Figure 순서 카드", "band": "결론 문장을 이어 읽으면 → 원고의 Results 뼈대" },
+      "links": [
+        { "label": "Lab Manager · 그림 만들기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/figures.md" },
+        { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
+        { "label": "3장 Figure 제작소", "quest": "ch3-figure" }
+      ],
+      "check": "논문 하나의 Figure 흐름을 결론 문장으로 정리해봤다면 체크해보세요!",
+      "star": "내 원고의 Figure 순서를 교수님과 정해보세요."
+    },
+    {
+      "id": "ch4-manuscript",
+      "title": "논문 원고 쓰기",
+      "icon": "📝",
+      "place": "원고 집필실",
+      "scene": "🪶 📜 📚",
+      "bubble": "문단 첫 문장만 읽어도 논리가 보이게 써요.",
+      "dialog": [
+        "처음부터 잘 쓰려고 하지 않아도 돼요.",
+        "그림 순서대로 Results부터 쓰고, 서론과 초록은 마지막에 써요.",
+        "초안은 저와 같이 고쳐 가요."
+      ],
+      "overview": "**목적** 그림·표 → Methods → Results → Introduction → Discussion → Abstract → Title 순서로 원고를 완성해요.\n\n**할 일**\n- Figure 순서 카드의 결론 문장을 Results 단락의 첫 문장으로 써보기\n- 부분별 체크표로 스스로 점검하기",
+      "sections": [
+        {
+          "title": "쓰는 순서",
+          "md": "**그림·표 → Methods → Results → Introduction → Discussion → Abstract → Title**\n\n- 그림이 정해지면 이야기가 정해져요. 그래서 그림이 먼저예요.\n- Methods는 한 일을 그대로 쓰면 되니 가장 쉬워요.\n- Introduction과 Abstract는 결과를 다 알고 나서 써야 초점이 맞아요.\n\n**문단과 문장**\n- 문단 첫 문장 = 그 문단의 요지 (첫 문장만 이어 읽어도 논리가 보이게)\n- 한 문장에 한 생각. 25단어 넘으면 나누기\n- 같은 것은 같은 말로 (용어를 바꾸면 다른 것으로 읽혀요)\n- 수치에는 단위와 n: \"increased by 2.1-fold (n = 6, p = 0.003)\""
+        },
+        {
+          "title": "Results 뼈대",
+          "md": "Figure 순서 카드의 결론 문장이 Results 각 단락의 첫 문장이 돼요.\n\n그림 하나 = 단락 하나: **질문 → 실험·분석 → 결과(수치·통계) → 한 줄 해석**",
+          "show": "figcards"
+        },
+        {
+          "title": "부분별 체크",
+          "md": "| 부분 | 무엇을 | 흔한 실수 |\n|---|---|---|\n| Title | 핵심 결과를 짧게 (가능하면 결론형) | 너무 길거나 막연함 |\n| Abstract | 배경 → 질문 → 방법 → 주요 결과(수치) → 결론 | 결과 수치 없이 \"significantly changed\"만 |\n| Introduction | 넓은 배경 → 모르는 것(gap) → 우리 질문 → 이 연구 | 배경만 길고 gap이 흐림 |\n| Methods | 남이 따라 할 수 있게 (데이터 출처, 소프트웨어·버전, 통계) | 통계 방법 빠짐 |\n| Results | 그림 하나 = 단락 하나 | 해석·문헌 비교를 너무 많이 |\n| Discussion | 발견 요약 → 기존 연구와 비교 → 의미 → 한계 → 앞으로 | 결과 반복, 한계 숨기기 |\n| Figure legend | 제목(결론) → 무엇을 보였나 → n·통계 | n과 오차 막대 종류 빠짐 |\n\n> AI가 알려 준 참고문헌은 반드시 PubMed·DOI로 실제 있는지 확인해요."
+        }
+      ],
+      "info": {
+        "title": "졸업 요건 (연구실 내규)",
+        "rows": [
+          ["석사", "논문 1편 이상 (공저자)"],
+          ["박사 · 통합", "제1저자 논문 3편 (IF>10이면 2편)"]
+        ],
+        "note": "본인이 원고를 온전히 쓴 논문"
+      },
+      "widget": {
+        "type": "flow",
+        "title": "쓰는 순서",
+        "steps": [
+          { "icon": "🖼️", "label": "그림 · 표", "done": "ch4-storyboard", "tag": "1번 퀘스트" },
+          { "icon": "⚗️", "label": "Methods" },
+          { "icon": "📊", "label": "Results" },
+          { "icon": "📄", "label": "Introduction" },
+          { "icon": "💬", "label": "Discussion" },
+          { "icon": "📃", "label": "Abstract" },
+          { "icon": "🏆", "label": "Title" }
+        ],
+        "band": "Figure 결론 문장 → Results 각 단락의 첫 문장"
+      },
+      "links": [
+        { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
+        { "label": "Lab Manager · 표현", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/phrases.md" },
+        { "label": "3장 AI 연구 도우미", "quest": "ch3-ai" }
+      ],
+      "warn": "미발표 원고는 AI에 넣지 않기",
+      "check": "Figure 순서 카드로 Results 단락 첫 문장을 써봤다면 체크해보세요!",
+      "star": "실제 원고 초안을 교수님께 제출해보세요."
+    },
+    {
+      "id": "ch4-submit",
+      "title": "투고와 리뷰",
+      "icon": "✉️",
+      "place": "투고 우체국",
+      "scene": "📮 ✉️ 📬",
+      "bubble": "지적마다 감사, 한 일, 바뀐 위치 순서로 답해요.",
+      "dialog": [
+        "투고할 저널은 저와 함께 정해요. 정하고 나면 그 저널의 규정이 가장 먼저예요.",
+        "리뷰는 원고를 더 좋게 만드는 과정이에요.",
+        "지적을 하나도 빠뜨리지 말고, 차분하게 하나씩 답해요."
+      ],
+      "overview": "**목적** 투고 전 점검과 리뷰어 답변의 기본 구조를 익혀요.\n\n**할 일**\n- 투고 전 체크리스트 확인하기\n- 심사 기록이 공개된 논문(Nature Communications의 Peer Review File) 하나를 읽고 답변 구조 살펴보기",
+      "sections": [
+        {
+          "title": "저널 정하기",
+          "md": "투고할 저널은 **교수님과 함께** 정해요.\n\n정하고 나면 그 저널의 **Guide for Authors**를 먼저 읽어요: 단어 수, 그림 수와 규격, 참고문헌 스타일, 필요한 서류."
+        },
+        {
+          "title": "투고 전 체크리스트",
+          "md": "- [ ] 저자 순서 · 기여(CRediT) · 교신저자 합의\n- [ ] 저널 형식: 단어 수, 그림 수, 참고문헌 스타일, 그림 해상도·파일 형식\n- [ ] 윤리: IRB, 이해상충, 연구비 표기(과제 번호)\n- [ ] 데이터 공개 번호 (GEO · SRA 등), 보충 자료 정리\n- [ ] Cover letter: 무엇을 발견했고 왜 이 저널 독자에게 중요한지 3–4문단"
+        },
+        {
+          "title": "리뷰어 답변",
+          "md": "1. 지적을 **모두** 번호 매겨 그대로 옮기고, 아래에 답해요.\n2. 답은 **감사 → 한 일(추가 분석·수정) → 바뀐 위치(페이지·줄 번호)** 순서로.\n3. 동의하지 않으면 근거(데이터·문헌)로 정중하게. 감정적인 표현은 쓰지 않아요.\n4. 원고에서 바뀐 부분은 색이나 변경 추적으로 표시해요.\n\n> 심사 중인 원고와 리뷰 내용은 AI에 넣지 않아요."
+        }
+      ],
+      "info": {
+        "title": "투고 전 체크리스트",
+        "rows": [
+          ["☐", "저자 순서 · 기여 · 교신저자 합의"],
+          ["☐", "저널 형식: 단어 수 · 그림 · 참고문헌"],
+          ["☐", "윤리: IRB · 이해상충 · 과제 번호"],
+          ["☐", "데이터 공개 번호 (GEO · SRA)"],
+          ["☐", "Cover letter"]
+        ]
+      },
+      "widget": {
+        "type": "flow",
+        "title": "리뷰어 답변 구조",
+        "steps": [
+          { "icon": "✉️", "label": "Reviewer 1 · 지적 1" },
+          { "icon": "❤️", "label": "감사" },
+          { "icon": "📝", "label": "한 일", "sub": "추가 분석 · 수정" },
+          { "icon": "🔍", "label": "바뀐 위치", "sub": "페이지 · 줄 번호" }
+        ],
+        "band": "동의하지 않으면 데이터와 문헌으로 정중하게"
+      },
+      "links": [
+        { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
+        { "label": "저널 Guide for Authors", "note": "투고할 저널 사이트에서" },
+        { "label": "공개 리뷰 기록 예시 (Nature Communications)", "note": "링크 준비 중" }
+      ],
+      "warn": "심사 중 · 미발표 원고는 AI에 넣지 않기",
+      "check": "공개된 리뷰 기록 하나를 읽고 답변 구조를 확인해봤다면 체크해보세요!",
+      "star": "실제 투고나 리뷰어 답변 작성에 참여해보세요."
+    },
+    {
+      "id": "ch4-conference",
+      "title": "학회 발표",
+      "icon": "🎤",
+      "place": "학회 대강당",
+      "scene": "🧑‍🎓 🪧 👥",
+      "bubble": "1분 설명과 3분 설명을 따로 준비해요.",
+      "dialog": [
+        "연구실 밖 청중은 우리 연구를 처음 들어요.",
+        "'왜 중요한가'부터 시작하고, 핵심 결과는 3개면 충분해요.",
+        "초록을 내기 1주 전에는 꼭 먼저 알려 주세요."
+      ],
+      "overview": "**목적** 연구실 밖 청중에게 발표하는 법을 익혀요 (학회 구두, 포스터, 학위 심사).\n\n**할 일**\n- 내 연구로 초록을 써보거나, 학회 구두 발표 구성이나 포스터 배치를 스케치해보기\n\n슬라이드 기본 규칙과 질문받는 법은 [3장 발표 연습실](#/q/ch3-present)에서 다뤘어요.",
+      "cards": "ch4-conference.md",
+      "cardsSkip": ["나의 발표 기록"],
+      "records": ["학회 구두", "포스터", "학위 심사"],
+      "info": {
+        "title": "우리 연구실 규칙",
+        "rows": [
+          ["📣", "학회에 가면 발표가 우선"],
+          ["📄", "초록 제출 최소 1주 전, 교수님 · 공동저자에게 보고"]
+        ]
+      },
+      "widget": {
+        "type": "flow",
+        "title": "학회 준비 흐름",
+        "steps": [
+          { "icon": "📄", "label": "보고", "sub": "제출 1주 전", "hl": true },
+          { "icon": "📨", "label": "초록 제출" },
+          { "icon": "💻", "label": "발표 자료" },
+          { "icon": "🎤", "label": "연습" },
+          { "icon": "👥", "label": "학회" },
+          { "icon": "📝", "label": "발표 기록" }
+        ],
+        "band": "구두 발표: 질문 → 가설 → 핵심 결과 3개 → 결론"
+      },
+      "check": "초록을 써보거나 발표 구성·포스터 배치를 스케치해봤다면 체크해보세요!",
+      "star": "실제 학회나 학위 심사에서 발표하고 기록해보세요."
+    }
+  ]
+}

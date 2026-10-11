@@ -1,0 +1,116 @@
+{
+  "id": "ch3",
+  "no": 3,
+  "title": "실험실 마을",
+  "subtitle": "데이터와 실험의 현장",
+  "icon": "🏘️",
+  "region": "연구하기",
+  "ready": false,
+  "intro": [
+    "드디어 3장, 실험실 마을에 도착했어요!",
+    "이제 실제 연구를 수행해보는 단계예요.",
+    "교재로 기초를 다지고, 분석과 통계를 익히고, figure와 발표까지 준비해볼 거예요.",
+    "하나씩 경험하면서, 실전 연구 역량을 키워봐요."
+  ],
+  "done": {
+    "title": "3장. 실험실 마을 완료!",
+    "sub": "실제 연구를 해내는 힘을 길렀어요.",
+    "badge": "실험실 마을 수료 배지",
+    "badgeIcon": "⚗️",
+    "lines": [
+      "3장에서는 연구를 직접 해보는 힘을 길렀어요.",
+      "못 끝낸 퀘스트는 언제든 다시 와도 돼요.",
+      "이제 결과를 모아 논문으로 완성해 볼까요?"
+    ],
+    "next": "ch4"
+  },
+  "quests": [
+    {
+      "id": "ch3-passport",
+      "title": "교재 여권",
+      "icon": "📘",
+      "place": "교재 여권 센터",
+      "overview": "연구실 교재 전체 지도예요. 교재 1권을 공부하면 스탬프 1개를 받아요.\n\n교재 여권 화면(교재 허브 목록을 그대로 읽어 오는 스탬프 화면)은 곧 만들어요.",
+      "links": [{ "label": "HaLab Textbooks", "url": "https://kkonoo.github.io/halab-textbooks/" }],
+      "noStar": true
+    },
+    {
+      "id": "ch3-skills",
+      "title": "분석 스킬 트리",
+      "icon": "📊",
+      "place": "분석 스킬 트리관",
+      "overview": "Lv.1 Linux → Lv.2 R/Python → Lv.3 데이터 조작 → Lv.5 분석 실습·검증. R과 Python은 나란한 두 길이에요.\n\n내용은 곧 채워요.",
+      "links": [{ "label": "HaLab Textbooks", "url": "https://kkonoo.github.io/halab-textbooks/" }]
+    },
+    {
+      "id": "ch3-stats",
+      "title": "통계 실습실",
+      "icon": "∑",
+      "place": "통계 실습실",
+      "overview": "스테이션 4개: 가설검정 기초 / 회귀분석 / 고차원 데이터(PCA·배치 효과) / 결과 검증(다중검정·FDR·검정력).\n\n내용은 곧 채워요."
+    },
+    {
+      "id": "ch3-methods",
+      "title": "Methods 해부하기",
+      "icon": "⚗️",
+      "place": "Methods 공방",
+      "overview": "논문 속 연구 설계를 Why & What으로 읽어요. 여기서 쓴 분석 노트는 발표 연습실의 Journal club 뼈대로도 써요.\n\n내용은 곧 채워요."
+    },
+    {
+      "id": "ch3-figure",
+      "title": "Figure 제작소",
+      "icon": "🎨",
+      "place": "Figure 제작소",
+      "overview": "결과 하나를 Figure 하나로 전달해요. 핵심은 \"코드에서 정하기(알맹이)\"와 \"HaLab Plots에서 다듬기(글씨·점 크기·색)\"의 구분이에요.\n\n가이드 카드는 곧 채워요.",
+      "check": "가이드를 읽고 예시를 따라 그려봤다면 체크해보세요!",
+      "star": "내 Figure를 HaLab Plots로 공동연구팀과 공유해보세요."
+    },
+    {
+      "id": "ch3-ai",
+      "title": "AI 연구 도우미",
+      "icon": "🤖",
+      "place": "AI 연구 도우미실",
+      "overview": "AI 결과를 검증하고 쓸 범위를 판단하는 힘을 길러요.\n\n**AI 신호등**\n- 🟢 자유롭게\n- 🟡 꼭 검증\n- 🔴 넣지 않기: 환자 정보, 미발표 데이터·원고, 심사 중 원고, 과제·특허 전 아이디어, 계정\n\n가이드 카드는 곧 채워요.",
+      "check": "AI가 쓴 코드나 답변 하나를 직접 검증해봤다면 체크해보세요!",
+      "star": "실제 연구에서 AI에 무엇을 맡겼고 어떻게 확인했는지 기록해보세요."
+    },
+    {
+      "id": "ch3-present",
+      "title": "발표 연습실",
+      "icon": "🎓",
+      "place": "발표 홀",
+      "bubble": "제목에 결론을 쓰니 훨씬 잘 들어와요.",
+      "dialog": [
+        "랩미팅은 잘된 결과만 보여주는 자리가 아니에요.",
+        "잘 안 된 분석도 보여주고 도움을 받아요.",
+        "받은 피드백을 기록해 두면 다음 발표의 In the previous가 돼요."
+      ],
+      "overview": "**목적** 연구실 내부 발표(랩미팅 Progress report, Journal club)를 준비하고, 받은 피드백을 다음 발표로 이어가요.\n\n학회 · 포스터 · 학위 심사는 [4장 학회 발표](#/q/ch4-conference)에서 다뤄요.",
+      "cards": "ch3-presentation.md",
+      "cardsSkip": ["나의 발표 기록"],
+      "records": ["Progress", "JC", "개인 미팅"],
+      "info": {
+        "title": "우리 연구실 랩미팅",
+        "rows": [
+          ["📅", "매주 금요일 오전 10시"],
+          ["🗣️", "Progress report (영어) + Journal club (한국어)"],
+          ["📢", "JC 발표자는 3일 전 #team-jc에 공지"]
+        ]
+      },
+      "widget": {
+        "type": "flow",
+        "title": "랩미팅 사이클",
+        "steps": [
+          { "icon": "📄", "label": "Background", "sub": "배경 · 목표" },
+          { "icon": "📑", "label": "In the previous", "sub": "지난 계획 · 피드백" },
+          { "icon": "📊", "label": "Results", "sub": "왜 · 결과 · 한 줄 요약" },
+          { "icon": "📋", "label": "Summary", "sub": "3줄 이내" },
+          { "icon": "💡", "label": "Next plans", "sub": "다음 단계 · 도움 요청" }
+        ],
+        "band": "피드백 기록 → 다음 발표의 In the previous"
+      },
+      "check": "가이드를 읽고 시간을 재며 혼자 연습해봤다면 체크해보세요!",
+      "star": "실제 랩미팅에서 발표하고 피드백을 기록해보세요."
+    }
+  ]
+}

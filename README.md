@@ -1,0 +1,72 @@
+# HaLab Quest
+
+HaLab 연구실 인턴 · 대학원생 온보딩용 쯔꾸르풍 웹 RPG예요. 연구의 길(분야 탐색 → 주제 찾기 → 연구하기 → 첫 논문)을 퀘스트로 따라가며, 기존 연구실 자료(Wiki · 교재 · Lab Manager · Lab manual)로 공부하고 진행도를 기록해요.
+
+주소: https://kkonoo.github.io/halab-quest/
+
+## 화면
+
+| 화면 | 하는 일 |
+|---|---|
+| 월드맵 | 1~4장으로 가는 지도. 순서는 추천일 뿐, 어디든 먼저 가도 돼요 |
+| 챕터 맵 | 그 장의 퀘스트 목록과 진행도 |
+| 퀘스트 | 설명 · 가이드 카드 · 자료 링크 · ✓ 학습 완료 · ★ 실전 적용(선택) |
+| 챕터 완료 | 그 장에서 해낸 일, ✓·★ 개수, 수료 배지 |
+| My Journey (🎒 가방) | 챕터별 진행도와 날짜순 기록 |
+| My CV | 실제 논문 · 학회 발표 · 수상 실적 |
+| 진행도 보기 | 교수님만: 랩 멤버 학생들의 진행도 (읽기만) |
+
+퀴즈 · 점수 · 잠금은 없어요. ✓는 자료를 읽고 따라 해봤을 때, ★는 실제 연구에 써봤을 때 남겨요.
+
+## 처음 쓸 때
+
+1. 주소로 들어가서 위 오른쪽 **로그인**으로 Google 계정에 로그인해요 (로그인 안 해도 이 브라우저에는 저장돼요).
+2. **메뉴 → 내 이름**에 이름을 적어요. 교수님 진행도 화면에 이 이름이 보여요.
+3. 교수님이 진행도를 보려면, 학생 Google 이메일이 **Lab Manager의 랩 멤버 목록**에 들어 있어야 해요.
+
+## 내용 고치기
+
+퀘스트 문구와 링크는 화면 코드가 아니라 데이터 파일에 있어요.
+
+| 파일 | 내용 |
+|---|---|
+| `data/ch1.json` ~ `data/ch4.json` | 챕터 소개 · 퀘스트 목록 · 설명 · 정보 패널 · 핵심 UI · 자료 링크 · ✓/★ 문구 · 교수님 대사 |
+| `data/cards/*.md` | 게임 안 가이드 카드 (`## 1. 제목` 하나가 카드 한 장 = 퀘스트 메뉴 한 칸) |
+
+퀘스트 항목에서 쓰는 칸: `overview`(개요) · `sections` 또는 `cards`(메뉴 칸) · `info`(우측 정보 패널) · `widget`(`flow` 흐름 / `figcards` Figure 순서 카드) · `links`(`url` 바깥 링크 / `quest` 다른 퀘스트 / `note` 글만) · `warn` · `records`(발표 기록 종류) · `check` · `star` · `dialog` · `bubble` · `bg`(장면 그림 주소, 그림이 생기면).
+
+## 데이터는 어디에
+
+- 이 브라우저: IndexedDB `halab-quest` (안 되면 localStorage `halab-quest`)
+- 로그인하면 Firestore에 자동 동기화돼요. Firebase 프로젝트는 **Lab Manager와 같은 `lab-manager-knumed`** 예요 (랩 멤버 목록을 같이 쓰려고).
+  - `quest/{학생 이메일}` 요약 (이름, 최근 활동)
+  - `quest/{학생 이메일}/rec/{키}` 기록 하나 = 문서 하나 (`p:` 진행도 · `r:` 발표 기록 · `c:` CV · `d:` 챕터 완료 · `f` Figure 카드 · `n` 이름)
+  - `labs/{교수님 uid}` Lab Manager 랩 문서 — 여기서는 멤버 목록을 읽기만 해요
+- 보안 규칙: `firestore.rules` (Lab Manager 규칙 + quest 부분). 학생은 자기 기록만 읽고 쓰고, 교수님은 자기 랩 멤버의 기록을 읽기만 해요. Firebase 콘솔 → Firestore Database → 규칙에 **파일 전체**를 붙여 넣어요.
+- 로그아웃하면 이 기기에 남은 기록은 지워요 (계정에는 그대로 있어요). 연구실 공용 PC에서 다음 사람과 섞이지 않게요.
+- 메뉴 → 데이터: 백업 파일 저장 · 불러오기
+
+## 개발
+
+```
+powershell tools/serve.ps1     # http://localhost:8767/
+```
+
+빌드 없음. `index.html` + `css/style.css` + `js/*.js`. 새 js · 데이터 파일은 `sw.js`의 `SHELL`에도 넣어요.
+
+## 파일
+
+| 파일 | 내용 |
+|---|---|
+| `index.html` | 헤더(지도 · 가방 · 메뉴), 메뉴 창, 입력 창 |
+| `css/style.css` | 쯔꾸르풍 화면 (양피지 패널 · 나무 테두리 · 붉은 버튼), 900px 아래는 한 줄 배치 |
+| `js/app.js` | 저장, 데이터 파일 읽기, 화면 이동(`#/…`), 공통 도구, 메뉴 |
+| `js/md.js` | 가이드 카드용 작은 마크다운 변환기 |
+| `js/world.js` | 월드맵 · 챕터 맵 · 챕터 완료 |
+| `js/quest.js` | 퀘스트 화면 (모든 퀘스트를 한 틀로) |
+| `js/journey.js` | My Journey · My CV |
+| `js/admin.js` | 교수님 진행도 보기 |
+| `js/sync.js` | Google 로그인 · Firestore 동기화 · 교수님 확인 |
+| `js/firebase-config.js` | Firebase 설정 (null이면 로그인 꺼짐) |
+| `firestore.rules` | 보안 규칙 (Lab Manager와 같이 씀) |
+| `data/` | 챕터 · 퀘스트 내용, 가이드 카드 |

@@ -1,0 +1,51 @@
+{
+  "id": "ch1",
+  "no": 1,
+  "title": "탐험의 숲",
+  "subtitle": "분야 탐색",
+  "icon": "🌲",
+  "region": "분야 탐색",
+  "ready": false,
+  "intro": [
+    "HaLab에 온 걸 환영해요!",
+    "1장에서는 연구실을 둘러보고, 관심 있는 분야를 찾아볼 거예요.",
+    "논문을 고르고 읽는 법도 같이 연습해요."
+  ],
+  "done": {
+    "title": "1장. 탐험의 숲 완료!",
+    "sub": "연구실의 세계를 탐험하고, 연구의 기초를 배웠어요.",
+    "badge": "탐험의 숲 수료 배지",
+    "badgeIcon": "🌲",
+    "lines": [
+      "1장을 잘 마쳤어요.",
+      "못 끝낸 퀘스트는 언제든 다시 와도 돼요.",
+      "이제 2장. 질문의 언덕으로 떠나볼까요?"
+    ],
+    "next": "ch2"
+  },
+  "quests": [
+    {
+      "id": "ch1-lab",
+      "title": "연구실 소개",
+      "icon": "🏫",
+      "overview": "HaLab이 어떤 연구를 하는지 둘러봐요.\n\n내용은 곧 채워요.",
+      "links": [{ "label": "연구실 소개", "url": "https://halab.knu.ac.kr/about.html" }]
+    },
+    { "id": "ch1-compass", "title": "호기심 나침반", "icon": "🧭", "overview": "내 관심 분야를 찾아봐요.\n\n내용은 곧 채워요." },
+    { "id": "ch1-guide", "title": "논문 선택 가이드", "icon": "📄", "overview": "어떤 논문부터 읽으면 좋을지 골라봐요.\n\n내용은 곧 채워요." },
+    {
+      "id": "ch1-papers",
+      "title": "논문 탐험",
+      "icon": "📰",
+      "overview": "연구실 노트의 최신 논문을 읽어봐요.\n\n내용은 곧 채워요.",
+      "links": [{ "label": "연구실 노트", "url": "https://halab.knu.ac.kr/note.html" }]
+    },
+    {
+      "id": "ch1-wiki",
+      "title": "위키 개념 도감",
+      "icon": "📖",
+      "overview": "연구에 자주 나오는 개념을 HaLab Wiki에서 찾아봐요.\n\n내용은 곧 채워요.",
+      "links": [{ "label": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr/" }]
+    }
+  ]
+}
