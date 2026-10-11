@@ -98,11 +98,15 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 }
 .big-btn:hover { filter: brightness(1.06); }
 .chip { display: inline-block; padding: 2px 8px; border-radius: 99px; background: var(--surface-2); border: 1px solid var(--line); font-size: .8em; color: var(--muted); }
-.mk { display: inline-flex; align-items: center; justify-content: center; width: 1.6em; height: 1.6em; border-radius: 50%; font-weight: 800; flex: none; }
-.mk.ok { background: var(--good); color: #fff; }
+.mk { display: inline-flex; align-items: center; justify-content: center; width: 1.6em; height: 1.6em; border-radius: 0; font-weight: 800; flex: none; }
+/* 갈무리체에는 ✓ 글자가 없어서(다른 글꼴로 매끈하게 나옴) 도트 체크를 그림으로 그리고 글자는 숨김 */
+.mk.ok { background: var(--good) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 6' shape-rendering='crispEdges' fill='%23FFF6DC'%3E%3Cpath d='M6 0h1v2H6zM5 1h1v2H5zM0 2h1v2H0zM4 2h1v2H4zM1 3h1v2H1zM3 3h1v2H3zM2 4h1v2H2z'/%3E%3C/svg%3E") center / 14px 12px no-repeat; color: transparent; border: 2px solid #23402E; box-shadow: 0 2px 0 rgba(0,0,0,.2); }
 .mk.empty { border: 2px solid var(--faint); color: transparent; }
 .mk.star { color: var(--star); font-size: 1.2em; }
 .mk.big { width: 2em; height: 2em; font-size: 1.1em; }
+.mk.big.ok { background-size: 21px 18px; }
+/* 글 속의 작은 도트 체크 (✓ 0 / 5 같은 개수 앞) */
+.ck { display: inline-block; width: 14px; height: 12px; vertical-align: -1px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 6' shape-rendering='crispEdges' fill='%233E8E4E'%3E%3Cpath d='M6 0h1v2H6zM5 1h1v2H5zM0 2h1v2H0zM4 2h1v2H4zM1 3h1v2H1zM3 3h1v2H3zM2 4h1v2H2z'/%3E%3C/svg%3E") center / contain no-repeat; }
 .star-txt { color: var(--star); font-weight: 700; }
 
 /* ---------- 교수님 대화창 ---------- */
@@ -162,7 +166,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .sign { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: #8B5E3C; color: #FBF1DA; border: 3px solid var(--wood-2); border-radius: 8px; text-decoration: none; box-shadow: 0 3px 0 rgba(0,0,0,.25); position: relative; }
 .sign-text { display: grid; word-break: keep-all; }
 .sign small { opacity: .85; }
-.sign-done { position: absolute; top: -8px; right: -8px; background: var(--good); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #fff; }
+.sign .mk { width: 22px; height: 22px; }
 .way { position: absolute; bottom: 14px; background: #8B5E3C; color: #FBF1DA; padding: 8px 14px; border: 3px solid var(--wood-2); border-radius: 8px; text-decoration: none; font-family: var(--pixel); z-index: 2; }
 .way.left { left: 14px; } .way.right { right: 14px; }
 .quest-list .qlist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px; }

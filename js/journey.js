@@ -33,7 +33,7 @@ function viewJourney() {
       h('div', 'chapter-rows', CHAPTERS.map(ch => {
         const c = chapterCount(ch);
         return h('div', 'chapter-row',
-          h('a', { class: 'ch-name', href: `#/ch/${ch.id}` }, ch.icon, ' ', `${ch.no}장. ${ch.title}`, h('small', null, `✓ ${c.check}/${c.total}`)),
+          h('a', { class: 'ch-name', href: `#/ch/${ch.id}` }, ch.icon, ' ', `${ch.no}장. ${ch.title}`, h('small', null, h('span', { class: 'ck', title: '학습 완료' }), ` ${c.check}/${c.total}`)),
           h('div', 'chips', ch.quests.map(q => h('a', { class: `qchip${prog(q.id).check ? ' ok' : ''}`, href: `#/q/${q.id}`, title: q.title },
             q.title, ' ', q.icon, prog(q.id).star ? ' ★' : ''))),
           db.chapterDone[ch.id] ? h('span', { class: 'medal small', title: ch.done.badge }, ch.done.badgeIcon || ch.icon) : null);

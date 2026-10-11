@@ -11,7 +11,7 @@ function viewWorld() {
         return h('a', { class: `region r-${ch.id}`, href: `#/ch/${ch.id}`, style: ch.mapPos ? `left:${ch.mapPos[0]}%;top:${ch.mapPos[1]}%` : null },
           h('b', null, `${ch.no}장. ${ch.title}`),
           h('small', null, ch.region),
-          h('span', 'region-prog', `✓ ${c.check} / ${c.total}`, c.star ? `  ★ ${c.star}` : ''),
+          h('span', 'region-prog', h('span', { class: 'ck', title: '학습 완료' }), ` ${c.check} / ${c.total}`, c.star ? `  ★ ${c.star}` : ''),
           ch.ready ? null : h('span', 'chip', '준비 중'));
       }),
       // 가운데 섬 = 투고 낚시터
@@ -36,7 +36,7 @@ function viewChapter(ch) {
       h('div', `signs${ch.quests.some(q => q.mapPos) ? ' pinned' : ''}`, ch.quests.map((q, i) =>
         h('a', { class: 'sign', href: `#/q/${q.id}`, title: q.title, style: q.mapPos ? `left:${q.mapPos[0]}%;top:${q.mapPos[1]}%` : null },
           h('b', 'sign-text', `${i + 1}. ${q.place || q.title}`),
-          prog(q.id).check ? h('span', 'sign-done', '✓') : null))),
+          prog(q.id).check ? h('span', 'mk ok', '✓') : null))),
       prev ? h('a', { class: 'way left', href: `#/ch/${prev.id}` }, `← ${prev.no}장. ${prev.title}`) : null,
       next ? h('a', { class: 'way right', href: `#/ch/${next.id}` }, `${next.no}장. ${next.title} →`) : null,
       h('div', 'walker', studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-walk.png', alt: '고양이' }))),
