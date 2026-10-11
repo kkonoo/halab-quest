@@ -406,3 +406,5 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .walker { display: flex; align-items: flex-end; gap: 6px; }
 .walker .sprite { height: 120px; width: auto; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0,0,0,.15)); }
 @media (max-width: 900px) { .walker .sprite { height: 90px; } }
+.walker .sprite.cat { height: 54px; margin-left: 2px; }
+@media (max-width: 900px) { .walker .sprite.cat { height: 42px; } }
