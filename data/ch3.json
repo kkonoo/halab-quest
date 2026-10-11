@@ -42,28 +42,47 @@
         "다음 추천부터 시작해도 되고, 지금 필요한 교재부터 펼쳐도 돼요.",
         "한 권을 공부했다면 도장을 찍어 두세요."
       ],
-      "overview": "**목적** 연구실 교재 전체 지도예요. 교재 1권을 공부하면 스탬프 1개를 받아요.\n\n**할 일**\n- 분야마다 ①부터 추천 순서로 공부하기 (잠기지 않아요)\n- 한 권을 끝내면 아래 여권에 도장 찍기\n\n교재 목록은 [HaLab Textbooks](https://kkonoo.github.io/halab-textbooks/)를 그대로 읽어 와요. 교재가 늘면 여권에도 바로 생겨요.",
+      "overview": "**목적** 연구실 교재 전체 지도예요. 교재 1권을 공부하면 스탬프 1개를 받아요.\n\n**할 일**\n- 분야마다 ①부터 추천 순서로 공부하기 (잠기지 않아요)\n- 한 권을 끝내면 아래 여권의 동그라미를 눌러 도장 찍기",
       "info": {
         "title": "교재 여권 쓰는 법",
         "rows": [
-          ["①②③", "분야 안의 추천 순서 (잠기지 않아요)"],
-          ["다음 추천", "아직 도장이 없는 첫 교재"],
-          ["📘", "한 권을 공부하면 도장 찍기"]
+          ["① → ②", "분야 안의 추천 순서 (잠기지 않아요)"],
+          ["동그라미", "누르면 도장 쾅, 다시 누르면 지워요"],
+          ["교재 이름", "누르면 교재가 새 탭에서 열려요"]
         ],
         "note": "통계 실습실의 체크와는 따로 세요"
       },
       "widget": {
         "type": "passport",
         "title": "교재 여권",
-        "src": "https://kkonoo.github.io/halab-textbooks/data/textbooks.json",
-        "hub": "https://kkonoo.github.io/halab-textbooks/",
-        "groups": [["general", "기초 · 공통"], ["Biology", "생명과학"], ["Statistics", "통계"], ["CS", "컴퓨터 · AI"], ["BI", "생물정보 수업"]],
-        "stages": ["pre-HaLab", "HaLab 1", "HaLab 2", "HaLab 3", "HaLab 4", "Course", "LLM-wiki"],
-        "inQuest": { "omics-env": "ch3-skills" },
+        "groups": [
+          { "label": "기초 · 공통", "icon": "📖", "color": "#6B7F3A", "books": [
+            { "id": "paper-reading", "name": "논문 읽으면서 분야 탐색하기", "url": "https://halab.knu.ac.kr/note.html", "desc": "분야 최신 논문 위클리 카드뉴스 · 수업 자료 · 공부 자료 (연구실 홈페이지 Note)" },
+            { "id": "halab-wiki", "name": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr", "desc": "질문을 따라 개념의 구조를 찾는 연구실 공부 가이드: GWAS · Omics · Single-cell · Multi-omics · 질환" }
+          ] },
+          { "label": "생명과학", "icon": "🧬", "color": "#2E7D6B", "books": [
+            { "id": "human-genetics", "name": "Human genetics", "url": "https://chaek.org/books/human-genetics", "desc": "멘델의 유전 개념부터 유전체 시퀀싱 · 대규모 코호트까지 (안준용, 고려대)" },
+            { "id": "immunology", "name": "Immunology", "url": "https://halab-wiki.knu.ac.kr/disease/immunology/index.html", "desc": "Kuby 면역학 8판 흐름: 기초 · 선천면역 · 적응면역 · 질환 · 연구방법 (HaLab Wiki)" }
+          ] },
+          { "label": "통계", "icon": "📈", "color": "#2C4A7A", "books": [
+            { "id": "basic-stats", "name": "Basic statistics", "url": "https://chaek.org/books/basic-stats-omics-labs/README", "desc": "Basic Statistics for Omics: 생물학 학생을 위한 Colab 실습 통계" },
+            { "id": "linear-algebra", "name": "Linear algebra", "url": "https://kkonoo.github.io/2_linear_algebra/", "desc": "기하학적 직관으로 읽는 선형대수: 벡터에서 SVD까지" },
+            { "id": "linear-regression", "name": "Linear regression", "url": "https://kkonoo.github.io/3_linear_regression/", "desc": "회귀분석: 추정 · 추론 · 진단 · 모형 선택, 생물학 자료로 배우기" },
+            { "id": "bayes", "name": "Bayesian statistics", "url": "https://kkonoo.github.io/4_Bayes/", "desc": "생명정보학을 위한 베이지안 통계: 직관으로 이해하고 R로 구현하기" }
+          ] },
+          { "label": "컴퓨터 · AI", "icon": "💻", "color": "#6A4C93", "books": [
+            { "id": "basic-ml", "name": "Basic machine learning", "url": "https://kkonoo.github.io/1_Basic_Machine_Learning/", "desc": "연구자를 위한 기계학습 기초: 개념부터 R · Python 실습까지" },
+            { "id": "graphs-nn", "name": "Graph theory & Neural Network", "url": "https://kkonoo.github.io/4_graphs/", "desc": "네트워크와 딥러닝: 생물의학 데이터를 위한 그래프 이론과 신경망" }
+          ] },
+          { "label": "생물정보 수업", "icon": "🔬", "color": "#9A5B1E", "books": [
+            { "id": "bi-biomed", "name": "BI for BioMedical Scientists", "url": "https://kkonoo.github.io/BI_for_Biomed_KNUmed/", "desc": "유전체부터 마이크로바이옴까지 7주 과정" },
+            { "id": "rnaseq", "name": "RNA-seq analysis", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/", "desc": "bulk RNA-seq analysis (의사과학자 양성 사업)" },
+            { "id": "advanced-bi", "name": "advanced BI for clinical studies", "url": "https://kkonoo.github.io/advanced_BI_for_MD_PhD_KNUmed/", "desc": "융합형 의사과학자 양성 사업: 오믹스 결과가 틀렸을 때 알아보기" }
+          ] }
+        ],
         "band": "교재 질문은 Slack #help-study에 챕터 링크와 함께"
       },
       "links": [
-        { "label": "HaLab Textbooks", "url": "https://kkonoo.github.io/halab-textbooks/" },
         { "label": "3장 분석 스킬 트리", "quest": "ch3-skills" },
         { "label": "3장 통계 실습실", "quest": "ch3-stats" }
       ],
@@ -75,13 +94,14 @@
       "title": "분석 스킬 트리",
       "icon": "📊",
       "place": "분석 스킬 트리관",
-      "bubble": "처음부터 혼자 짜지 않아도 돼요. 읽고 고칠 수 있으면 충분해요.",
+      "bg": "img/bg/ch3-skills.jpg",
+      "bubble": "코드를 읽고 고칠 수 있으면 충분해요.",
       "dialog": [
         "분석은 Linux에서 시작해요. 서버에 접속해서 폴더를 오가는 것부터 해봐요.",
         "R과 Python은 둘 중 하나를 먼저 골라도 돼요. 나중에 다른 길도 걸어 보면 좋아요.",
         "막히면 #help-study에 교재 챕터 링크와 함께 물어봐요."
       ],
-      "overview": "**목적** 데이터 분석에 필요한 기본기를 레벨 순서로 익혀요. 신입생 첫 1개월 입문 교육(Linux, R/Python)이 여기예요.\n\n**할 일**\n- 레벨마다 자료를 읽고 따라 해보기\n- 막힌 곳은 Slack #help-study에 질문하기\n\nR과 Python은 나란한 두 길이에요. Lv.4 통계는 [3. 통계 실습실](#/q/ch3-stats)에서 따로 익혀요.\n\n교재 허브의 \"오믹스 데이터 분석 환경 익히기\"가 이 퀘스트로 들어왔어요.",
+      "overview": "**목적** 데이터 분석에 필요한 기본기를 레벨 순서로 익혀요. 신입생 첫 1개월 입문 교육(Linux, R/Python)이 여기예요.\n\n**할 일**\n- 레벨마다 자료를 읽고 따라 해보기\n- 막힌 곳은 Slack #help-study에 질문하기\n\nR과 Python은 나란한 두 길이에요. Lv.4 통계는 [3. 통계 실습실](#/q/ch3-stats)에서 따로 익혀요.",
       "sections": [
         {
           "title": "Lv.1 Linux",

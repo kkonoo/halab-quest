@@ -138,54 +138,34 @@ function lights(w) {
     w.band ? h('div', 'band', w.band) : null);
 }
 
-// ---------- 교재 여권: 교재 허브의 textbooks.json(w.src)을 그대로 읽어 와요 ----------
-// 교재 1권 = 스탬프 1개 → 진행도에 'tb:교재id' 키로 저장 (✓만, ★ 없음)
-// 분야(group) 안에서 단계(stage) 순서 → 같은 단계는 json 순서가 추천 순서. 잠그지 않음
-let passportBooks = null, passportLoading = false; // null: 아직, 배열: 교재 목록, { error }: 못 읽음
-function loadPassport(src) {
-  if (passportLoading) return;
-  passportLoading = true;
-  fetch(src).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(list => { passportBooks = list.filter(b => b?.id && b.name); })
-    .catch(e => { console.error(e); passportBooks = { error: true }; })
-    .finally(() => { passportLoading = false; render(); });
-}
-
+// ---------- 교재 여권: 분야(groups)마다 한 쪽, 교재(books) 1권 = 동그라미 스탬프 1개 ----------
+// 분야 안의 교재 순서가 추천 순서. 잠그지 않음. 스탬프는 진행도에 'tb:교재id' 키로 저장 (✓만, ★ 없음)
 function passport(w) {
-  if (!passportBooks || passportBooks.error) {
-    if (!passportBooks) loadPassport(w.src);
-    return panel(w.title, passportBooks ? h('p', 'hint', '교재 목록을 불러오지 못했어요. ',
-      h('button', { class: 'btn small', onclick: () => { passportBooks = null; render(); } }, '다시 불러오기'), ' ',
-      h('a', { href: w.hub, target: '_blank', rel: 'noopener' }, 'HaLab Textbooks에서 보기 ↗'))
-      : h('p', 'hint', '교재 목록을 불러오는 중이에요…'));
-  }
-  const rank = s => { const i = w.stages.indexOf(s); return i < 0 ? w.stages.length : i; };
-  const label = new Map(w.groups);
   const stamped = b => !!prog(`tb:${b.id}`).check;
-  const groups = [...new Set([...label.keys(), ...passportBooks.map(b => b.group)])]
-    .map(g => [g, passportBooks.filter(b => b.group === g).sort((a, b) => rank(a.stage) - rank(b.stage))])
-    .filter(([, list]) => list.length);
-  return panel(`${w.title} · 스탬프 ${passportBooks.filter(stamped).length} / ${passportBooks.length}`,
-    h('div', 'passport', groups.map(([g, list]) => {
-      const next = list.find(b => !stamped(b));
-      return h('div', 'pp-group',
-        h('h3', null, label.get(g) || g, h('small', null, `${list.filter(stamped).length} / ${list.length}`)),
-        h('div', 'pp-books', list.map((b, i) => stampCard(w, b, i, list[i - 1], b === next, stamped))));
+  const all = w.groups.flatMap(g => g.books);
+  return panel(`${w.title} · 스탬프 ${all.filter(stamped).length} / ${all.length}`,
+    h('div', 'passport', w.groups.map(g => {
+      const next = g.books.find(b => !stamped(b));
+      return h('section', { class: 'pp-page', style: `--ink:${g.color}` },
+        h('h3', null, h('span', null, g.icon, ' ', g.label), h('small', null, `${g.books.filter(stamped).length} / ${g.books.length}`)),
+        h('div', 'pp-stamps', g.books.map((b, i) => [i ? h('span', 'arrow', '→') : null, stampSlot(g, b, i, g.books[i - 1], b === next, stamped)])),
+        h('p', 'pp-next', next ? ['다음 추천: ', h('b', null, next.name)] : '이 분야 도장을 모두 찍었어요 ✓'));
     })),
     w.band ? h('div', 'band', w.band) : null);
 }
 
-function stampCard(w, b, i, prev, isNext, stamped) {
-  const p = prog(`tb:${b.id}`), quest = w.inQuest?.[b.id];
-  const name = quest ? h('a', { href: `#/q/${quest}` }, b.name, ' ›')
-    : b.url ? h('a', { href: b.url, target: '_blank', rel: 'noopener' }, b.name, ' ↗') : b.name;
-  return h('div', `pp-book${p.check ? ' on' : ''}${isNext ? ' next' : ''}`,
-    h('div', 'pp-top', h('span', 'pp-num', i < 20 ? String.fromCharCode(0x2460 + i) : `${i + 1}.`), isNext ? h('span', 'chip', '다음 추천') : null),
-    h('b', 'pp-name', name),
-    quest ? h('small', null, 'HaLab Quest 안에서 해요') : !b.url ? h('small', null, '주소 확인 중') : b.desc ? h('small', 'pp-desc', b.desc) : null,
-    prev && !p.check && !stamped(prev) ? h('small', 'pp-before', `먼저 보면 좋아요: ${prev.name}`) : null,
-    h('button', { class: 'stamp', onclick: () => { setProg(`tb:${b.id}`, { check: p.check ? null : Date.now() }); toast(p.check ? '도장을 지웠어요' : `도장 쾅! 📘 ${b.name}`); render(); } },
-      p.check ? `📘 ${fmtDate(p.check)}` : '도장 찍기'));
+// 동그라미를 누르면 도장, 이름을 누르면 교재가 새 탭에서 열려요
+function stampSlot(g, b, i, prev, isNext, stamped) {
+  const p = prog(`tb:${b.id}`);
+  const tip = [b.desc, prev && !p.check && !stamped(prev) ? `먼저 보면 좋아요: ${prev.name}` : null].filter(Boolean).join('\n');
+  return h('div', 'pp-slot',
+    h('button', {
+      class: `pp-stamp${p.check ? ' on' : ''}${isNext ? ' next' : ''}`, style: p.check ? `--tilt:${i % 2 ? 7 : -9}deg` : null,
+      title: p.check ? `도장 지우기 (${fmtDate(p.check)})` : '도장 찍기', 'aria-label': `${b.name} ${p.check ? '도장 지우기' : '도장 찍기'}`,
+      onclick: () => { setProg(`tb:${b.id}`, { check: p.check ? null : Date.now() }); toast(p.check ? '도장을 지웠어요' : `도장 쾅! ${g.icon} ${b.name}`); render(); },
+    }, p.check ? g.icon : String.fromCharCode(0x2460 + i)),
+    h('a', { class: 'pp-name', href: b.url, target: '_blank', rel: 'noopener', title: tip || null }, b.name, ' ↗'),
+    p.check ? h('small', 'pp-date', fmtDate(p.check)) : null);
 }
 
 function figCards(w) {

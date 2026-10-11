@@ -39,7 +39,7 @@ HaLab 연구실 인턴 · 대학원생 온보딩용 쯔꾸르풍 웹 RPG예요. 
 - `flow` 흐름 — 칸마다 `icon` `label` `sub`, 눌러서 갈 곳 `url`(새 탭) 또는 `href`(게임 안), 나란한 두 길은 `{ "branch": [칸, 칸] }`
 - `figcards` Figure 순서 카드 (4장)
 - `lights` AI 신호등 — `lights: [{ color: green|yellow|red, label, items }]`
-- `passport` 교재 여권 — 교재 허브의 `textbooks.json`(`src`)을 그대로 읽어요. `groups` 분야 이름, `stages` 추천 순서, `inQuest` 게임 안에서 하는 교재(예: 오믹스 데이터 분석 환경 → 분석 스킬 트리)
+- `passport` 교재 여권 — `groups: [{ label, icon, color, books: [{ id, name, url, desc }] }]`. 분야 하나 = 여권 한 쪽, 교재 하나 = 동그라미 스탬프 하나. 적힌 순서가 추천 순서예요. 교재를 더하거나 빼려면 여기만 고쳐요 (`id`를 바꾸면 그 교재 도장 기록이 사라져요)
 
 `sections` 칸에 `missions: [{ text, ask, station }]`을 넣으면 판단 미션 카드가 돼요 (채점 없음). `station`은 `widget.steps`의 순서(0부터)이고, 그 칸의 `url`이 '교재에서 확인' 버튼이 돼요.
 **통계 실습실의 교재 주소는 `data/ch3.json` → `ch3-stats` → `widget.steps[].url`** 네 개예요. 새 기초통계 교재가 생기면 여기와 `links`만 바꾸면 돼요.

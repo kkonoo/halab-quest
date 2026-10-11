@@ -249,24 +249,23 @@ a.step:hover { border-color: var(--wood); background: #FFF8E6; }
 .light ul { margin: 8px 0 0; padding-left: 18px; }
 .light li { margin: 3px 0; line-height: 1.45; }
 
-/* 교재 여권 */
-.passport { display: grid; gap: 12px; }
-.pp-group h3 { margin: 0 0 6px; color: var(--navy); font-size: 1.05em; display: flex; gap: 8px; align-items: baseline; }
-.pp-group h3 small { color: var(--good); font-family: inherit; }
-.pp-books { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
-.pp-book { display: grid; gap: 4px; align-content: start; padding: 8px 10px; background: #FBF4E2; border: 2px solid var(--line); border-radius: 8px; }
-.pp-book.next { border-color: var(--accent); }
-.pp-book.on { background: #E5F1DF; border-color: #A9CFA0; }
-.pp-top { display: flex; justify-content: space-between; align-items: center; }
-.pp-num { font-size: 1.3em; color: var(--muted); }
-.pp-top .chip { background: var(--accent-soft); color: #8A2F2B; border-color: #D9A49B; }
-.pp-name a { color: var(--text); text-decoration: none; }
-.pp-name a:hover { text-decoration: underline; }
-.pp-book small { color: var(--muted); font-size: .82em; line-height: 1.35; }
-.pp-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.pp-before { color: #A87414 !important; }
-.stamp { margin-top: 2px; padding: 5px 8px; border: 2px dashed var(--faint); border-radius: 8px; background: none; color: var(--muted); cursor: pointer; font-family: var(--pixel); }
-.pp-book.on .stamp { border: 2px solid var(--good); color: var(--good); background: #fff; }
+/* 교재 여권: 분야마다 한 쪽, 교재마다 동그라미 스탬프 (--ink = 분야 색) */
+.passport { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 10px; }
+.pp-page { min-width: 0; display: grid; gap: 8px; align-content: start; padding: 10px 12px; background: #FBF4E2; border: 2px solid var(--line); border-top: 6px solid var(--ink); border-radius: 8px; }
+.pp-page h3 { margin: 0; display: flex; justify-content: space-between; align-items: baseline; color: var(--ink); font-size: 1.05em; }
+.pp-page h3 small { color: var(--muted); font-family: inherit; }
+.pp-stamps { display: flex; align-items: flex-start; gap: 2px; }
+.pp-stamps .arrow { margin-top: 20px; color: var(--faint); font-size: .85em; }
+.pp-slot { flex: 1 1 0; min-width: 0; display: grid; justify-items: center; gap: 4px; text-align: center; }
+.pp-stamp { width: 54px; height: 54px; border-radius: 50%; border: 3px dashed var(--faint); background: #FFFBF0; color: var(--muted); font-size: 22px; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.pp-stamp:hover { border-color: var(--ink); color: var(--ink); }
+.pp-stamp.next { border-color: var(--accent); color: var(--accent); }
+.pp-stamp.on { border: 5px double var(--ink); background: color-mix(in srgb, var(--ink) 14%, #FFFBF0); font-size: 26px; transform: rotate(var(--tilt, -8deg)); box-shadow: 0 0 0 2px color-mix(in srgb, var(--ink) 30%, transparent); }
+.pp-name { font-size: .82em; line-height: 1.3; color: var(--text); text-decoration: none; word-break: keep-all; }
+.pp-name:hover { text-decoration: underline; }
+.pp-date { font-size: .75em; color: var(--ink); }
+.pp-next { margin: 0; font-size: .85em; color: var(--muted); }
+.pp-next b { color: var(--accent); font-weight: normal; }
 
 /* 판단 미션 (상황 카드) */
 .missions { display: grid; gap: 8px; margin-top: 8px; }
@@ -355,7 +354,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   .checks { grid-template-columns: 1fr; }
   .lights { grid-template-columns: 1fr; }
   .q-prev .big-btn, .q-next .big-btn { font-size: calc(17px * var(--fs)); }
-  .pp-books { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .pp-stamp { width: 46px; height: 46px; font-size: 19px; }
   .portrait { width: 72px; }
   .bubble { max-width: 75%; font-size: .9em; }
 }
