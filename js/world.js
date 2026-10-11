@@ -29,15 +29,13 @@ function viewChapter(ch) {
   const firstTodo = ch.quests.find(q => !prog(q.id).check) || ch.quests[0];
   return h('div', `screen chapter c-${ch.id}`,
     h('div', { class: `scene chapter-scene${ch.bg ? ' has-bg' : ''}`, style: ch.bg ? `background-image:url(${ch.bg})` : null },
-      // 장소 이름이 퀘스트 이름과 다르면 '장소 / 번호. 퀘스트', 같거나 없으면 '번호. 퀘스트' 한 줄
+      // 이름표는 한 줄: '번호. 장소' (장소가 없으면 '번호. 퀘스트')
       // 퀘스트에 mapPos([가로%, 세로%])가 있으면 그림 속 건물 위에 이름표를 올림 (월드맵처럼), 없으면 위쪽에 나란히
-      h('div', `signs${ch.quests.some(q => q.mapPos) ? ' pinned' : ''}`, ch.quests.map((q, i) => {
-        const place = q.place && q.place !== q.title;
-        return h('a', { class: 'sign', href: `#/q/${q.id}`, style: q.mapPos ? `left:${q.mapPos[0]}%;top:${q.mapPos[1]}%` : null },
+      h('div', `signs${ch.quests.some(q => q.mapPos) ? ' pinned' : ''}`, ch.quests.map((q, i) =>
+        h('a', { class: 'sign', href: `#/q/${q.id}`, title: q.title, style: q.mapPos ? `left:${q.mapPos[0]}%;top:${q.mapPos[1]}%` : null },
           h('span', 'sign-icon', q.icon),
-          h('span', 'sign-text', h('b', null, place ? q.place : `${i + 1}. ${q.title}`), place ? h('small', null, `${i + 1}. ${q.title}`) : null),
-          prog(q.id).check ? h('span', 'sign-done', '✓') : null);
-      })),
+          h('b', 'sign-text', `${i + 1}. ${q.place || q.title}`),
+          prog(q.id).check ? h('span', 'sign-done', '✓') : null))),
       prev ? h('a', { class: 'way left', href: `#/ch/${prev.id}` }, `← ${prev.no}장. ${prev.title}`) : null,
       next ? h('a', { class: 'way right', href: `#/ch/${next.id}` }, `${next.no}장. ${next.title} →`) : null,
       h('div', 'walker', studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-walk.png', alt: '고양이' }))),
