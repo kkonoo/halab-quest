@@ -33,14 +33,24 @@ HaLab 연구실 인턴 · 대학원생 온보딩용 쯔꾸르풍 웹 RPG예요. 
 | `data/ch1.json` ~ `data/ch4.json` | 챕터 소개 · 퀘스트 목록 · 설명 · 정보 패널 · 핵심 UI · 자료 링크 · ✓/★ 문구 · 교수님 대사 |
 | `data/cards/*.md` | 게임 안 가이드 카드 (`## 1. 제목` 하나가 카드 한 장 = 퀘스트 메뉴 한 칸) |
 
-퀘스트 항목에서 쓰는 칸: `overview`(개요) · `sections` 또는 `cards`(메뉴 칸) · `info`(우측 정보 패널) · `widget`(`flow` 흐름 / `figcards` Figure 순서 카드) · `links`(`url` 바깥 링크 / `quest` 다른 퀘스트 / `note` 글만) · `warn` · `records`(발표 기록 종류) · `check` · `star` · `dialog` · `bubble` · `bg`(장면 그림 주소, 그림이 생기면).
+퀘스트 항목에서 쓰는 칸: `overview`(개요) · `sections` 또는 `cards`(메뉴 칸) · `info`(우측 정보 패널) · `widget`(아래) · `links`(`url` 바깥 링크 / `quest` 다른 퀘스트 / `href` 게임 안 주소 / `note` 글만) · `warn` · `records`(발표 기록 종류) · `check` · `star` · `noStar` · `dialog` · `bubble` · `face` · `pose` · `bg`(장면 그림 주소, 그림이 생기면).
+
+`widget` 종류:
+- `flow` 흐름 — 칸마다 `icon` `label` `sub`, 눌러서 갈 곳 `url`(새 탭) 또는 `href`(게임 안), 나란한 두 길은 `{ "branch": [칸, 칸] }`
+- `figcards` Figure 순서 카드 (4장)
+- `lights` AI 신호등 — `lights: [{ color: green|yellow|red, label, items }]`
+- `passport` 교재 여권 — 교재 허브의 `textbooks.json`(`src`)을 그대로 읽어요. `groups` 분야 이름, `stages` 추천 순서, `inQuest` 게임 안에서 하는 교재(예: 오믹스 데이터 분석 환경 → 분석 스킬 트리)
+
+`sections` 칸에 `missions: [{ text, ask, station }]`을 넣으면 판단 미션 카드가 돼요 (채점 없음). `station`은 `widget.steps`의 순서(0부터)이고, 그 칸의 `url`이 '교재에서 확인' 버튼이 돼요.
+**통계 실습실의 교재 주소는 `data/ch3.json` → `ch3-stats` → `widget.steps[].url`** 네 개예요. 새 기초통계 교재가 생기면 여기와 `links`만 바꾸면 돼요.
 
 ## 데이터는 어디에
 
 - 이 브라우저: IndexedDB `halab-quest` (안 되면 localStorage `halab-quest`)
 - 로그인하면 Firestore에 자동 동기화돼요. Firebase 프로젝트는 **Lab Manager와 같은 `lab-manager-knumed`** 예요 (랩 멤버 목록을 같이 쓰려고).
   - `quest/{학생 이메일}` 요약 (이름, 최근 활동)
-  - `quest/{학생 이메일}/rec/{키}` 기록 하나 = 문서 하나 (`p:` 진행도 · `r:` 발표 기록 · `c:` CV · `d:` 챕터 완료 · `f` Figure 카드 · `n` 이름)
+  - `quest/{학생 이메일}/rec/{키}` 기록 하나 = 문서 하나 (`p:` 진행도 · `r:` 발표 기록 · `c:` CV · `d:` 챕터 완료 · `s:` 낚시 원고 · `f` Figure 카드 · `n` 이름 · `a` 캐릭터)
+  - 교재 여권 스탬프는 진행도에 `p:tb:{교재 id}`로 들어가요 (퀘스트가 아니라서 ✓·★ 개수에는 안 세요)
   - `labs/{교수님 uid}` Lab Manager 랩 문서 — 여기서는 멤버 목록을 읽기만 해요
 - 보안 규칙: `firestore.rules` (Lab Manager 규칙 + quest 부분). 학생은 자기 기록만 읽고 쓰고, 교수님은 자기 랩 멤버의 기록을 읽기만 해요. Firebase 콘솔 → Firestore Database → 규칙에 **파일 전체**를 붙여 넣어요.
 - 로그아웃하면 이 기기에 남은 기록은 지워요 (계정에는 그대로 있어요). 연구실 공용 PC에서 다음 사람과 섞이지 않게요.

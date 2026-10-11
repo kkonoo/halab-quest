@@ -1,7 +1,7 @@
 'use strict';
 // 퀘스트 화면 하나로 모든 퀘스트를 그려요 (내용은 data/chN.json의 퀘스트 항목)
 // 칸: 좌측 메뉴 | 가운데 장면·읽기 카드 | 우측 정보 패널 + ✓·★
-//     핵심 UI(widget: flow · figcards)       | 자료 링크 또는 발표 기록
+//     핵심 UI(widget: flow · figcards · lights · passport) | 자료 링크 또는 발표 기록
 //     교수님 대화창                            | 다음 버튼
 
 const cardData = new Map(); // 카드 md 파일 → [{ title, md }] (다 읽으면 다시 그림)
@@ -37,7 +37,7 @@ function viewQuest(q, sec) {
       h('nav', null, secs.map((s, i) => h('a', { class: i === sec ? 'on' : null, href: `#/q/${q.id}/${i}` },
         s.overview ? '⚙️ ' : '', i && !s.records ? `${i}. ` : '', s.title))),
       h('a', { class: 'back', href: `#/ch/${ch.id}` }, `← ${ch.no}장 지도`)),
-    h('div', 'q-stage', secs[sec].overview ? stageScene(q) : secs[sec].records ? recordsFull(q) : readingCard(secs[sec])),
+    h('div', 'q-stage', secs[sec].overview ? stageScene(q) : secs[sec].records ? recordsFull(q) : readingCard(secs[sec], q)),
     h('div', 'q-info',
       q.info ? infoPanel(q.info) : null,
       checkBoxes(q)),
@@ -57,12 +57,21 @@ function stageScene(q) {
     h('div', { class: 'card overview', html: md(q.overview || '') }));
 }
 
-function readingCard(s) {
+function readingCard(s, q) {
   const card = h('div', { class: 'card reading', html: md(s.md) });
   if (s.show === 'figcards') {
     card.append(db.figcards.length
       ? h('ol', 'skeleton', db.figcards.map((f, i) => h('li', null, h('b', null, `Fig ${i + 1} 단락 · `), f.text)))
       : h('p', 'hint', '아직 Figure 순서 카드가 없어요. 1번 퀘스트에서 먼저 써보세요. ', h('a', { href: '#/q/ch4-storyboard' }, 'Figure 스토리보드 ›')));
+  }
+  // 판단 미션: 상황 카드만 보여 주고 채점하지 않음. '교재에서 확인'은 그 스테이션(widget.steps[station])의 교재로
+  if (s.missions) {
+    card.append(h('div', 'missions', s.missions.map((m, i) => {
+      const st = q.widget?.steps?.[m.station];
+      return h('div', 'mission',
+        h('b', null, `🃏 상황 ${i + 1}`), h('p', null, m.text), h('p', 'hint', m.ask),
+        st?.url ? h('a', { class: 'btn small', href: st.url, target: '_blank', rel: 'noopener' }, `교재에서 확인 · ${st.label} ↗`) : null);
+    })));
   }
   return card;
 }
@@ -98,13 +107,82 @@ function starForm(q) {
 // ---------- 핵심 UI ----------
 function widget(w) {
   if (w.type === 'figcards') return figCards(w);
+  if (w.type === 'lights') return lights(w);
+  if (w.type === 'passport') return passport(w);
   return panel(w.title,
     h('div', 'flow', w.steps.map((s, i) => [i ? h('span', 'arrow', '→') : null,
-      h('div', { class: `step${s.hl ? ' hl' : ''}` },
-        h('span', 'step-icon', s.icon), h('b', null, s.label), s.sub ? h('small', null, s.sub) : null,
-        s.done ? h('span', `mk ${prog(s.done).check ? 'ok' : 'empty'}`, prog(s.done).check ? '✓' : '○') : null,
-        s.tag ? h('a', { class: 'tag', href: `#/q/${s.done}` }, s.tag) : null)])),
+      s.branch ? h('div', 'branch', s.branch.map(flowStep)) : flowStep(s)])),
     w.band ? h('div', 'band', w.band) : null);
+}
+
+// 흐름 한 칸. url = 바깥 자료(새 탭), href = 게임 안 주소. branch = 나란한 두 길(세로로 쌓음)
+function flowStep(s) {
+  const kids = [h('span', 'step-icon', s.icon), h('b', null, s.label), s.sub ? h('small', null, s.sub) : null,
+    s.done ? h('span', `mk ${prog(s.done).check ? 'ok' : 'empty'}`, prog(s.done).check ? '✓' : '○') : null,
+    s.tag ? h('a', { class: 'tag', href: `#/q/${s.done}` }, s.tag) : null];
+  const cls = `step${s.hl ? ' hl' : ''}`;
+  if (s.url) return h('a', { class: cls, href: s.url, target: '_blank', rel: 'noopener' }, kids);
+  if (s.href) return h('a', { class: cls, href: s.href }, kids);
+  return h('div', cls, kids);
+}
+
+// AI 신호등: lights = [{ color: green|yellow|red, label, items }]
+function lights(w) {
+  return panel(w.title,
+    h('div', 'lights', w.lights.map(l => h('div', `light ${l.color}`,
+      h('div', 'lamp-head', h('span', 'lamp'), h('b', null, l.label)),
+      h('ul', null, l.items.map(t => h('li', null, t)))))),
+    w.band ? h('div', 'band', w.band) : null);
+}
+
+// ---------- 교재 여권: 교재 허브의 textbooks.json(w.src)을 그대로 읽어 와요 ----------
+// 교재 1권 = 스탬프 1개 → 진행도에 'tb:교재id' 키로 저장 (✓만, ★ 없음)
+// 분야(group) 안에서 단계(stage) 순서 → 같은 단계는 json 순서가 추천 순서. 잠그지 않음
+let passportBooks = null, passportLoading = false; // null: 아직, 배열: 교재 목록, { error }: 못 읽음
+function loadPassport(src) {
+  if (passportLoading) return;
+  passportLoading = true;
+  fetch(src).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(list => { passportBooks = list.filter(b => b?.id && b.name); })
+    .catch(e => { console.error(e); passportBooks = { error: true }; })
+    .finally(() => { passportLoading = false; render(); });
+}
+
+function passport(w) {
+  if (!passportBooks || passportBooks.error) {
+    if (!passportBooks) loadPassport(w.src);
+    return panel(w.title, passportBooks ? h('p', 'hint', '교재 목록을 불러오지 못했어요. ',
+      h('button', { class: 'btn small', onclick: () => { passportBooks = null; render(); } }, '다시 불러오기'), ' ',
+      h('a', { href: w.hub, target: '_blank', rel: 'noopener' }, 'HaLab Textbooks에서 보기 ↗'))
+      : h('p', 'hint', '교재 목록을 불러오는 중이에요…'));
+  }
+  const rank = s => { const i = w.stages.indexOf(s); return i < 0 ? w.stages.length : i; };
+  const label = new Map(w.groups);
+  const stamped = b => !!prog(`tb:${b.id}`).check;
+  const groups = [...new Set([...label.keys(), ...passportBooks.map(b => b.group)])]
+    .map(g => [g, passportBooks.filter(b => b.group === g).sort((a, b) => rank(a.stage) - rank(b.stage))])
+    .filter(([, list]) => list.length);
+  return panel(`${w.title} · 스탬프 ${passportBooks.filter(stamped).length} / ${passportBooks.length}`,
+    h('div', 'passport', groups.map(([g, list]) => {
+      const next = list.find(b => !stamped(b));
+      return h('div', 'pp-group',
+        h('h3', null, label.get(g) || g, h('small', null, `${list.filter(stamped).length} / ${list.length}`)),
+        h('div', 'pp-books', list.map((b, i) => stampCard(w, b, i, list[i - 1], b === next, stamped))));
+    })),
+    w.band ? h('div', 'band', w.band) : null);
+}
+
+function stampCard(w, b, i, prev, isNext, stamped) {
+  const p = prog(`tb:${b.id}`), quest = w.inQuest?.[b.id];
+  const name = quest ? h('a', { href: `#/q/${quest}` }, b.name, ' ›')
+    : b.url ? h('a', { href: b.url, target: '_blank', rel: 'noopener' }, b.name, ' ↗') : b.name;
+  return h('div', `pp-book${p.check ? ' on' : ''}${isNext ? ' next' : ''}`,
+    h('div', 'pp-top', h('span', 'pp-num', i < 20 ? String.fromCharCode(0x2460 + i) : `${i + 1}.`), isNext ? h('span', 'chip', '다음 추천') : null),
+    h('b', 'pp-name', name),
+    quest ? h('small', null, 'HaLab Quest 안에서 해요') : !b.url ? h('small', null, '주소 확인 중') : b.desc ? h('small', 'pp-desc', b.desc) : null,
+    prev && !p.check && !stamped(prev) ? h('small', 'pp-before', `먼저 보면 좋아요: ${prev.name}`) : null,
+    h('button', { class: 'stamp', onclick: () => { setProg(`tb:${b.id}`, { check: p.check ? null : Date.now() }); toast(p.check ? '도장을 지웠어요' : `도장 쾅! 📘 ${b.name}`); render(); } },
+      p.check ? `📘 ${fmtDate(p.check)}` : '도장 찍기'));
 }
 
 function figCards(w) {

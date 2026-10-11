@@ -6,7 +6,7 @@
   "icon": "🏘️",
   "region": "연구하기",
   "mapPos": [30, 79],
-  "ready": false,
+  "ready": true,
   "intro": [
     "드디어 3장, 실험실 마을에 도착했어요!",
     "이제 실제 연구를 수행해보는 단계예요.",
@@ -18,6 +18,7 @@
     "sub": "실제 연구를 해내는 힘을 길렀어요.",
     "badge": "실험실 마을 수료 배지",
     "badgeIcon": "⚗️",
+    "stamps": true,
     "lines": [
       "3장에서는 연구를 직접 해보는 힘을 길렀어요.",
       "못 끝낸 퀘스트는 언제든 다시 와도 돼요.",
@@ -31,38 +32,291 @@
       "title": "교재 여권",
       "icon": "📘",
       "place": "교재 여권 센터",
-      "overview": "연구실 교재 전체 지도예요. 교재 1권을 공부하면 스탬프 1개를 받아요.\n\n교재 여권 화면(교재 허브 목록을 그대로 읽어 오는 스탬프 화면)은 곧 만들어요.",
-      "links": [{ "label": "HaLab Textbooks", "url": "https://kkonoo.github.io/halab-textbooks/" }],
-      "noStar": true
+      "face": "smile",
+      "pose": "front",
+      "bubble": "한 권을 끝내면 도장 하나. 순서는 추천일 뿐이에요.",
+      "dialog": [
+        "교재마다 분야 안에서 쉬운 것부터 번호를 붙여 두었어요.",
+        "다음 추천부터 시작해도 되고, 지금 필요한 교재부터 펼쳐도 돼요.",
+        "한 권을 공부했다면 도장을 찍어 두세요."
+      ],
+      "overview": "**목적** 연구실 교재 전체 지도예요. 교재 1권을 공부하면 스탬프 1개를 받아요.\n\n**할 일**\n- 분야마다 ①부터 추천 순서로 공부하기 (잠기지 않아요)\n- 한 권을 끝내면 아래 여권에 도장 찍기\n\n교재 목록은 [HaLab Textbooks](https://kkonoo.github.io/halab-textbooks/)를 그대로 읽어 와요. 교재가 늘면 여권에도 바로 생겨요.",
+      "info": {
+        "title": "교재 여권 쓰는 법",
+        "rows": [
+          ["①②③", "분야 안의 추천 순서 (잠기지 않아요)"],
+          ["다음 추천", "아직 도장이 없는 첫 교재"],
+          ["📘", "한 권을 공부하면 도장 찍기"]
+        ],
+        "note": "통계 실습실의 체크와는 따로 세요"
+      },
+      "widget": {
+        "type": "passport",
+        "title": "교재 여권",
+        "src": "https://kkonoo.github.io/halab-textbooks/data/textbooks.json",
+        "hub": "https://kkonoo.github.io/halab-textbooks/",
+        "groups": [["general", "기초 · 공통"], ["Biology", "생명과학"], ["Statistics", "통계"], ["CS", "컴퓨터 · AI"], ["BI", "생물정보 수업"]],
+        "stages": ["pre-HaLab", "HaLab 1", "HaLab 2", "HaLab 3", "HaLab 4", "Course", "LLM-wiki"],
+        "inQuest": { "omics-env": "ch3-skills" },
+        "band": "교재 질문은 Slack #help-study에 챕터 링크와 함께"
+      },
+      "links": [
+        { "label": "HaLab Textbooks", "url": "https://kkonoo.github.io/halab-textbooks/" },
+        { "label": "3장 분석 스킬 트리", "quest": "ch3-skills" },
+        { "label": "3장 통계 실습실", "quest": "ch3-stats" }
+      ],
+      "noStar": true,
+      "check": "교재 한 권을 공부하고 여권에 도장을 찍어봤다면 체크해보세요!"
     },
     {
       "id": "ch3-skills",
       "title": "분석 스킬 트리",
       "icon": "📊",
       "place": "분석 스킬 트리관",
-      "overview": "Lv.1 Linux → Lv.2 R/Python → Lv.3 데이터 조작 → Lv.5 분석 실습·검증. R과 Python은 나란한 두 길이에요.\n\n내용은 곧 채워요.",
-      "links": [{ "label": "HaLab Textbooks", "url": "https://kkonoo.github.io/halab-textbooks/" }]
+      "bubble": "처음부터 혼자 짜지 않아도 돼요. 읽고 고칠 수 있으면 충분해요.",
+      "dialog": [
+        "분석은 Linux에서 시작해요. 서버에 접속해서 폴더를 오가는 것부터 해봐요.",
+        "R과 Python은 둘 중 하나를 먼저 골라도 돼요. 나중에 다른 길도 걸어 보면 좋아요.",
+        "막히면 #help-study에 교재 챕터 링크와 함께 물어봐요."
+      ],
+      "overview": "**목적** 데이터 분석에 필요한 기본기를 레벨 순서로 익혀요. 신입생 첫 1개월 입문 교육(Linux, R/Python)이 여기예요.\n\n**할 일**\n- 레벨마다 자료를 읽고 따라 해보기\n- 막힌 곳은 Slack #help-study에 질문하기\n\nR과 Python은 나란한 두 길이에요. Lv.4 통계는 [3. 통계 실습실](#/q/ch3-stats)에서 따로 익혀요.\n\n교재 허브의 \"오믹스 데이터 분석 환경 익히기\"가 이 퀘스트로 들어왔어요.",
+      "sections": [
+        {
+          "title": "Lv.1 Linux",
+          "md": "**목표** 연구실 분석 서버에 접속하고, 터미널에서 폴더를 오가고, 프로그램을 불러와 쓸 수 있어요.\n\n**따라 하기** Lab manual의 **오믹스 분석 서버 매뉴얼** — 처음이라면 1 → 2 → 3만\n- 계정 · 접속 (접속 정보는 관리자에게 받아요)\n- 터미널 기본: `pwd` `ls` `cd` `mkdir` `cp` `mv` `head` `less`\n- 프로그램 불러오기(module), 오래 걸리는 작업(tmux), 가상환경\n- 공용 규칙: 큰 파일은 정해진 작업 폴더에, 다른 사람의 파일 · 작업은 건드리지 않기\n\n> 서버 주소 · 계정은 이 화면에 적지 않아요. Lab manual에서 확인해요.\n\n**다 했다면** 서버에 접속해서 Lab manual의 폴더 구조대로 내 프로젝트 폴더를 만들고, 프로그램 하나의 버전을 확인해 분석 노트에 적어 봐요."
+        },
+        {
+          "title": "Lv.2 R · Python",
+          "md": "**목표** 데이터를 불러오고, 자료형을 구분하고, 조건으로 고르고, 간단한 함수를 써요.\n\n**R 길** RNA-seq analysis 교재 **W2 R 기초**\n- 자료형 · 벡터 · factor · data.frame · list\n- 인덱싱, 조건으로 고르기, 정렬\n- 반복문과 함수 기초\n\n**Python 길** 서버의 Jupyter Hub에서 Python 커널로 시작해요 (Lab manual 서버 매뉴얼 3-3). Python 기초 자료는 준비 중이에요.\n\n> 우리 연구실 기준: 처음부터 끝까지 혼자 짜지 못해도 괜찮아요. 코드를 읽고 필요한 부분을 고칠 수 있으면 돼요.\n\n**다 했다면** 작은 표 하나를 불러와서 원하는 행만 골라 저장해 봐요."
+        },
+        {
+          "title": "Lv.3 데이터 조작",
+          "md": "**목표** 지저분한 표를 분석할 수 있는 모양으로 정리하고, 합치고, 간단한 그림으로 확인해요.\n\n**R 길** RNA-seq analysis 교재 **W3 데이터 정리와 시각화**\n- tidyverse, tibble, 파이프(`|>` · `%>%`)\n- dplyr: 고르기 · 거르기 · 새 열 · 묶어서 요약\n- 표 합치기(join)와 모양 바꾸기(long ↔ wide)\n- ggplot2로 빠르게 그려 보기\n\n**Python 길** pandas로 같은 일을 해요. 자료는 준비 중이에요.\n\n**다 했다면** 시료 정보 표와 발현 표를 시료 이름으로 합쳐서, 그룹별 평균을 구해 봐요."
+        },
+        {
+          "title": "Lv.4 통계",
+          "md": "통계는 따로 **[3. 통계 실습실](#/q/ch3-stats)**에서 익혀요.\n\n가설검정 기초 · 회귀분석 · 고차원 데이터(PCA · 배치 효과) · 결과 검증(다중검정 · FDR · 검정력), 네 스테이션이 있어요."
+        },
+        {
+          "title": "Lv.5 분석 실습 · 검증",
+          "md": "**목표** 공개 데이터로 분석을 한 바퀴(데이터 받기 → 전처리 · QC → 탐색 → 분석 → 해석) 돌려 보고, 결과가 맞는지 스스로 확인해요.\n\n**실습**\n- bulk RNA-seq: RNA-seq analysis 교재 W4–W10\n- 단일세포 · 공간전사체 · GWAS 등: advanced BI for clinical studies의 해당 주차, HaLab Wiki\n\n**검증 체크**\n- [ ] 같은 코드를 처음부터 다시 돌려도 같은 결과가 나오나요?\n- [ ] 단계마다 시료 수 · 유전자 수가 예상과 맞나요?\n- [ ] PCA에서 그룹보다 배치(실험 날짜 등)로 먼저 나뉘지 않나요?\n- [ ] 잘 알려진 유전자가 예상한 방향으로 나오나요?\n- [ ] 패키지 버전과 주요 설정을 분석 노트에 적었나요?\n\n> \"실행됐다\"는 \"맞다\"가 아니에요. 검증 방법은 advanced BI 교재 W2(스크립트 · AI · 재현성)에 자세히 있어요.\n\n**다 했다면** 결과 그림 하나를 [Figure 제작소](#/q/ch3-figure)로 가져가요."
+        }
+      ],
+      "info": {
+        "title": "우리 연구실 기준",
+        "rows": [
+          ["못해도 괜찮아요", "처음부터 끝까지 혼자 짜기"],
+          ["꼭 해요", "코드를 이해하고 필요한 부분 고치기"],
+          ["질문", "Slack #help-study (교재 챕터 링크와 함께)"]
+        ],
+        "note": "서버 주소 · 계정은 Lab manual에서"
+      },
+      "widget": {
+        "type": "flow",
+        "title": "분석 스킬 트리",
+        "steps": [
+          { "icon": "🐧", "label": "Lv.1 Linux", "sub": "서버 · 터미널", "href": "#/q/ch3-skills/1" },
+          { "branch": [
+            { "icon": "📘", "label": "Lv.2 R", "sub": "RStudio · Jupyter", "href": "#/q/ch3-skills/2" },
+            { "icon": "🐍", "label": "Lv.2 Python", "sub": "Jupyter", "href": "#/q/ch3-skills/2" }
+          ] },
+          { "icon": "🧮", "label": "Lv.3 데이터 조작", "sub": "정리 · 합치기 · 그림", "href": "#/q/ch3-skills/3" },
+          { "icon": "∑", "label": "Lv.4 통계", "sub": "3. 통계 실습실", "href": "#/q/ch3-stats" },
+          { "icon": "🔬", "label": "Lv.5 분석 실습 · 검증", "sub": "한 바퀴 돌리기 · 확인", "href": "#/q/ch3-skills/5" }
+        ],
+        "band": "R과 Python은 나란한 두 길. 하나를 먼저 골라도 돼요"
+      },
+      "links": [
+        { "label": "Lv.1 · Lab manual 오믹스 분석 서버 매뉴얼", "url": "https://app.notion.com/p/3d76f5e0b4f9811ea521d772f76192fe" },
+        { "label": "Lv.2 R · RNA-seq analysis W2 R 기초", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part1/W2_rbasics.html" },
+        { "label": "Lv.2 Python 기초 자료", "note": "준비 중" },
+        { "label": "Lv.3 · RNA-seq analysis W3 데이터 정리와 시각화", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part1/W3_wrangling.html" },
+        { "label": "Lv.5 · RNA-seq analysis", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/" },
+        { "label": "Lv.5 · advanced BI for clinical studies", "url": "https://kkonoo.github.io/advanced_BI_for_MD_PhD_KNUmed/" },
+        { "label": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr/" }
+      ],
+      "check": "레벨 하나를 자료로 공부하고 따라 해봤다면 체크해보세요!",
+      "star": "내 프로젝트 데이터 분석에 직접 써봤다면 기록해보세요."
     },
     {
       "id": "ch3-stats",
       "title": "통계 실습실",
       "icon": "∑",
       "place": "통계 실습실",
-      "overview": "스테이션 4개: 가설검정 기초 / 회귀분석 / 고차원 데이터(PCA·배치 효과) / 결과 검증(다중검정·FDR·검정력).\n\n내용은 곧 채워요."
+      "bubble": "검정 이름보다 데이터 구조를 먼저 봐요.",
+      "dialog": [
+        "수식 증명은 못해도 괜찮아요. 개념의 의미를 아는 게 중요해요.",
+        "스테이션 순서대로 가도 되고, 지금 필요한 곳부터 가도 돼요.",
+        "헷갈리면 분석하기 전에 랩미팅에서 한 번 확인받아요."
+      ],
+      "overview": "**목적** 연구에 꼭 필요한 통계 개념을 네 스테이션에서 익혀요.\n\n**할 일**\n- 스테이션마다 교재를 읽고 예제를 따라 해보기\n- (선택) 판단 미션: 상황 카드를 보고 무엇을 확인해야 할지 생각해보기\n\n기초통계 교재는 새로 만들고 있어요. 완성되면 스테이션마다 그 교재로 연결해요.",
+      "sections": [
+        {
+          "title": "가설검정 기초",
+          "md": "**이 스테이션에서 알게 될 것**\n- p 값이 말해 주는 것과 말해 주지 않는 것\n- 효과 크기와 95% 신뢰구간을 같이 보는 이유\n- 검정을 고르기 전에 정할 세 가지: 결과 변수의 종류 · 비교 구조(독립 / 짝) · **n은 무엇인가**\n- t-test · Mann–Whitney · ANOVA + 사후검정 · chi-square / Fisher\n\n**따라 해보기** 두 그룹 데이터로 t-test를 하고, p 값 · 평균 차이 · 95% CI를 같이 적어 봐요.\n\n교재는 위 **통계 스테이션**의 첫 칸을 눌러 열어요."
+        },
+        {
+          "title": "회귀분석",
+          "md": "**이 스테이션에서 알게 될 것**\n- 단순 · 다중 회귀: 계수 β가 뜻하는 것\n- 다른 변수(나이 · 성별 · 배치)를 보정한다는 것\n- 잔차로 가정 확인하기\n- 로지스틱 회귀 (있다 / 없다 결과)\n- t-test · ANOVA도, DESeq2도 회귀 모형이라는 것\n\n**따라 해보기** 나이를 보정하기 전과 후의 그룹 효과를 비교해 봐요."
+        },
+        {
+          "title": "고차원 데이터",
+          "md": "**이 스테이션에서 알게 될 것**\n- 유전자 수천 개 × 시료 수십 개: 변수가 시료보다 많을 때 생기는 일\n- PCA: 축의 설명 분산 %, 탐색용이지 검정이 아니에요\n- UMAP · t-SNE는 시각화용. 거리와 cluster 크기를 그대로 믿지 않기\n- **배치 효과**: PCA에서 그룹보다 배치로 먼저 나뉘는지 확인하기. 보정보다 설계(배치와 그룹을 섞기)가 먼저\n\n**따라 해보기** 발현 데이터로 PCA를 그리고, 그룹과 배치로 각각 색칠해 봐요."
+        },
+        {
+          "title": "결과 검증",
+          "md": "**이 스테이션에서 알게 될 것**\n- 다중검정: 2만 개를 검정하면 우연히 p < 0.05가 1,000개\n- 보정: Bonferroni · Holm · FDR(Benjamini–Hochberg), padj 읽기\n- 검정력과 표본 수: n = 3은 관례일 뿐 근거가 아니에요\n- 생물학적 반복 vs 기술적 반복\n\n**따라 해보기** DEG 결과표에서 p 값과 padj로 각각 걸렀을 때 유전자 수를 비교해 봐요."
+        },
+        {
+          "title": "심화 (선택)",
+          "md": "**선형대수** — PCA · SVD가 왜 그렇게 동작하는지, 벡터에서 SVD까지\n\n**베이지안 통계** — 사전 지식을 결과에 넣는 방법, fine-mapping 같은 유전체 분석\n\n둘 다 HaLab Textbooks의 통계 교재예요. 스테이션 네 개를 지나고 더 알고 싶을 때 펼쳐요."
+        },
+        {
+          "title": "판단 미션 (선택)",
+          "md": "상황 카드를 읽고 무엇이 문제일지, 무엇을 더 확인해야 할지 생각해 봐요. 채점은 없어요. 생각이 정리되면 교재에서 확인해요.",
+          "missions": [
+            { "text": "세 그룹(대조 · 저용량 · 고용량)을 비교하려고 t-test를 세 번 했어요.", "ask": "이대로 괜찮을까요? 어떤 검정이 더 맞을까요?", "station": 0 },
+            { "text": "같은 시료를 3웰에 나눠 측정하고 n = 3이라고 적었어요.", "ask": "여기서 n은 무엇일까요?", "station": 3 },
+            { "text": "환자군이 대조군보다 평균 10살 많아요. 그래도 그룹 차이를 말하고 싶어요.", "ask": "나이의 영향을 어떻게 떼어 낼 수 있을까요?", "station": 1 },
+            { "text": "PCA를 그렸더니 시료가 그룹이 아니라 실험한 날짜별로 나뉘었어요.", "ask": "무엇을 의심해야 할까요? 다음 실험은 어떻게 설계할까요?", "station": 2 },
+            { "text": "유전자 2만 개를 검정해서 p < 0.05인 유전자 1,000개를 찾았어요.", "ask": "이 1,000개를 다 믿어도 될까요?", "station": 3 },
+            { "text": "UMAP에서 두 cluster가 멀리 떨어져 있어서, 아주 다른 세포라고 썼어요.", "ask": "UMAP의 거리로 말할 수 있는 것은 어디까지일까요?", "station": 2 }
+          ]
+        }
+      ],
+      "info": {
+        "title": "우리 연구실 기준",
+        "rows": [
+          ["못해도 괜찮아요", "수식 증명"],
+          ["꼭 해요", "개념의 의미 이해"],
+          ["분석 전에", "검정을 정하고 랩미팅에서 확인받기"]
+        ]
+      },
+      "widget": {
+        "type": "flow",
+        "title": "통계 스테이션",
+        "steps": [
+          { "icon": "🎯", "label": "가설검정 기초", "sub": "p 값 · 효과 크기", "url": "https://chaek.org/books/basic-stats-omics-labs/README" },
+          { "icon": "📈", "label": "회귀분석", "sub": "보정 · 잔차", "url": "https://kkonoo.github.io/3_linear_regression/" },
+          { "icon": "🧬", "label": "고차원 데이터", "sub": "PCA · 배치 효과", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part2/W6_EDA.html" },
+          { "icon": "✅", "label": "결과 검증", "sub": "다중검정 · FDR · 검정력", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" }
+        ],
+        "band": "심화(선택): 선형대수 · 베이지안"
+      },
+      "links": [
+        { "label": "기초통계 교재 (새 교재)", "note": "만드는 중" },
+        { "label": "Lab Manager · 통계 검정 · plot 매칭표", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" },
+        { "label": "Basic statistics", "url": "https://chaek.org/books/basic-stats-omics-labs/README" },
+        { "label": "Linear regression", "url": "https://kkonoo.github.io/3_linear_regression/" },
+        { "label": "RNA-seq analysis · W6 탐색적 데이터 분석", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part2/W6_EDA.html" },
+        { "label": "BI for BioMedical Scientists · W4 전사체학", "url": "https://kkonoo.github.io/BI_for_Biomed_KNUmed/ko/chapters/w4_transcriptomics.html" },
+        { "label": "심화 · Linear algebra", "url": "https://kkonoo.github.io/2_linear_algebra/" },
+        { "label": "심화 · Bayesian statistics", "url": "https://kkonoo.github.io/4_Bayes/" }
+      ],
+      "check": "스테이션 하나를 교재로 공부하고 예제를 따라 해봤다면 체크해보세요!",
+      "star": "내 데이터 분석에서 통계 방법을 직접 골라 써봤다면 기록해보세요."
     },
     {
       "id": "ch3-methods",
       "title": "Methods 해부하기",
       "icon": "⚗️",
       "place": "Methods 공방",
-      "overview": "논문 속 연구 설계를 Why & What으로 읽어요. 여기서 쓴 분석 노트는 발표 연습실의 Journal club 뼈대로도 써요.\n\n내용은 곧 채워요."
+      "bubble": "무엇을 했는지보다 왜 그렇게 했는지를 먼저 찾아요.",
+      "dialog": [
+        "Methods는 가장 덜 읽히지만, 분석하는 사람에게는 가장 중요한 부분이에요.",
+        "단계마다 What(무엇을)과 Why(왜)를 한 줄씩 적어 봐요.",
+        "그 노트가 그대로 Journal club 발표의 뼈대가 돼요."
+      ],
+      "overview": "**목적** 논문 속 연구 설계와 분석 과정을 Why & What으로 읽어요.\n\n**할 일**\n- 논문 하나(1장에서 고른 논문이나 JC 논문)의 Methods를 단계로 나누기\n- 단계마다 What · Why를 한 줄씩 쓰기\n- 이 분석 노트를 Journal club 발표 뼈대로 쓰기\n\n내 Methods를 쓰는 법은 [4장 논문 원고 쓰기](#/q/ch4-manuscript)에서 다뤄요.",
+      "sections": [
+        {
+          "title": "Study design 먼저",
+          "md": "Methods를 읽기 전에 **연구 설계**부터 잡아요. 보통 Figure 1A에 있어요.\n\n- **질문** 이 논문이 답하려는 질문은 한 문장으로 무엇인가요?\n- **시료** 누구(사람 · 동물 · 세포), 몇 명, 어떤 조직 · 세포\n- **데이터** 어떤 종류(RNA-seq, 단일세포, 유전형 …), 언제 얻었나\n- **비교 구조** 그룹 몇 개, 독립인가 짝인가, 시간 경과인가\n- **대조군** 무엇과 비교했나\n\n> 질문과 설계가 맞는지가 첫 번째 확인이에요. 설계가 질문에 답할 수 없으면 분석이 아무리 좋아도 소용없어요."
+        },
+        {
+          "title": "Why & What 노트",
+          "md": "분석 단계마다 한 줄씩 적어요.\n\n| 단계 | What (무엇을) | Why (왜) |\n|---|---|---|\n| 시료 · 데이터 | 어떤 시료 · 코호트, n | 이 질문에 왜 이 시료 |\n| 전처리 · QC | 도구 · 거른 기준(숫자) | 무엇을 걸러내려고 |\n| 분석 | 방법 · 도구 · 버전 · 주요 설정 | 왜 이 방법 (다른 방법 대신) |\n| 통계 | 검정 · 보정 · n의 정의 | 데이터 구조에 맞나 |\n| 검증 | 독립 코호트 · 다른 방법 · 실험 | 결과를 어떻게 믿게 했나 |\n\n- Why가 논문에 안 쓰여 있으면 **?**로 남겨 두고, HaLab Wiki · 교재에서 찾아봐요.\n- 끝까지 남은 **?**는 Journal club의 토론 질문이 돼요.\n- 모르는 분석 방법은 공부해서 문서로 남겨요 (Lab manual: Lab-wiki)."
+        },
+        {
+          "title": "따라 할 수 있나요?",
+          "md": "다른 사람이 이 Methods만 보고 같은 분석을 할 수 있는지 확인해요.\n\n- [ ] 데이터 공개 번호 (GEO · SRA 등)\n- [ ] 소프트웨어 이름 · 버전 · 주요 설정\n- [ ] 필터 · QC 기준 숫자\n- [ ] 통계 검정 · 다중검정 보정 · n의 정의\n- [ ] 코드 공개 (GitHub 등)\n\n빠진 것이 있으면 이 논문의 한계 후보예요.\n\n> 내 Methods를 쓸 때는 이 목록을 다 채워요 → [4장 논문 원고 쓰기](#/q/ch4-manuscript)"
+        },
+        {
+          "title": "JC 뼈대로 쓰기",
+          "md": "분석 노트를 그대로 [Journal club](#/q/ch3-present/3) 순서에 옮겨요.\n\n| Journal club 순서 | 노트에서 가져올 것 |\n|---|---|\n| 1. 배경 · 질문 | Study design의 질문 |\n| 2. Study design | 시료 · 데이터 · 비교 구조 |\n| 3. 결과 + 방법 | 결과마다 그 분석의 What · Why |\n| 4. 한계 · 열린 질문 | 끝까지 남은 ? , 따라 할 수 없는 부분 |\n| 5. 우리 연구와 연결 | 내 분석에 가져올 방법 · 토론 질문 2~3개 |"
+        }
+      ],
+      "info": {
+        "title": "분석 노트 한 줄",
+        "rows": [
+          ["What", "무엇을 · 어떤 도구 · 어떤 설정"],
+          ["Why", "왜 이 방법 · 무엇을 확인하려고"],
+          ["?", "모르는 것은 남겨 두기 → JC 토론 질문"]
+        ],
+        "note": "모르는 분석 방법은 공부해서 문서로 남겨요"
+      },
+      "widget": {
+        "type": "flow",
+        "title": "Methods 해부 순서",
+        "steps": [
+          { "icon": "❓", "label": "질문" },
+          { "icon": "🗺️", "label": "Study design", "sub": "시료 · 비교 구조" },
+          { "icon": "🧹", "label": "데이터 · QC" },
+          { "icon": "🔬", "label": "분석", "sub": "도구 · 설정" },
+          { "icon": "∑", "label": "통계", "sub": "검정 · 보정" },
+          { "icon": "✅", "label": "검증" }
+        ],
+        "band": "단계마다 What · Why 한 줄 → Journal club 뼈대"
+      },
+      "links": [
+        { "label": "1장 논문 탐험", "quest": "ch1-papers" },
+        { "label": "Lab Manager · 공부 · AI 활용 (논문 읽기 3단계)", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/study-ai.md" },
+        { "label": "Lab Manager · 통계 검정 · plot 매칭표", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" },
+        { "label": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr/" },
+        { "label": "3장 발표 연습실 · Journal club", "href": "#/q/ch3-present/3" }
+      ],
+      "check": "논문 하나의 Methods를 Why & What으로 정리해봤다면 체크해보세요!",
+      "star": "분석 노트를 Journal club 발표나 내 분석에 써봤다면 기록해보세요."
     },
     {
       "id": "ch3-figure",
       "title": "Figure 제작소",
       "icon": "🎨",
       "place": "Figure 제작소",
-      "overview": "결과 하나를 Figure 하나로 전달해요. 핵심은 \"코드에서 정하기(알맹이)\"와 \"HaLab Plots에서 다듬기(글씨·점 크기·색)\"의 구분이에요.\n\n가이드 카드는 곧 채워요.",
+      "bubble": "그리기 전에 결론부터 한 문장으로 써요.",
+      "dialog": [
+        "그림은 결과 하나를 한눈에 보여주는 도구예요.",
+        "내용은 코드에서 정하고, 글씨 · 점 크기 · 색은 HaLab Plots에서 다듬어요.",
+        "이렇게 나눠 두면 공동연구팀과 그림을 주고받기도 편해요."
+      ],
+      "overview": "**목적** 결과 하나를 Figure 하나로 전달해요.\n\n**할 일**\n- 가이드 5단계를 따라 예시 데이터로 그림 하나 그려보기\n- 알맹이(데이터 · 그래프 · 축 · 통계)는 코드에서, 보기(글씨 · 점 크기 · 색)는 HaLab Plots에서\n\n논문 전체 그림의 순서와 저널 규격은 [4장 Figure 스토리보드](#/q/ch4-storyboard)에서 다뤄요.",
+      "cards": "ch3-figure.md",
+      "info": {
+        "title": "어디서 고칠까",
+        "rows": [
+          ["코드", "데이터 · 그래프 종류 · 축 · 통계 표시"],
+          ["HaLab Plots", "글씨 크기 · 점 크기 · 색"]
+        ],
+        "note": "내용이 바뀌는 수정은 꼭 코드에서"
+      },
+      "widget": {
+        "type": "flow",
+        "title": "Figure 만들기 5단계",
+        "steps": [
+          { "icon": "💬", "label": "메시지 정하기", "href": "#/q/ch3-figure/1" },
+          { "icon": "📊", "label": "그래프 고르기", "href": "#/q/ch3-figure/2" },
+          { "icon": "🧩", "label": "데이터 배치", "href": "#/q/ch3-figure/3" },
+          { "icon": "📏", "label": "축과 통계 표시", "href": "#/q/ch3-figure/4" },
+          { "icon": "🎨", "label": "HaLab Plots로 다듬기", "href": "#/q/ch3-figure/5", "hl": true }
+        ],
+        "band": "1–4 코드에서 정하기 → 5 HaLab Plots에서 다듬기"
+      },
+      "links": [
+        { "label": "Lab Manager · 그림 만들기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/figures.md" },
+        { "label": "Lab Manager · 통계 검정 · plot 매칭표", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" },
+        { "label": "HaLab Plots", "note": "주소 준비 중" },
+        { "label": "4장 Figure 스토리보드", "quest": "ch4-storyboard" }
+      ],
       "check": "가이드를 읽고 예시를 따라 그려봤다면 체크해보세요!",
       "star": "내 Figure를 HaLab Plots로 공동연구팀과 공유해보세요."
     },
@@ -71,7 +325,40 @@
       "title": "AI 연구 도우미",
       "icon": "🤖",
       "place": "AI 연구 도우미실",
-      "overview": "AI 결과를 검증하고 쓸 범위를 판단하는 힘을 길러요.\n\n**AI 신호등**\n- 🟢 자유롭게\n- 🟡 꼭 검증\n- 🔴 넣지 않기: 환자 정보, 미발표 데이터·원고, 심사 중 원고, 과제·특허 전 아이디어, 계정\n\n가이드 카드는 곧 채워요.",
+      "pose": "tablet",
+      "bubble": "AI 답은 초안이에요. 확인은 내가 해요.",
+      "dialog": [
+        "AI는 좋은 도우미지만, 결과의 책임은 우리에게 있어요.",
+        "코드는 직접 돌려 보고, 참고문헌은 원문으로 확인해요.",
+        "빨간불 정보는 어떤 AI에도 넣지 않아요."
+      ],
+      "overview": "**목적** AI 결과를 검증하고 쓸 범위를 판단하는 힘을 길러요.\n\n**할 일**\n- AI 신호등으로 맡겨도 되는 일과 넣으면 안 되는 정보 구분하기\n- AI가 쓴 코드나 답변 하나를 직접 검증해보기\n\n4장 원고 · 리뷰 퀘스트에서도 빨간불이 한 줄씩 다시 나와요.",
+      "cards": "ch3-ai.md",
+      "info": {
+        "title": "AI 답 확인 3가지",
+        "rows": [
+          ["1", "원문 확인 — 참고문헌 · 수치는 PubMed · 논문에서"],
+          ["2", "교차 확인 — 교재 · 리뷰 · 교수님께"],
+          ["3", "직접 해 보기 — 작은 예제로 돌리고, 계산은 다시"]
+        ],
+        "note": "학교 · 저널의 AI 규정이 항상 먼저"
+      },
+      "widget": {
+        "type": "lights",
+        "title": "AI 신호등",
+        "lights": [
+          { "color": "green", "label": "자유롭게", "items": ["개념 설명 받기", "공개된 논문 · 교재 읽기 도움", "코드 문법 · 오류 메시지 질문", "가짜 예제 데이터로 연습"] },
+          { "color": "yellow", "label": "꼭 검증", "items": ["참고문헌 · 수치", "통계 방법 추천", "AI가 쓴 분석 코드의 결과", "최신 연구 내용"] },
+          { "color": "red", "label": "넣지 않기", "items": ["환자 정보", "미발표 데이터 · 원고", "심사 중 원고", "과제 · 특허 전 아이디어", "계정"] }
+        ],
+        "band": "넣어도 되는지 애매하면, 넣기 전에 교수님께 먼저"
+      },
+      "links": [
+        { "label": "Lab Manager · 공부 · AI 활용", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/study-ai.md" },
+        { "label": "RNA-seq analysis · W11 바이브코딩 팁", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part4/W11_Rscript_vibe_coding.html" },
+        { "label": "advanced BI · W2 스크립트 · AI · 재현성", "url": "https://kkonoo.github.io/advanced_BI_for_MD_PhD_KNUmed/ko/chapters/part1/w2_scripts_ai.html" }
+      ],
+      "warn": "환자 정보 · 미발표 데이터 · 계정은 AI에 넣지 않기",
       "check": "AI가 쓴 코드나 답변 하나를 직접 검증해봤다면 체크해보세요!",
       "star": "실제 연구에서 AI에 무엇을 맡겼고 어떻게 확인했는지 기록해보세요."
     },

@@ -68,6 +68,7 @@ function viewDone(ch) {
       panel(`나의 ${ch.no}장 기록`,
         h('div', 'stat', h('span', 'mk ok', '✓'), '학습 완료', h('b', null, `${c.check} / ${c.total}`)),
         h('div', 'stat', h('span', 'mk star', '★'), '실전 적용', h('b', null, c.star)),
+        d.stamps ? h('div', 'stat', h('span', 'mk', '📘'), '교재 스탬프', h('b', null, stampCount())) : null,
         h('p', 'hint center', 'My Journey에 저장됐어요'),
         h('div', 'badge', h('span', 'medal', d.badgeIcon || ch.icon), h('b', null, d.badge)),
         d.cvNote ? h('p', 'hint center', h('a', { href: '#/cv' }, d.cvNote)) : null)),

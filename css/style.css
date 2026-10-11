@@ -233,6 +233,43 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .fig-move { display: flex; gap: 4px; padding-bottom: 6px; }
 .step.add { flex: 0 0 90px; border-style: dashed; font-size: 32px; color: var(--muted); cursor: pointer; place-content: center; }
 .band { margin-top: 6px; padding: 7px 12px; text-align: center; background: var(--accent-soft); color: #8A2F2B; border-radius: 99px; font-weight: 600; }
+a.step:hover { border-color: var(--wood); background: #FFF8E6; }
+.branch { flex: 1 0 110px; display: grid; gap: 6px; }
+.branch .step { flex: none; }
+
+/* AI 신호등 */
+.lights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.light { padding: 10px 12px; background: #FBF4E2; border: 2px solid var(--line); border-top-width: 6px; border-radius: 8px; }
+.light.green { border-top-color: var(--good); } .light.yellow { border-top-color: var(--star); } .light.red { border-top-color: var(--bad); }
+.lamp-head { display: flex; align-items: center; gap: 8px; font-family: var(--pixel); }
+.lamp { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--wood-2); flex: none; }
+.green .lamp { background: #5DBB6C; box-shadow: 0 0 8px #8FDB99; } .yellow .lamp { background: #F2C14E; box-shadow: 0 0 8px #F7D98A; } .red .lamp { background: #D9483F; box-shadow: 0 0 8px #EE8A82; }
+.light ul { margin: 8px 0 0; padding-left: 18px; }
+.light li { margin: 3px 0; line-height: 1.45; }
+
+/* 교재 여권 */
+.passport { display: grid; gap: 12px; }
+.pp-group h3 { margin: 0 0 6px; color: var(--navy); font-size: 1.05em; display: flex; gap: 8px; align-items: baseline; }
+.pp-group h3 small { color: var(--good); font-family: inherit; }
+.pp-books { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+.pp-book { display: grid; gap: 4px; align-content: start; padding: 8px 10px; background: #FBF4E2; border: 2px solid var(--line); border-radius: 8px; }
+.pp-book.next { border-color: var(--accent); }
+.pp-book.on { background: #E5F1DF; border-color: #A9CFA0; }
+.pp-top { display: flex; justify-content: space-between; align-items: center; }
+.pp-num { font-size: 1.3em; color: var(--muted); }
+.pp-top .chip { background: var(--accent-soft); color: #8A2F2B; border-color: #D9A49B; }
+.pp-name a { color: var(--text); text-decoration: none; }
+.pp-name a:hover { text-decoration: underline; }
+.pp-book small { color: var(--muted); font-size: .82em; line-height: 1.35; }
+.pp-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pp-before { color: #A87414 !important; }
+.stamp { margin-top: 2px; padding: 5px 8px; border: 2px dashed var(--faint); border-radius: 8px; background: none; color: var(--muted); cursor: pointer; font-family: var(--pixel); }
+.pp-book.on .stamp { border: 2px solid var(--good); color: var(--good); background: #fff; }
+
+/* 판단 미션 (상황 카드) */
+.missions { display: grid; gap: 8px; margin-top: 8px; }
+.mission { padding: 10px 12px; background: #FBF4E2; border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 8px; }
+.mission p { margin: 4px 0; }
 
 /* 자료 · 기록 */
 .links { display: grid; gap: 6px; }
@@ -314,6 +351,8 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .chapter-row { grid-template-columns: 1fr; }
   .checks { grid-template-columns: 1fr; }
+  .lights { grid-template-columns: 1fr; }
+  .pp-books { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
   .portrait { width: 72px; }
   .bubble { max-width: 75%; font-size: .9em; }
 }

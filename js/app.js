@@ -2,6 +2,7 @@
 // HaLab Quest — 저장(IndexedDB, 안 되면 localStorage), 데이터 파일 읽기, 화면 이동(#/…), 공통 도구
 // 퀘스트 내용은 data/ch1~4.json 과 data/cards/*.md 에서 읽어요 (화면 코드에 문구를 넣지 않기)
 // db.progress[퀘스트 id] = { check, star, note }  check·star 는 체크한 시각(ms), note 는 ★ 실전 적용 한 줄
+// db.progress['tb:교재 id'] = { check } 3장 교재 여권 스탬프 (퀘스트가 아니라서 ✓·★ 개수에는 안 들어감)
 // db.records 발표 기록 · db.figcards Figure 순서 카드 · db.cv My CV · db.chapterDone[챕터 id] 챕터 완료 기록
 // db.subs 투고 낚시터 원고 { id, title, casts: [{ journal, events: [{ s, d, note }] }], cvId }
 
@@ -89,6 +90,7 @@ function chapterCount(ch) {
   for (const q of ch.quests) { if (prog(q.id).check) check++; if (prog(q.id).star) star++; }
   return { check, star, total: ch.quests.length };
 }
+const stampCount = () => Object.keys(db.progress).filter(k => k.startsWith('tb:') && db.progress[k].check).length;
 
 // ---------- 내 캐릭터 (img/char/{id}-front|back.png) ----------
 const AVATARS = [['intern-f', '인턴 (여)'], ['intern-m', '인턴 (남)'], ['grad-f', '대학원생 (여)'], ['grad-m', '대학원생 (남)']];
