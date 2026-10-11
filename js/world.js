@@ -55,17 +55,19 @@ function viewChapter(ch) {
 }
 
 function viewDone(ch) {
-  setTitle(`${ch.no}장. ${ch.title}`, `${ch.no}장 완료`);
-  const c = chapterCount(ch), d = ch.done;
-  // My Journey에 남기기 (숫자가 바뀌었을 때만 저장)
+  const c = chapterCount(ch), d = ch.done, all = chapterAllDone(ch);
+  setTitle(`${ch.no}장. ${ch.title}`, all ? `${ch.no}장 완료` : `${ch.no}장 돌아보기`);
+  // 모두 학습 완료했을 때만 완료 기록을 남김 (숫자가 바뀌었을 때만 저장)
   const rec = db.chapterDone[ch.id];
-  if (!rec || rec.check !== c.check || rec.star !== c.star) { db.chapterDone[ch.id] = { at: Date.now(), check: c.check, star: c.star }; persist(); }
+  if (all && (!rec || rec.check !== c.check || rec.star !== c.star)) { db.chapterDone[ch.id] = { at: Date.now(), check: c.check, star: c.star }; persist(); }
+  const title = all ? d.title : `${ch.no}장. ${ch.title}`;
+  const sub = all ? d.sub : `퀘스트를 모두 학습 완료하면 수료 배지를 받아요 (✓ ${c.check} / ${c.total})`;
   const next = d.next && CHAPTERS.find(x => x.id === d.next);
   return h('div', `screen done c-${ch.id}`,
     d.bg ? h('div', { class: 'scene done-scene has-bg', style: `background-image:url(${d.bg})` }, glowLayer(d.bg),
-      h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),
+      h('div', 'banner', h('h1', null, all ? '✦ ' : '', title, all ? ' ✦' : ''), h('p', null, sub)),
       h('div', 'walker', profImg(), studentImg('back'), catIdle()))
-      : h('div', 'banner', h('h1', null, '✦ ', d.title, ' ✦'), h('p', null, d.sub)),
+      : h('div', 'banner', h('h1', null, all ? '✦ ' : '', title, all ? ' ✦' : ''), h('p', null, sub)),
     h('div', 'done-grid',
       panel(`${ch.no}장에서 해낸 일`,
         h('div', 'flow', ch.quests.map((q, i) => [i ? h('span', 'arrow', '→') : null,
@@ -75,11 +77,12 @@ function viewDone(ch) {
         h('div', 'stat', h('span', 'mk ok', '✓'), '학습 완료', h('b', null, `${c.check} / ${c.total}`)),
         h('div', 'stat', h('span', 'mk star', '★'), '실전 적용', h('b', null, c.star)),
         d.stamps ? h('div', 'stat', h('span', 'mk', '📘'), '교재 스탬프', h('b', null, stampCount())) : null,
-        h('p', 'hint center', 'My Journey에 저장됐어요'),
-        h('div', 'badge', medal(ch), h('b', null, d.badge)),
+        all ? h('p', 'hint center', 'My Journey에 저장됐어요') : null,
+        h('div', `badge${all ? '' : ' todo'}`, medal(ch, false, !all), h('b', null, d.badge),
+          all ? null : h('small', null, `남은 퀘스트 ${c.total - c.check}개를 학습 완료하면 받아요`)),
         d.cvNote ? h('p', 'hint center', h('a', { href: '#/cv' }, d.cvNote)) : null)),
     h('div', 'bottom-row',
-      dialogBox(d.lines, 'smile'),
+      dialogBox(all ? d.lines : ['아직 학습 완료하지 않은 퀘스트가 있어요. 위 목록에서 체크가 비어 있는 곳이에요.', '모두 마치면 수료 배지를 받을 수 있어요.', '다음 장으로 먼저 가도 괜찮아요. 순서는 추천일 뿐이에요.'], all ? 'smile' : 'explain'),
       h('div', 'btn-col',
         next ? bigBtn(ro(`${next.no}장. ${next.title}`), `#/ch/${next.id}`) : bigBtn('My Journey 전체 보기', '#/journey'),
         next ? h('a', { class: 'btn', href: `#/ch/${ch.id}` }, `${ch.title} 다시 둘러보기`) : h('a', { class: 'btn', href: '#/' }, '월드맵으로'))));

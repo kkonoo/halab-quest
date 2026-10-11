@@ -91,6 +91,9 @@ function chapterCount(ch) {
   for (const q of ch.quests) { if (prog(q.id).check) check++; if (prog(q.id).star) star++; }
   return { check, star, total: ch.quests.length };
 }
+// 수료 배지: 장의 퀘스트를 모두 학습 완료(✓)해야 받음. 받은 날 = 마지막 퀘스트를 완료한 날
+const chapterAllDone = ch => chapterCount(ch).check === ch.quests.length;
+const badgeAt = ch => Math.max(...ch.quests.map(q => prog(q.id).check || 0));
 const stampCount = () => Object.keys(db.progress).filter(k => k.startsWith('tb:') && db.progress[k].check).length;
 
 // ---------- 내 캐릭터 (img/char/{id}-front|back.png) ----------
@@ -135,7 +138,7 @@ const profImg = (pose = 'point') => pose === 'point'
   ? h('span', { class: 'sprite prof-idle', role: 'img', 'aria-label': '교수님' }, h('img', { src: 'img/char/prof-point-idle.png', alt: '' }))
   : h('img', { class: 'sprite', src: `img/char/prof-${pose}.png`, alt: '교수님' });
 // 장 수료 메달: done.badgeImg 그림이 있으면 그림, 없으면 이모지
-const medal = (ch, small) => h('span', { class: `medal${small ? ' small' : ''}${ch.done.badgeImg ? ' pic' : ''}`, title: ch.done.badge },
+const medal = (ch, small, todo) => h('span', { class: `medal${small ? ' small' : ''}${ch.done.badgeImg ? ' pic' : ''}${todo ? ' todo' : ''}`, title: ch.done.badge },
   ch.done.badgeImg ? h('img', { src: ch.done.badgeImg, alt: '' }) : ch.done.badgeIcon || ch.icon);
 
 let toastTimer;

@@ -6,7 +6,7 @@ function viewJourney() {
   let check = 0, star = 0;
   for (const ch of CHAPTERS) { const c = chapterCount(ch); check += c.check; star += c.star; }
   const total = CHAPTERS.reduce((a, ch) => a + ch.quests.length, 0);
-  const badges = CHAPTERS.filter(ch => db.chapterDone[ch.id]);
+  const badges = CHAPTERS.filter(chapterAllDone);
 
   // 기록 줄: ✓ · ★ · 발표 · 챕터 완료를 날짜순으로
   const events = [];
@@ -20,7 +20,7 @@ function viewJourney() {
   for (const x of db.subs) for (const c of x.casts) for (const e of c.events) if (e.s === 'submitted' || e.s === 'accepted')
     events.push({ t: Date.parse(e.d) || 0, icon: e.s === 'accepted' ? fishImg(x, '') : h('img', { src: 'img/char/rod.png', alt: '' }), cls: 'pic', text: `${e.s === 'accepted' ? 'Accept' : '투고'} · ${x.title} → ${c.journal}` });
   for (const r of db.records) events.push({ t: Date.parse(r.date) || 0, icon: '🎤', text: `${r.kind} 발표 · ‘${r.text}’` });
-  for (const ch of badges) events.push({ t: db.chapterDone[ch.id].at, icon: medal(ch, true), cls: 'pic', text: `${ch.done.badge}` });
+  for (const ch of badges) events.push({ t: badgeAt(ch), icon: medal(ch, true), cls: 'pic', text: `${ch.done.badge}` });
   events.sort((a, b) => b.t - a.t);
 
   return h('div', 'screen journey',
@@ -36,7 +36,7 @@ function viewJourney() {
           h('a', { class: 'ch-name', href: `#/ch/${ch.id}` }, ch.icon, ' ', `${ch.no}장. ${ch.title}`, h('small', null, h('span', { class: 'ck', title: '학습 완료' }), ` ${c.check}/${c.total}`)),
           h('div', 'chips', ch.quests.map(q => h('a', { class: `qchip${prog(q.id).check ? ' ok' : ''}`, href: `#/q/${q.id}`, title: q.title },
             q.title, ' ', q.icon, prog(q.id).star ? ' ★' : ''))),
-          db.chapterDone[ch.id] ? medal(ch, true) : null);
+          chapterAllDone(ch) ? medal(ch, true) : null);
       }))),
     panel('나의 기록',
       events.length ? h('ul', 'timeline', events.slice(0, 60).map(e => h('li', null,
