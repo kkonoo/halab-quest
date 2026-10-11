@@ -33,6 +33,7 @@
       "title": "교재 여권",
       "icon": "📘",
       "place": "교재 여권 센터",
+      "bg": "img/bg/ch3-passport.jpg",
       "face": "smile",
       "pose": "front",
       "bubble": "한 권을 끝내면 도장 하나. 순서는 추천일 뿐이에요.",
