@@ -394,3 +394,11 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .big-btn:hover, .btn.primary:hover, .side-link.login:hover { filter: brightness(1.08); }
 .big-btn:active, .btn.primary:active { transform: translateY(1px); filter: brightness(.95); }
 .quest-list .row { flex-direction: column; align-items: stretch; }
+:root { --header-img: url(../img/ui/header.png); }
+/* 헤더: 녹색 판(제목) + 양피지 판(지도·가방·메뉴)이 숲 바탕 위에 떠 있게 (시안과 같은 배치) */
+.topbar { background: rgba(37, 60, 44, .92); border-bottom: 0; box-shadow: 0 2px 8px rgba(0,0,0,.25); padding: 8px 16px; }
+.title { border: 14px solid transparent; border-width: 14px 20px; border-image: var(--header-img) 22 40 fill / 14px 20px stretch; padding: 0 8px; text-shadow: 0 2px 0 #0E2018; }
+.tools { border: 14px solid transparent; border-image: var(--panel-img) 40 fill / 14px stretch; border-radius: 0; background: none; padding: 0; }
+.place { border: 8px solid transparent; border-width: 8px 12px; border-image: var(--header-img) 22 40 fill / 8px 12px stretch; border-radius: 0; background: none; padding: 0 4px; }
+.way, .sign { border: 10px solid transparent; border-width: 10px 15px; border-image: var(--header-img) 22 40 fill / 10px 15px stretch; border-radius: 0; background: none; box-shadow: none; padding: 2px 4px; }
+.q-menu nav a.on { border: 8px solid transparent; border-width: 8px 12px; border-image: var(--btn-img) 32 48 fill / 8px 12px stretch; background: none; border-radius: 0; padding: 1px 2px; color: #FFF4DE; }
