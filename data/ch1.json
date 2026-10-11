@@ -5,6 +5,7 @@
   "subtitle": "분야 탐색",
   "icon": "🌲",
   "region": "분야 탐색",
+  "bg": "img/bg/ch1-map.jpg",
   "mapPos": [30, 26],
   "ready": true,
   "intro": [
@@ -27,6 +28,7 @@
   "quests": [
     {
       "id": "ch1-lab",
+      "mapPos": [15, 68],
       "title": "연구실 둘러보기",
       "icon": "🏫",
       "face": "smile",
@@ -70,6 +72,7 @@
     },
     {
       "id": "ch1-compass",
+      "mapPos": [18, 37],
       "title": "호기심 나침반",
       "icon": "🧭",
       "bubble": "정답은 없어요. 마음이 움직이는 쪽을 골라요.",
@@ -171,6 +174,7 @@
     },
     {
       "id": "ch1-guide",
+      "mapPos": [21, 8],
       "title": "논문 고르기",
       "icon": "📄",
       "bubble": "처음 보는 분야라면 리뷰부터 읽어요.",
@@ -215,6 +219,7 @@
     },
     {
       "id": "ch1-papers",
+      "mapPos": [56, 6],
       "title": "논문 탐험",
       "icon": "📰",
       "bubble": "초록의 주장은 그림에서 확인해요.",
@@ -257,6 +262,7 @@
     },
     {
       "id": "ch1-wiki",
+      "mapPos": [85, 29],
       "title": "위키 개념 도감",
       "icon": "📖",
       "bubble": "내 말로 한 줄로 쓸 수 있으면 아는 거예요.",
