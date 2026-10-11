@@ -1,7 +1,7 @@
 'use strict';
 // 퀘스트 화면 하나로 모든 퀘스트를 그려요 (내용은 data/chN.json의 퀘스트 항목)
-// 칸: 좌측: 메뉴 → 장 지도 → 이전 · 다음 | 가운데: 장면 → 교수님 대화창 → 읽기 카드 | 우측: 정보 패널 → 자료(또는 발표 기록) → ✓·★
-//     가운데 아래: 핵심 UI(widget: flow · figcards · lights · passport)
+// 칸: 좌측: 메뉴 → 장 지도 → 이전 · 다음 | 가운데: 장면 → 교수님 대화창 → 읽기 카드 → 핵심 UI(widget) | 우측: 정보 패널 → 자료(또는 발표 기록) → ✓·★
+//     핵심 UI: flow · figcards · lights · passport · compass
 
 const cardData = new Map(); // 카드 md 파일 → [{ title, md }] (다 읽으면 다시 그림)
 function cardsNow(file) {
@@ -44,12 +44,12 @@ function viewQuest(q, sec) {
     h('div', 'q-stage',
       secs[sec].overview ? stageScene(q) : null,
       h('div', 'q-dialog', dialogBox(q.dialog || DEFAULT_DIALOG, q.face || 'explain')),
-      secs[sec].overview ? h('div', { class: 'card overview', html: md(q.overview || '') }) : secs[sec].records ? recordsFull(q) : readingCard(secs[sec], q)),
+      secs[sec].overview ? h('div', { class: 'card overview', html: md(q.overview || '') }) : secs[sec].records ? recordsFull(q) : readingCard(secs[sec], q),
+      q.widget ? h('div', 'q-widget', widget(q.widget, q)) : null),
     h('div', 'q-info',
       q.info ? infoPanel(q.info) : null,
       q.records ? recordsPanel(q) : linksPanel(q),
-      checkBoxes(q)),
-    q.widget ? h('div', 'q-widget', widget(q.widget)) : null);
+      checkBoxes(q)));
 }
 
 function stageScene(q) {
@@ -108,8 +108,9 @@ function starForm(q) {
 }
 
 // ---------- 핵심 UI ----------
-function widget(w) {
+function widget(w, q) {
   if (w.type === 'figcards') return figCards(w);
+  if (w.type === 'compass') return compass(w, q);
   if (w.type === 'lights') return lights(w);
   if (w.type === 'passport') return passport(w);
   return panel(w.title,
@@ -136,6 +137,38 @@ function lights(w) {
       h('div', 'lamp-head', h('span', 'lamp'), h('b', null, l.label)),
       h('ul', null, l.items.map(t => h('li', null, t)))))),
     w.band ? h('div', 'band', w.band) : null);
+}
+
+// ---------- 호기심 나침반: 질문(questions)에 하나씩 답하면 가장 많이 고른 방향(dirs)을 가리켜요 ----------
+// 채점 · 적성 판정이 아니에요. 답은 진행도에 { ans: [방향 키…], kw: '관심 키워드' }로 저장
+function compass(w, q) {
+  const p = prog(q.id), ans = p.ans || [], n = w.questions.length;
+  const save = patch => { setProg(q.id, patch); render(); };
+  if (ans.length < n) {
+    const cur = w.questions[ans.length];
+    return panel(`${w.title} · 질문 ${ans.length + 1} / ${n}`,
+      h('p', 'cp-q', cur.q),
+      h('div', 'cp-choices', w.order.map(k => h('button', { class: 'cp-choice', onclick: () => save({ ans: [...ans, k] }) },
+        h('span', 'cp-icon', w.dirs[k].icon), h('span', null, cur.a[k])))),
+      h('div', 'row',
+        h('span', 'cp-dots', w.questions.map((_, i) => h('span', i < ans.length ? 'on' : i === ans.length ? 'cur' : null))),
+        ans.length ? h('button', { class: 'btn small', onclick: () => save({ ans: ans.slice(0, -1) }) }, '‹ 이전 질문') : null));
+  }
+  const count = Object.fromEntries(w.order.map(k => [k, ans.filter(a => a === k).length]));
+  const top = w.order.filter(k => count[k] === Math.max(...Object.values(count)));
+  const kw = h('input', { value: p.kw || '', placeholder: '예: 단일세포 · 자가면역 · eQTL' });
+  return panel(`${w.title} · 나의 방향`,
+    h('div', 'cp-result',
+      h('div', 'cp-rose',
+        w.order.map((k, i) => h('span', `cp-dir d${i}${top.includes(k) ? ' on' : ''}`, h('b', null, w.dirs[k].icon), w.dirs[k].label, h('small', null, `${count[k]}`))),
+        h('span', { class: 'cp-needle', style: `transform:rotate(${w.order.indexOf(top[0]) * 90}deg)` }),
+        h('span', 'cp-hub')),
+      h('div', 'cp-text',
+        top.map(k => h('div', 'cp-dir-card', h('b', null, w.dirs[k].icon, ' ', w.dirs[k].label), h('p', null, w.dirs[k].text), h('div', 'links', w.dirs[k].links.map(linkEl)))),
+        w.paper ? linkEl(w.paper) : null,
+        h('div', 'field', h('span', null, '나의 관심 키워드 (2–3개)'),
+          h('div', 'row', kw, h('button', { class: 'btn primary', onclick: () => { save({ kw: kw.value.trim() || null }); toast('관심 키워드를 저장했어요'); } }, '저장'))),
+        h('div', 'row end', h('button', { class: 'btn small', onclick: () => { if (confirm('나침반 답을 지우고 다시 할까요?')) save({ ans: null }); } }, '다시 답하기')))));
 }
 
 // ---------- 교재 여권: 분야(groups)마다 한 쪽, 교재(books) 1권 = 동그라미 스탬프 1개 ----------
@@ -188,12 +221,14 @@ function figCards(w) {
 }
 
 // ---------- 자료 · 발표 기록 ----------
+// 자료 링크 한 칸: url = 바깥(새 탭), quest · href = 게임 안, 둘 다 없으면 글만(note)
+const linkEl = l => l.url ? h('a', { class: 'link', href: l.url, target: '_blank', rel: 'noopener' }, l.label, h('span', null, '↗'))
+  : l.quest || l.href ? h('a', { class: `link${l.hl ? ' hl' : ''}`, href: l.href || `#/q/${l.quest}` }, l.label, h('span', null, '›'))
+    : h('div', 'link plain', l.label, h('small', null, l.note || ''));
+
 function linksPanel(q) {
   return panel('자료',
-    h('div', 'links', (q.links || []).map(l =>
-      l.url ? h('a', { class: 'link', href: l.url, target: '_blank', rel: 'noopener' }, l.label, h('span', null, '↗'))
-        : l.quest || l.href ? h('a', { class: `link${l.hl ? ' hl' : ''}`, href: l.href || `#/q/${l.quest}` }, l.label, h('span', null, '›'))
-          : h('div', 'link plain', l.label, h('small', null, l.note || ''))),
+    h('div', 'links', (q.links || []).map(linkEl),
     !(q.links || []).length ? h('p', 'hint', '연결할 자료는 곧 채워요.') : null),
     q.warn ? h('p', 'warn', '🚫 ', q.warn) : null);
 }

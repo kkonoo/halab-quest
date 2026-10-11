@@ -173,17 +173,16 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 /* ---------- 퀘스트 화면 ---------- */
 .screen.quest {
   grid-template-columns: minmax(200px, 250px) minmax(0, 1fr) minmax(280px, 360px);
-  grid-template-areas: "menu stage info" ". widget info";
+  grid-template-areas: "menu stage info";
   align-items: start;
 }
 .q-menu { grid-area: menu; display: grid; gap: 10px; align-content: start; }
 .q-stage { grid-area: stage; min-width: 0; display: grid; gap: 10px; }
 .q-info { grid-area: info; display: grid; gap: 12px; }
-.q-widget { grid-area: widget; min-width: 0; }
+.q-widget { min-width: 0; }
 /* 이전 · 다음: 장 지도 버튼 아래에 한 줄에 하나씩 */
 .q-nav { display: grid; gap: 8px; }
 .q-nav .big-btn { min-height: 64px; font-size: calc(16px * var(--fs)); word-break: keep-all; }
-.screen.quest:not(:has(.q-widget)) { grid-template-areas: "menu stage info"; }
 .q-menu .panel-head, .q-menu nav a { word-break: keep-all; }
 .q-menu .panel-head { display: block; font-size: calc(17px * var(--fs)); } /* 이모지가 칸을 따로 차지하지 않고 글자 바로 뒤에, 한 줄에 들어가게 */
 .q-menu .panel-head .qi { font-size: .85em; }
@@ -271,6 +270,35 @@ a.step:hover { border-color: var(--wood); background: #FFF8E6; }
 .pp-next { margin: 0; font-size: .85em; color: var(--muted); }
 .pp-next b { color: var(--accent); font-weight: normal; }
 
+/* 호기심 나침반: 질문 → 네 방향 중 하나 고르기 → 결과 나침반 */
+.cp-q { margin: 2px 0 10px; font-size: 1.12em; color: var(--navy); }
+.cp-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cp-choice { display: flex; gap: 10px; align-items: center; text-align: left; padding: 12px; background: #FBF4E2; border: 2px solid var(--line); border-radius: 8px; cursor: pointer; line-height: 1.45; }
+.cp-choice:hover { border-color: var(--accent); background: #FFF8E6; }
+.cp-icon { font-size: 24px; flex: none; }
+.cp-dots { display: flex; gap: 6px; margin-right: auto; }
+.cp-dots span { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--faint); }
+.cp-dots .on { background: var(--good); border-color: var(--good); }
+.cp-dots .cur { border-color: var(--accent); }
+.cp-result { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 16px; align-items: start; }
+/* 나침반: 3×3 칸 — 가운데 원판(바늘 · 중심), 위 · 오른쪽 · 아래 · 왼쪽에 방향 이름 */
+.cp-rose { display: grid; grid-template-columns: 70px 160px 70px; grid-template-rows: auto 160px auto; place-items: center; gap: 4px 0; }
+.cp-rose::before { content: ''; grid-area: 2 / 2; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, #FFFBF0 58%, #EFE1BF 60%); border: 4px solid var(--wood); box-shadow: inset 0 0 0 3px var(--gold); box-sizing: border-box; }
+.cp-dir { display: grid; justify-items: center; font-size: .85em; color: var(--muted); line-height: 1.2; text-align: center; word-break: keep-all; }
+.cp-dir b { font-size: 20px; font-weight: normal; }
+.cp-dir small { font-size: .85em; }
+.cp-dir.on { color: var(--accent); font-weight: 700; }
+.cp-dir.d0 { grid-area: 1 / 2; }
+.cp-dir.d1 { grid-area: 2 / 3; }
+.cp-dir.d2 { grid-area: 3 / 2; }
+.cp-dir.d3 { grid-area: 2 / 1; }
+.cp-needle { grid-area: 2 / 2; width: 18px; height: 120px; background: linear-gradient(var(--accent) 50%, #9C8F7A 50%); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); transition: transform .6s; }
+.cp-hub { grid-area: 2 / 2; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); border: 2px solid var(--wood-2); }
+.cp-text { display: grid; gap: 8px; }
+.cp-dir-card { padding: 10px 12px; background: #FBF4E2; border: 2px solid var(--accent); border-radius: 8px; }
+.cp-dir-card p { margin: 4px 0 8px; line-height: 1.5; }
+.cp-text .field { margin: 0; }
+
 /* 판단 미션 (상황 카드) */
 .missions { display: grid; gap: 8px; margin-top: 8px; }
 .mission { padding: 10px 12px; background: #FBF4E2; border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 8px; }
@@ -351,7 +379,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   .title { font-size: calc(17px * var(--fs)); }
   .tool b { display: none; }
   /* 폰: 한 줄로. 메뉴 묶음을 풀어서 이전 · 다음은 맨 아래로 */
-  .screen.quest, .screen.quest:not(:has(.q-widget)) { grid-template-columns: 1fr; grid-template-areas: "menu" "map" "stage" "info" "widget" "nav"; }
+  .screen.quest { grid-template-columns: 1fr; grid-template-areas: "menu" "map" "stage" "info" "nav"; }
   .q-menu { display: contents; }
   .q-menu > .panel { grid-area: menu; }
   .q-menu > .map-btn { grid-area: map; }
@@ -362,6 +390,8 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   .chapter-row { grid-template-columns: 1fr; }
   .checks { grid-template-columns: 1fr; }
   .lights { grid-template-columns: 1fr; }
+  .cp-choices, .cp-result { grid-template-columns: 1fr; }
+  .cp-rose { margin: 0 auto; }
   .pp-stamp { width: 50px; height: 50px; }
   .pp-num { font-size: 17px; }
   .portrait { width: 72px; }

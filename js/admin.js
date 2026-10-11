@@ -51,7 +51,7 @@ function adminDetail(s) {
       h('ul', 'admin-q', ch.quests.map(q => {
         const p = d.progress?.[q.id] || {};
         return h('li', null, h('span', `mk ${p.check ? 'ok' : 'empty'}`, p.check ? '✓' : '○'), p.star ? h('span', 'mk star', '★') : null, ' ', q.title,
-          p.check ? h('small', null, ` ${fmtDate(p.check)}`) : null, p.note ? h('em', null, ` — ${p.note}`) : null);
+          p.check ? h('small', null, ` ${fmtDate(p.check)}`) : null, p.note ? h('em', null, ` — ${p.note}`) : null, p.kw ? h('em', null, ` — 관심 키워드: ${p.kw}`) : null);
       })))),
     d.subs?.length ? [h('h3', null, '🎣 투고 낚시터'), h('ul', null, d.subs.map(x => h('li', null, h('b', null, x.title), ` · ${lastCast(x).journal} · ${FISH_STATUS[subStatus(x)].label} · D+${castDays(lastCast(x))}`, x.casts.length > 1 ? h('small', null, ` (${x.casts.length}번째 저널: ${x.casts.map(c => c.journal).join(' → ')})`) : null)))] : null,
     d.records?.length ? [h('h3', null, '🎤 발표 기록'), h('ul', null, [...d.records].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(r => h('li', null, `${r.date} · ${r.kind} · ‘${r.text}’`)))] : null,

@@ -6,7 +6,7 @@
   "icon": "⛰️",
   "region": "주제 찾기",
   "mapPos": [72, 22],
-  "ready": false,
+  "ready": true,
   "intro": [
     "2장, 질문의 언덕에 왔어요.",
     "여기서는 스스로 연구 질문을 만들고, 가설과 연구 디자인을 세워볼 거예요.",
@@ -25,11 +25,253 @@
     "next": "ch3"
   },
   "quests": [
-    { "id": "ch2-topic", "title": "연구 주제 탐색", "icon": "🪧", "overview": "내용은 곧 채워요." },
-    { "id": "ch2-gap", "title": "Research gap", "icon": "📚", "overview": "내용은 곧 채워요." },
-    { "id": "ch2-hypo", "title": "가설 세우기", "icon": "💡", "overview": "내용은 곧 채워요." },
-    { "id": "ch2-design", "title": "연구 디자인", "icon": "🧩", "overview": "내용은 곧 채워요." },
-    { "id": "ch2-proposal", "title": "학생 연구비 제안서", "icon": "✍️", "overview": "실제 배정 프로젝트와 별개로, 나만의 연구 제안서를 연습해요.\n\n내용은 곧 채워요." },
-    { "id": "ch2-meeting", "title": "교수님 면담", "icon": "👩‍🏫", "overview": "내용은 곧 채워요." }
+    {
+      "id": "ch2-topic",
+      "title": "연구 주제 찾기",
+      "icon": "🪧",
+      "bubble": "첫 아이디어는 의심부터 해요.",
+      "dialog": [
+        "주제는 며칠 만에 고르고, 그 주제를 몇 년 동안 풀어요. 고르는 데 시간을 더 써도 돼요.",
+        "아이디어를 여러 개 내고, 나란히 놓고 비교해요.",
+        "실제 배정 프로젝트와는 별개로, 나만의 주제를 연습해요."
+      ],
+      "overview": "**목적** 연구 아이디어를 여러 개 만들고, 그중 하나를 골라요.\n\n**할 일**\n- 아이디어 펌프로 아이디어 3–5개 쓰기\n- 성공 가능성 · 영향을 1–5점으로 매기기\n- 함정에 걸리지 않았는지 확인하고 하나 고르기\n\n실제 배정 프로젝트와 별개인 연습이에요.",
+      "cards": "ch2-topic.md",
+      "info": {
+        "title": "아이디어 평가 두 축",
+        "rows": [
+          ["성공 가능성", "1 아주 위험 – 5 할 수 있음"],
+          ["영향", "1 조금 나아짐 – 5 판을 바꿈"]
+        ],
+        "note": "목표: 아이디어를 오른쪽 위로 옮기기"
+      },
+      "widget": {
+        "type": "flow",
+        "title": "주제 고르기",
+        "steps": [
+          { "icon": "💡", "label": "아이디어 3–5개", "sub": "아이디어 펌프" },
+          { "icon": "⚖️", "label": "두 축 점수", "sub": "성공 가능성 · 영향" },
+          { "icon": "🪤", "label": "함정 확인" },
+          { "icon": "🎯", "label": "하나 고르기", "sub": "나머지도 적어 두기" }
+        ],
+        "band": "좋은 문제 > 좋은 실행"
+      },
+      "links": [
+        { "label": "1장 호기심 나침반", "quest": "ch1-compass" },
+        { "label": "연구실 노트 (카드뉴스)", "url": "https://halab.knu.ac.kr/note.html" },
+        { "label": "Fischbach (Cell, 2024) · 문제 선택", "url": "https://doi.org/10.1016/j.cell.2024.03.012" },
+        { "label": "2장 Research gap 찾기", "quest": "ch2-gap" }
+      ],
+      "check": "아이디어 3개 이상을 쓰고 두 축으로 점수를 매겨봤다면 체크해보세요!",
+      "star": "고른 아이디어를 교수님께 이야기해보세요."
+    },
+    {
+      "id": "ch2-gap",
+      "title": "Research gap 찾기",
+      "icon": "📚",
+      "bubble": "'아무도 안 했다'는 정말 찾아봤을 때만 써요.",
+      "dialog": [
+        "gap은 분야 지도가 있어야 보여요.",
+        "gap마다 왜 아직 열려 있는지, 그걸 보여 주는 논문을 같이 적어요.",
+        "반대되는 결과도 일부러 찾아봐요."
+      ],
+      "overview": "**목적** 고른 주제에서 아직 답이 없는 곳(gap)을 근거와 함께 찾아요.\n\n**할 일**\n- 분야 지도 5–10줄 쓰기\n- gap 하나를 종류와 근거 논문 2편과 함께 쓰기\n- 핵심 논문표와 검색 기록 만들기",
+      "cards": "ch2-gap.md",
+      "info": {
+        "title": "gap의 네 종류",
+        "rows": [
+          ["데이터 없음", "이 해상도 · 조직 · 시점이 아직"],
+          ["결과가 다름", "연구마다 결론이 다름"],
+          ["방법의 한계", "지금 방법으로는 구분 못 함"],
+          ["안 본 집단", "인종 · 연령 · 질환 단계"]
+        ]
+      },
+      "widget": {
+        "type": "flow",
+        "title": "gap 찾는 순서",
+        "steps": [
+          { "icon": "🗺️", "label": "분야 지도", "sub": "리뷰 → 최신" },
+          { "icon": "🕳️", "label": "gap", "sub": "네 종류 중 무엇" },
+          { "icon": "📑", "label": "근거 논문", "sub": "핵심 논문표" },
+          { "icon": "🔁", "label": "반대 결과 확인", "sub": "치우침은 없나" }
+        ],
+        "band": "핵심 논문표 → 제안서 서론 · 논문 Discussion의 재료"
+      },
+      "links": [
+        { "label": "1장 논문 고르기", "quest": "ch1-guide" },
+        { "label": "PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov/" },
+        { "label": "bioRxiv", "url": "https://www.biorxiv.org/" },
+        { "label": "Lab Manager · 글쓰기 (Introduction 깔때기)", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" }
+      ],
+      "check": "gap 하나를 근거 논문 2편과 함께 써봤다면 체크해보세요!",
+      "star": "찾은 gap을 랩미팅이나 면담에서 이야기해보세요."
+    },
+    {
+      "id": "ch2-hypo",
+      "title": "가설 세우기",
+      "icon": "💡",
+      "bubble": "어떤 결과면 틀렸다고 할지 먼저 정해요.",
+      "dialog": [
+        "질문은 '무엇이 궁금한가', 가설은 '답이 이럴 것이다'예요.",
+        "좋은 가설은 틀릴 수 있고, 데이터로 확인할 예측이 있어요.",
+        "가설 뒤에 숨은 가정도 같이 적어 봐요."
+      ],
+      "overview": "**목적** gap에서 질문을 만들고, 확인할 수 있는 가설과 예측으로 바꿔요.\n\n**할 일**\n- gap → 질문 → 가설 → 예측을 한 줄씩 쓰기\n- 대안 가설 하나 쓰기\n- 숨은 가정(생물학적 · 기술적) 적기",
+      "cards": "ch2-hypo.md",
+      "info": {
+        "title": "좋은 가설",
+        "rows": [
+          ["틀릴 수 있다", "어떤 결과면 틀린지 미리"],
+          ["예측이 있다", "어떤 데이터 · 분석으로 확인"],
+          ["하나씩", "한 문장에 가설 하나"],
+          ["대안", "같은 결과의 다른 설명"]
+        ]
+      },
+      "widget": {
+        "type": "flow",
+        "title": "gap에서 가설로",
+        "steps": [
+          { "icon": "🕳️", "label": "gap" },
+          { "icon": "❓", "label": "질문", "sub": "무엇이 궁금한가" },
+          { "icon": "💡", "label": "가설", "sub": "답이 이럴 것이다" },
+          { "icon": "📏", "label": "예측", "sub": "데이터에서 보일 것" },
+          { "icon": "⚠️", "label": "숨은 가정", "sub": "→ 연구 디자인" }
+        ],
+        "band": "가장 불확실한 가정이 가장 먼저 확인할 것"
+      },
+      "links": [
+        { "label": "2장 Research gap 찾기", "quest": "ch2-gap" },
+        { "label": "2장 연구 디자인하기", "quest": "ch2-design" },
+        { "label": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr/" }
+      ],
+      "check": "가설 하나와 그 예측을 써봤다면 체크해보세요!",
+      "star": "내 가설을 교수님이나 선배와 검토해보세요."
+    },
+    {
+      "id": "ch2-design",
+      "title": "연구 디자인하기",
+      "icon": "🧩",
+      "bubble": "가장 위험한 가정을 가장 먼저 확인해요.",
+      "dialog": [
+        "디자인은 가설을 확인할 수 있게 데이터와 비교를 짜는 일이에요.",
+        "숨은 가정마다 위험도를 매기고, 가장 위험한 것부터 빨리 확인해요.",
+        "방법은 툴 논문의 자랑보다 독립된 벤치마크를 먼저 봐요."
+      ],
+      "overview": "**목적** 가설을 확인할 데이터 · 비교 · 분석을 짜고, 위험을 미리 관리해요.\n\n**할 일**\n- 비교 구조와 n(생물학적 반복) 정하기\n- 가정 표 쓰기 (위험도 1–5 × 확인까지 걸리는 달)\n- 가장 위험한 가정의 go/no-go 정하기",
+      "cards": "ch2-design.md",
+      "info": {
+        "title": "위험 신호",
+        "rows": [
+          ["🚩", "위험도 4–5를 1년 반 뒤에야 확인"],
+          ["🚩", "위험도 4–5 가정이 2–3개 넘음"],
+          ["🚩", "위험한 가정이 줄줄이"],
+          ["🚩", "쉬운 것만 먼저"]
+        ],
+        "note": "🟢 가장 위험한 가정을 6개월 안에 확인"
+      },
+      "widget": {
+        "type": "flow",
+        "title": "디자인 순서",
+        "steps": [
+          { "icon": "💡", "label": "가설" },
+          { "icon": "🧪", "label": "데이터 · 비교", "sub": "n · 대조군 · 배치" },
+          { "icon": "🔬", "label": "분석 방법", "sub": "벤치마크 · 검증" },
+          { "icon": "⚠️", "label": "가정 표", "sub": "위험도 × 기간" },
+          { "icon": "🚦", "label": "go / no-go", "hl": true }
+        ],
+        "band": "보정보다 설계가 먼저: 그룹과 배치를 섞어요"
+      },
+      "links": [
+        { "label": "2장 가설 세우기", "quest": "ch2-hypo" },
+        { "label": "3장 통계 익히기", "quest": "ch3-stats" },
+        { "label": "3장 Methods 해부하기", "quest": "ch3-methods" },
+        { "label": "Lab Manager · 통계 검정 · plot 매칭표", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" }
+      ],
+      "check": "내 아이디어의 가정 표와 go/no-go를 써봤다면 체크해보세요!",
+      "star": "교수님과 연구 디자인을 검토해보세요."
+    },
+    {
+      "id": "ch2-proposal",
+      "title": "연구비 제안서 쓰기",
+      "icon": "✍️",
+      "bubble": "gap과 디자인이 딱 맞는지 봐요.",
+      "dialog": [
+        "지금까지 만든 주제 · gap · 가설 · 디자인을 제안서 한 편으로 엮어요.",
+        "길이보다 논리가 이어지는지가 중요해요. 1–2쪽이면 충분해요.",
+        "다 쓰면 한 문장으로 말할 수 있는지 확인해 봐요."
+      ],
+      "overview": "**목적** 2장에서 만든 것을 연구비 제안서 한 편(1–2쪽)으로 엮어요.\n\n**할 일**\n- 배경 깔때기 5단으로 연구 필요성 쓰기\n- 목표 · 방법 · 기대 효과 · 일정과 위험 대비 쓰기\n- 한 문장 요약과 메시지 셋 정하기\n\n실제 배정 프로젝트와 별개인 연습이에요. 특정 공고가 있으면 그 양식이 먼저예요.",
+      "cards": "ch2-proposal.md",
+      "info": {
+        "title": "제안서 체크",
+        "rows": [
+          ["☐", "한 문장으로 말할 수 있나"],
+          ["☐", "gap과 디자인이 맞나"],
+          ["☐", "모든 주장에 근거 논문"],
+          ["☐", "'중요한' 대신 숫자로"],
+          ["☐", "가장 위험한 가정이 앞쪽 일정에"]
+        ]
+      },
+      "widget": {
+        "type": "flow",
+        "title": "배경 깔때기",
+        "steps": [
+          { "icon": "🌍", "label": "배경", "sub": "큰 문제, 숫자 하나" },
+          { "icon": "❗", "label": "왜 중요한가" },
+          { "icon": "📚", "label": "알려진 것", "sub": "2–3갈래로 묶어서" },
+          { "icon": "🕳️", "label": "모르는 것", "sub": "gap" },
+          { "icon": "🎯", "label": "이 연구", "sub": "gap에 대한 답" }
+        ],
+        "band": "'모르는 것'과 '이 연구'가 딱 맞게"
+      },
+      "links": [
+        { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
+        { "label": "Lab Manager · 표현", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/phrases.md" },
+        { "label": "2장 Research gap 찾기", "quest": "ch2-gap" },
+        { "label": "2장 연구 디자인하기", "quest": "ch2-design" }
+      ],
+      "warn": "과제 · 제안서 아이디어는 AI에 넣지 않기",
+      "check": "제안서 초안 1–2쪽을 써봤다면 체크해보세요!",
+      "star": "실제 연구비 공고에 지원해보세요."
+    },
+    {
+      "id": "ch2-meeting",
+      "title": "교수님과 면담하기",
+      "icon": "👩‍🏫",
+      "face": "smile",
+      "bubble": "오늘 정하고 싶은 것부터 말해 줘요.",
+      "dialog": [
+        "면담은 정해야 할 것을 같이 정하는 시간이에요.",
+        "한 문장 요약과 정하고 싶은 것, 막힌 곳을 준비해 오면 짧고 깊게 이야기할 수 있어요.",
+        "면담이 끝나면 정해진 것을 한 줄로 남겨요."
+      ],
+      "overview": "**목적** 내 주제와 제안서를 교수님과 이야기하고, 다음 할 일을 정해요.\n\n**할 일**\n- 면담 준비 한 장 쓰기\n- 예상 질문에 답 준비하기\n- 면담 후 정해진 것 한 줄 남기기 (★ 실전 적용)",
+      "cards": "ch2-meeting.md",
+      "info": {
+        "title": "우리 연구실 개인 미팅",
+        "rows": [
+          ["📅", "매주 금요일 오후"],
+          ["📂", "자료는 프로젝트별 공유 폴더 (Lab manual 참고)"]
+        ]
+      },
+      "widget": {
+        "type": "flow",
+        "title": "면담 사이클",
+        "steps": [
+          { "icon": "📝", "label": "준비 한 장", "sub": "한 문장 · 논의할 것" },
+          { "icon": "💬", "label": "면담", "sub": "정하고 싶은 것부터" },
+          { "icon": "✅", "label": "정해진 것", "sub": "한 줄" },
+          { "icon": "🗓️", "label": "다음 할 일", "sub": "언제까지" }
+        ],
+        "band": "다음 면담은 지난번에 정한 것부터"
+      },
+      "links": [
+        { "label": "Lab manual", "url": "https://app.notion.com/p/Lab-manual-1b76f5e0b4f98163ba82cd33112efc66" },
+        { "label": "2장 연구비 제안서 쓰기", "quest": "ch2-proposal" },
+        { "label": "3장 랩미팅 발표", "quest": "ch3-present" }
+      ],
+      "check": "면담 준비 한 장을 써봤다면 체크해보세요!",
+      "star": "실제 면담에서 정해진 것을 한 줄로 남겨보세요."
+    }
   ]
 }

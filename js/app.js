@@ -3,6 +3,7 @@
 // 퀘스트 내용은 data/ch1~4.json 과 data/cards/*.md 에서 읽어요 (화면 코드에 문구를 넣지 않기)
 // db.progress[퀘스트 id] = { check, star, note }  check·star 는 체크한 시각(ms), note 는 ★ 실전 적용 한 줄
 // db.progress['tb:교재 id'] = { check } 3장 교재 여권 스탬프 (퀘스트가 아니라서 ✓·★ 개수에는 안 들어감)
+// db.progress['ch1-compass'].ans · .kw 1장 호기심 나침반의 답(방향 키 배열)과 관심 키워드
 // db.records 발표 기록 · db.figcards Figure 순서 카드 · db.cv My CV · db.chapterDone[챕터 id] 챕터 완료 기록
 // db.subs 투고 낚시터 원고 { id, title, casts: [{ journal, events: [{ s, d, note }] }], cvId }
 
