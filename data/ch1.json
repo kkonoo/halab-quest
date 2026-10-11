@@ -31,6 +31,7 @@
       "mapPos": [15, 68],
       "title": "연구실 둘러보기",
       "icon": "🏫",
+      "bg": "img/bg/ch1-lab.jpg",
       "face": "smile",
       "pose": "front",
       "bubble": "모르는 건 #help-study에 물어보면 돼요.",

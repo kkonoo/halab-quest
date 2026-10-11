@@ -6,7 +6,7 @@
   "icon": "⛰️",
   "region": "주제 찾기",
   "bg": "img/bg/ch2-map.jpg",
-  "mapPos": [61, 19],
+  "mapPos": [73, 19],
   "ready": true,
   "intro": [
     "2장, 질문의 언덕에 왔어요.",

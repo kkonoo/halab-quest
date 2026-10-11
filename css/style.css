@@ -152,7 +152,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .bottom-row { display: grid; grid-template-columns: 1fr minmax(280px, 420px); gap: 14px; align-items: stretch; }
 /* 월드맵 아래 오른쪽: My Journey · My CV 두 칸 (아이콘 위, 이름 아래), 로그인은 아래 한 줄 */
 .side-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: stretch; }
-.side-link { display: grid; justify-items: center; align-content: center; gap: 6px; padding: 14px 16px; background: var(--surface); border: 3px solid var(--wood); border-radius: var(--radius); text-decoration: none; color: var(--text); font-family: var(--pixel); font-size: 1.1em; text-align: center; cursor: pointer; }
+.side-link { display: grid; justify-items: center; align-content: center; gap: 14px; padding: 14px 16px; background: var(--surface); border: 3px solid var(--wood); border-radius: var(--radius); text-decoration: none; color: var(--text); font-family: var(--pixel); font-size: 1.1em; text-align: center; cursor: pointer; }
 .sl-icon { font-size: 34px; line-height: 1; }
 .side-link.login { grid-column: 1 / -1; background: var(--accent); color: var(--on-accent); }
 
@@ -529,7 +529,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .world-map .region { position: absolute; transform: translate(-50%, -50%); justify-items: center; text-align: center; min-width: 180px; }
 .world-map .region b { font-size: calc(17px * var(--fs)); }
 .world-map .region .chip { top: -30px; right: -12px; }
-.world-map .pond-sign { position: absolute; left: 47%; top: 54%; transform: translate(-50%, -50%); width: max-content; font-size: clamp(12px, 1.05vw, 15px); }
+.world-map .pond-sign { position: absolute; left: 52%; top: 51%; transform: translate(-50%, -50%); width: max-content; font-size: clamp(12px, 1.05vw, 15px); }
 @media (max-width: 900px) {
   .map-area.world-map { aspect-ratio: auto; padding: 46vw 10px 10px; background-size: 100% auto; background-position: top; background-repeat: no-repeat; background-color: #5E8C55; }
   .world-map .map-grid { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
