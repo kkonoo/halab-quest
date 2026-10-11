@@ -57,25 +57,25 @@
         "type": "passport",
         "title": "교재 여권",
         "groups": [
-          { "label": "기초 · 공통", "icon": "📖", "color": "#6B7F3A", "books": [
+          { "label": "기초 · 공통", "icon": "📖", "stamp": "img/ui/stamp-book.png", "color": "#6B7F3A", "books": [
             { "id": "paper-reading", "name": "논문 읽으면서 분야 탐색하기", "url": "https://halab.knu.ac.kr/note.html", "desc": "분야 최신 논문 위클리 카드뉴스 · 수업 자료 · 공부 자료 (연구실 홈페이지 Note)" },
             { "id": "halab-wiki", "name": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr", "desc": "질문을 따라 개념의 구조를 찾는 연구실 공부 가이드: GWAS · Omics · Single-cell · Multi-omics · 질환" }
           ] },
-          { "label": "생명과학", "icon": "🧬", "color": "#2E7D6B", "books": [
+          { "label": "생명과학", "icon": "🧬", "stamp": "img/ui/stamp-dna.png", "color": "#2E7D6B", "books": [
             { "id": "human-genetics", "name": "Human genetics", "url": "https://chaek.org/books/human-genetics", "desc": "멘델의 유전 개념부터 유전체 시퀀싱 · 대규모 코호트까지 (안준용, 고려대)" },
             { "id": "immunology", "name": "Immunology", "url": "https://halab-wiki.knu.ac.kr/disease/immunology/index.html", "desc": "Kuby 면역학 8판 흐름: 기초 · 선천면역 · 적응면역 · 질환 · 연구방법 (HaLab Wiki)" }
           ] },
-          { "label": "통계", "icon": "📈", "color": "#2C4A7A", "books": [
+          { "label": "통계", "icon": "📈", "stamp": "img/ui/stamp-stats.png", "color": "#2C4A7A", "books": [
             { "id": "basic-stats", "name": "Basic statistics", "url": "https://chaek.org/books/basic-stats-omics-labs/README", "desc": "Basic Statistics for Omics: 생물학 학생을 위한 Colab 실습 통계" },
             { "id": "linear-algebra", "name": "Linear algebra", "url": "https://kkonoo.github.io/2_linear_algebra/", "desc": "기하학적 직관으로 읽는 선형대수: 벡터에서 SVD까지" },
             { "id": "linear-regression", "name": "Linear regression", "url": "https://kkonoo.github.io/3_linear_regression/", "desc": "회귀분석: 추정 · 추론 · 진단 · 모형 선택, 생물학 자료로 배우기" },
             { "id": "bayes", "name": "Bayesian statistics", "url": "https://kkonoo.github.io/4_Bayes/", "desc": "생명정보학을 위한 베이지안 통계: 직관으로 이해하고 R로 구현하기" }
           ] },
-          { "label": "컴퓨터 · AI", "icon": "💻", "color": "#6A4C93", "books": [
+          { "label": "컴퓨터 · AI", "icon": "💻", "stamp": "img/ui/stamp-pc.png", "color": "#6A4C93", "books": [
             { "id": "basic-ml", "name": "Basic machine learning", "url": "https://kkonoo.github.io/1_Basic_Machine_Learning/", "desc": "연구자를 위한 기계학습 기초: 개념부터 R · Python 실습까지" },
             { "id": "graphs-nn", "name": "Graph theory & Neural Network", "url": "https://kkonoo.github.io/4_graphs/", "desc": "네트워크와 딥러닝: 생물의학 데이터를 위한 그래프 이론과 신경망" }
           ] },
-          { "label": "생물정보 수업", "icon": "🔬", "color": "#9A5B1E", "books": [
+          { "label": "생물정보 수업", "icon": "🔬", "stamp": "img/ui/stamp-micro.png", "color": "#9A5B1E", "books": [
             { "id": "bi-biomed", "name": "BI for BioMedical Scientists", "url": "https://kkonoo.github.io/BI_for_Biomed_KNUmed/", "desc": "유전체부터 마이크로바이옴까지 7주 과정" },
             { "id": "rnaseq", "name": "RNA-seq analysis", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/", "desc": "bulk RNA-seq analysis (의사과학자 양성 사업)" },
             { "id": "advanced-bi", "name": "advanced BI for clinical studies", "url": "https://kkonoo.github.io/advanced_BI_for_MD_PhD_KNUmed/", "desc": "융합형 의사과학자 양성 사업: 오믹스 결과가 틀렸을 때 알아보기" }

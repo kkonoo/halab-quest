@@ -154,7 +154,7 @@ function passport(w) {
     w.band ? h('div', 'band', w.band) : null);
 }
 
-// 동그라미를 누르면 도장, 이름을 누르면 교재가 새 탭에서 열려요
+// 동그라미를 누르면 도장, 이름을 누르면 교재가 새 탭에서 열려요 (스탬프 그림: img/ui/stamp-*.png, 빈 자리는 stamp-empty)
 function stampSlot(g, b, i, prev, isNext, stamped) {
   const p = prog(`tb:${b.id}`);
   const tip = [b.desc, prev && !p.check && !stamped(prev) ? `먼저 보면 좋아요: ${prev.name}` : null].filter(Boolean).join('\n');
@@ -163,7 +163,7 @@ function stampSlot(g, b, i, prev, isNext, stamped) {
       class: `pp-stamp${p.check ? ' on' : ''}${isNext ? ' next' : ''}`, style: p.check ? `--tilt:${i % 2 ? 7 : -9}deg` : null,
       title: p.check ? `도장 지우기 (${fmtDate(p.check)})` : '도장 찍기', 'aria-label': `${b.name} ${p.check ? '도장 지우기' : '도장 찍기'}`,
       onclick: () => { setProg(`tb:${b.id}`, { check: p.check ? null : Date.now() }); toast(p.check ? '도장을 지웠어요' : `도장 쾅! ${g.icon} ${b.name}`); render(); },
-    }, p.check ? g.icon : String.fromCharCode(0x2460 + i)),
+    }, h('img', { src: p.check ? g.stamp : 'img/ui/stamp-empty.png', alt: '' }), p.check ? null : h('span', 'pp-num', String.fromCharCode(0x2460 + i))),
     h('a', { class: 'pp-name', href: b.url, target: '_blank', rel: 'noopener', title: tip || null }, b.name, ' ↗'),
     p.check ? h('small', 'pp-date', fmtDate(p.check)) : null);
 }
