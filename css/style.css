@@ -335,8 +335,9 @@ a.step:hover { border-color: var(--wood); background: #FFF8E6; }
 .medal.small { width: 34px; height: 34px; font-size: 18px; border-width: 2px; box-shadow: none; }
 /* 장 수료 메달 그림 (data/chN.json의 done.badgeImg) */
 .medal.pic { background: none; border: 0; box-shadow: none; }
-.medal.pic img, .mk.pic img { width: 100%; height: 100%; }
+.medal.pic img, .mk.pic img { width: 100%; height: 100%; object-fit: contain; }
 .mk.pic { width: 1.8em; height: 1.8em; }
+.mk.pic > .medal { width: 100%; height: 100%; flex: none; } /* 기록 줄의 메달: 칸에 맞춰 동그랗게 (늘어나지 않게) */
 .btn-col { display: grid; gap: 10px; align-content: stretch; }
 
 /* ---------- My Journey · CV · 교수님 ---------- */

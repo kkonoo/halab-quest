@@ -18,7 +18,7 @@ function viewJourney() {
     if (p.star) events.push({ t: p.star, icon: '★', cls: 'star', text: `실전 적용 · ${where}${p.note ? ` — ${p.note}` : ''}` });
   }
   for (const x of db.subs) for (const c of x.casts) for (const e of c.events) if (e.s === 'submitted' || e.s === 'accepted')
-    events.push({ t: Date.parse(e.d) || 0, icon: e.s === 'accepted' ? '🐟' : '🎣', text: `${e.s === 'accepted' ? 'Accept' : '투고'} · ${x.title} → ${c.journal}` });
+    events.push({ t: Date.parse(e.d) || 0, icon: e.s === 'accepted' ? fishImg(x, '') : h('img', { src: 'img/char/rod.png', alt: '' }), cls: 'pic', text: `${e.s === 'accepted' ? 'Accept' : '투고'} · ${x.title} → ${c.journal}` });
   for (const r of db.records) events.push({ t: Date.parse(r.date) || 0, icon: '🎤', text: `${r.kind} 발표 · ‘${r.text}’` });
   for (const ch of badges) events.push({ t: db.chapterDone[ch.id].at, icon: medal(ch, true), cls: 'pic', text: `${ch.done.badge}` });
   events.sort((a, b) => b.t - a.t);
