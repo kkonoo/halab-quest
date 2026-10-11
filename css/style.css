@@ -173,7 +173,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 /* ---------- 퀘스트 화면 ---------- */
 .screen.quest {
   grid-template-columns: minmax(200px, 250px) minmax(0, 1fr) minmax(280px, 360px);
-  grid-template-areas: "menu stage info" "widget widget info" "prev dialog next";
+  grid-template-areas: "menu stage info" ". widget info" "prev dialog next";
   align-items: start;
 }
 .q-menu { grid-area: menu; display: grid; gap: 10px; align-content: start; }

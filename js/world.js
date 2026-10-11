@@ -43,7 +43,7 @@ function viewChapter(ch) {
       h('section', 'panel quest-list',
         h('h2', 'panel-head', `${ch.no}장의 주요 퀘스트`),
         h('ol', 'qlist', ch.quests.map((q, i) => h('li', null, h('a', { href: `#/q/${q.id}` },
-          h('span', 'num', i + 1), h('span', 'qi', q.icon), q.title,
+          h('span', 'num', i + 1), q.title, h('span', 'qi', q.icon),
           h('span', 'marks', prog(q.id).check ? h('span', 'mk ok', '✓') : h('span', 'mk empty', '○'), prog(q.id).star ? h('span', 'mk star', '★') : null))))),
         h('div', 'row',
           bigBtn(`${ch.no}장. ${ch.title} 시작하기`, `#/q/${firstTodo.id}`),

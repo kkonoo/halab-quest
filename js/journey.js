@@ -35,7 +35,7 @@ function viewJourney() {
         return h('div', 'chapter-row',
           h('a', { class: 'ch-name', href: `#/ch/${ch.id}` }, ch.icon, ' ', `${ch.no}장. ${ch.title}`, h('small', null, `✓ ${c.check}/${c.total}`)),
           h('div', 'chips', ch.quests.map(q => h('a', { class: `qchip${prog(q.id).check ? ' ok' : ''}`, href: `#/q/${q.id}`, title: q.title },
-            q.icon, ' ', q.title, prog(q.id).star ? ' ★' : ''))),
+            q.title, ' ', q.icon, prog(q.id).star ? ' ★' : ''))),
           db.chapterDone[ch.id] ? h('span', { class: 'medal small', title: ch.done.badge }, ch.done.badgeIcon || ch.icon) : null);
       }))),
     panel('나의 기록',

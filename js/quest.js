@@ -34,7 +34,7 @@ function viewQuest(q, sec) {
   return h('div', `screen quest c-${ch.id}`,
     h('div', 'q-menu',
       h('section', 'panel',
-        h('h2', 'panel-head', h('span', 'qi', q.icon), q.title),
+        h('h2', 'panel-head', q.title, h('span', 'qi', q.icon)),
         h('nav', null, secs.map((s, i) => h('a', { class: i === sec ? 'on' : null, href: `#/q/${q.id}/${i}` },
           s.overview ? '⚙️ ' : '', i && !s.records ? `${i}. ` : '', s.title)))),
       h('a', { class: 'map-btn', href: `#/ch/${ch.id}` }, `← ${ch.no}장 지도`)),
@@ -147,7 +147,7 @@ function passport(w) {
     h('div', 'passport', w.groups.map(g => {
       const next = g.books.find(b => !stamped(b));
       return h('section', { class: 'pp-page', style: `--ink:${g.color}` },
-        h('h3', null, h('span', null, g.icon, ' ', g.label), h('small', null, `${g.books.filter(stamped).length} / ${g.books.length}`)),
+        h('h3', null, h('span', null, g.label, ' ', g.icon), h('small', null, `${g.books.filter(stamped).length} / ${g.books.length}`)),
         h('div', 'pp-stamps', g.books.map((b, i) => [i ? h('span', 'arrow', '→') : null, stampSlot(g, b, i, g.books[i - 1], b === next, stamped)])),
         h('p', 'pp-next', next ? ['다음 추천: ', h('b', null, next.name)] : '이 분야 도장을 모두 찍었어요 ✓'));
     })),
