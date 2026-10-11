@@ -9,7 +9,6 @@ function viewWorld() {
       h('div', 'map-grid', CHAPTERS.map(ch => {
         const c = chapterCount(ch);
         return h('a', { class: `region r-${ch.id}`, href: `#/ch/${ch.id}`, style: ch.mapPos ? `left:${ch.mapPos[0]}%;top:${ch.mapPos[1]}%` : null },
-          h('span', 'region-icon', ch.icon),
           h('b', null, `${ch.no}장. ${ch.title}`),
           h('small', null, ch.region),
           h('span', 'region-prog', `✓ ${c.check} / ${c.total}`, c.star ? `  ★ ${c.star}` : ''),
@@ -30,9 +29,14 @@ function viewChapter(ch) {
   const firstTodo = ch.quests.find(q => !prog(q.id).check) || ch.quests[0];
   return h('div', `screen chapter c-${ch.id}`,
     h('div', { class: `scene chapter-scene${ch.bg ? ' has-bg' : ''}`, style: ch.bg ? `background-image:url(${ch.bg})` : null },
-      h('div', 'signs', ch.quests.map((q, i) => h('a', { class: 'sign', href: `#/q/${q.id}` },
-        h('span', 'sign-icon', q.icon), h('b', null, q.place || q.title), h('small', null, `${i + 1}. ${q.title}`),
-        prog(q.id).check ? h('span', 'sign-done', '✓') : null))),
+      // 장소 이름이 퀘스트 이름과 다르면 '장소 / 번호. 퀘스트', 같거나 없으면 '번호. 퀘스트' 한 줄
+      h('div', 'signs', ch.quests.map((q, i) => {
+        const place = q.place && q.place !== q.title;
+        return h('a', { class: 'sign', href: `#/q/${q.id}` },
+          h('span', 'sign-icon', q.icon),
+          h('span', 'sign-text', h('b', null, place ? q.place : `${i + 1}. ${q.title}`), place ? h('small', null, `${i + 1}. ${q.title}`) : null),
+          prog(q.id).check ? h('span', 'sign-done', '✓') : null);
+      })),
       prev ? h('a', { class: 'way left', href: `#/ch/${prev.id}` }, `← ${prev.no}장. ${prev.title}`) : null,
       next ? h('a', { class: 'way right', href: `#/ch/${next.id}` }, `${next.no}장. ${next.title} →`) : null,
       h('div', 'walker', studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-walk.png', alt: '고양이' }))),

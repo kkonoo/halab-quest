@@ -23,7 +23,7 @@
   --navy: #2C4A7A;
   --radius: 10px;
   --fs: 1;
-  --pixel: Galmuri11, "Pretendard Variable", sans-serif;
+  --pixel: Galmuri11, "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", system-ui, sans-serif;
   color-scheme: only light;
 }
 * { box-sizing: border-box; }
@@ -32,7 +32,7 @@ body {
   margin: 0; min-height: 100vh;
   background: var(--bg) radial-gradient(circle at 20% 10%, #3B5A41 0 2px, transparent 3px) 0 0 / 28px 28px;
   color: var(--text);
-  font-family: "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", system-ui, sans-serif;
+  font-family: var(--pixel); /* 본문까지 모두 도트 글꼴 (Galmuri11: 보통 · 굵게) */
   font-size: calc(15px * var(--fs));
   -webkit-font-smoothing: antialiased;
 }
@@ -145,7 +145,6 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
   position: relative;
 }
 .region:hover { transform: translateY(-2px); }
-.region-icon { font-size: 40px; }
 .region b { font-size: calc(21px * var(--fs)); }
 .region small { color: var(--muted); }
 .region-prog { font-weight: 700; color: var(--good); }
@@ -158,8 +157,9 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 /* ---------- 챕터 맵 ---------- */
 .chapter-scene { min-height: 380px; padding: 18px 18px 80px; }
 .signs { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; position: relative; z-index: 1; }
-.sign { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: center; padding: 10px 12px; background: #8B5E3C; color: #FBF1DA; border: 3px solid var(--wood-2); border-radius: 8px; text-decoration: none; box-shadow: 0 3px 0 rgba(0,0,0,.25); position: relative; }
-.sign-icon { grid-row: span 2; font-size: 30px; }
+.sign { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: #8B5E3C; color: #FBF1DA; border: 3px solid var(--wood-2); border-radius: 8px; text-decoration: none; box-shadow: 0 3px 0 rgba(0,0,0,.25); position: relative; }
+.sign-icon { font-size: 30px; flex: none; }
+.sign-text { display: grid; }
 .sign small { opacity: .85; }
 .sign-done { position: absolute; top: -8px; right: -8px; background: var(--good); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #fff; }
 .way { position: absolute; bottom: 14px; background: #8B5E3C; color: #FBF1DA; padding: 8px 14px; border: 3px solid var(--wood-2); border-radius: 8px; text-decoration: none; font-family: var(--pixel); z-index: 2; }
@@ -173,22 +173,24 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 /* ---------- 퀘스트 화면 ---------- */
 .screen.quest {
   grid-template-columns: minmax(200px, 250px) minmax(0, 1fr) minmax(280px, 360px);
-  grid-template-areas: "menu stage info" "widget widget side" "dialog dialog next";
+  grid-template-areas: "menu stage info" "widget widget side" "prev dialog next";
   align-items: start;
 }
-.q-menu { grid-area: menu; }
+.q-menu { grid-area: menu; display: grid; gap: 10px; align-content: start; }
 .q-stage { grid-area: stage; min-width: 0; }
 .q-info { grid-area: info; display: grid; gap: 12px; }
 .q-widget { grid-area: widget; min-width: 0; }
 .q-side { grid-area: side; }
 .q-dialog { grid-area: dialog; }
+.q-prev { grid-area: prev; align-self: stretch; display: grid; }
+.q-prev .big-btn, .q-next .big-btn { word-break: keep-all; }
 .q-next { grid-area: next; align-self: stretch; display: grid; }
-.screen.quest:not(:has(.q-widget)) { grid-template-areas: "menu stage info" "menu stage side" "dialog dialog next"; }
+.screen.quest:not(:has(.q-widget)) { grid-template-areas: "menu stage info" "menu stage side" "prev dialog next"; }
 .q-menu nav { display: grid; gap: 4px; }
 .q-menu nav a { padding: 9px 10px; border-radius: 6px; text-decoration: none; color: var(--text); border: 1px solid transparent; }
 .q-menu nav a:hover { background: var(--surface-2); }
 .q-menu nav a.on { background: var(--accent); color: var(--on-accent); border-color: #7E2E2B; font-weight: 700; }
-.q-menu .back { display: block; margin-top: 12px; font-size: .9em; color: var(--muted); }
+.map-btn { display: block; text-align: center; color: #FBF1DA; text-decoration: none; font-family: var(--pixel); }
 .stage { display: grid; gap: 10px; }
 .quest-scene { min-height: 230px; }
 .card.overview p, .card.reading p { line-height: 1.6; }
@@ -198,7 +200,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .card th, .card td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
 .card th { background: var(--surface-2); }
 .card blockquote { margin: 8px 0; padding: 8px 12px; background: #FBF4E2; border-left: 4px solid var(--gold); color: var(--muted); }
-.card code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: .9em; }
+.card code { font-family: GalmuriMono11, var(--pixel); background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: .9em; }
 .card li { margin: 3px 0; line-height: 1.5; }
 .card li.check { list-style: none; margin-left: -1.2em; }
 .box { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--muted); border-radius: 3px; margin-right: 6px; vertical-align: -2px; }
@@ -345,13 +347,14 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   main { padding: 10px; }
   .title { font-size: calc(17px * var(--fs)); }
   .tool b { display: none; }
-  .screen.quest, .screen.quest:not(:has(.q-widget)) { grid-template-columns: 1fr; grid-template-areas: "menu" "stage" "info" "widget" "side" "dialog" "next"; }
+  .screen.quest, .screen.quest:not(:has(.q-widget)) { grid-template-columns: 1fr 1fr; grid-template-areas: "menu menu" "stage stage" "info info" "widget widget" "side side" "dialog dialog" "prev next"; }
   .bottom-row, .done-grid { grid-template-columns: 1fr; }
   .map-grid { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .chapter-row { grid-template-columns: 1fr; }
   .checks { grid-template-columns: 1fr; }
   .lights { grid-template-columns: 1fr; }
+  .q-prev .big-btn, .q-next .big-btn { font-size: calc(17px * var(--fs)); }
   .pp-books { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
   .portrait { width: 72px; }
   .bubble { max-width: 75%; font-size: .9em; }
@@ -439,7 +442,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .title { border: 14px solid transparent; border-width: 14px 20px; border-image: var(--header-img) 22 40 fill / 14px 20px stretch; padding: 0 8px; text-shadow: 0 2px 0 #0E2018; }
 .tools { border: 14px solid transparent; border-image: var(--panel-img) 40 fill / 14px stretch; border-radius: 0; background: none; padding: 0; }
 .place { border: 8px solid transparent; border-width: 8px 12px; border-image: var(--header-img) 22 40 fill / 8px 12px stretch; border-radius: 0; background: none; padding: 0 4px; }
-.way, .sign { border: 10px solid transparent; border-width: 10px 15px; border-image: var(--header-img) 22 40 fill / 10px 15px stretch; border-radius: 0; background: none; box-shadow: none; padding: 2px 4px; }
+.way, .sign, .map-btn { border: 10px solid transparent; border-width: 10px 15px; border-image: var(--header-img) 22 40 fill / 10px 15px stretch; border-radius: 0; background: none; box-shadow: none; padding: 2px 4px; }
 .q-menu nav a.on { border: 8px solid transparent; border-width: 8px 12px; border-image: var(--btn-img) 32 48 fill / 8px 12px stretch; background: none; border-radius: 0; padding: 1px 2px; color: #FFF4DE; }
 /* 전신 캐릭터 (img/char/) — 장면 바닥에 세움 */
 .walker { display: flex; align-items: flex-end; gap: 6px; }
@@ -462,10 +465,9 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 /* 월드맵: 그림 위 네 지역에 이름표를 올림 (data/chN.json의 mapPos = [가로%, 세로%]) */
 .map-area.world-map { position: relative; padding: 0; aspect-ratio: 1672 / 941; background: url(../img/bg/world.jpg) center / cover; }
 .world-map .map-grid { display: block; position: absolute; inset: 0; }
-.world-map .region { position: absolute; transform: translate(-50%, -50%); grid-template-columns: auto auto; column-gap: 8px; align-items: center; justify-items: start; min-width: 180px; }
-.world-map .region-icon { grid-row: span 3; font-size: 30px; }
+.world-map .region { position: absolute; transform: translate(-50%, -50%); justify-items: center; text-align: center; min-width: 180px; }
 .world-map .region b { font-size: calc(17px * var(--fs)); }
-.world-map .region .chip { top: -10px; right: -6px; }
+.world-map .region .chip { top: -30px; right: -12px; }
 @media (max-width: 900px) {
   .map-area.world-map { aspect-ratio: auto; padding: 46vw 10px 10px; background-size: 100% auto; background-position: top; background-repeat: no-repeat; background-color: #5E8C55; }
   .world-map .map-grid { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
