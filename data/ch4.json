@@ -46,7 +46,7 @@
       "sections": [
         {
           "title": "그림이 먼저",
-          "md": "논문은 **그림·표 → Methods → Results → Introduction → Discussion → Abstract → Title** 순서로 써요.\n\n그림이 정해지면 이야기가 정해져요. 그림을 먼저 순서대로 늘어놓고, 각 그림의 결론을 한 문장씩 써 보면 그게 Results의 뼈대예요.\n\n> 3장 Figure 제작소 = 결과 하나를 그림 하나로\n> 4장 Figure 스토리보드 = 논문 전체 그림의 순서와 흐름"
+          "md": "논문은 **그림·표 → Methods → Results → Introduction → Discussion → Abstract → Title** 순서로 써요.\n\n그림이 정해지면 이야기가 정해져요. 그림을 먼저 순서대로 늘어놓고, 각 그림의 결론을 한 문장씩 써 보면 그게 Results의 뼈대예요.\n\n> 3장 Figure 만들기 = 결과 하나를 그림 하나로\n> 4장 Figure 스토리보드 = 논문 전체 그림의 순서와 흐름"
         },
         {
           "title": "Figure 순서 카드",
@@ -71,7 +71,7 @@
       "links": [
         { "label": "Lab Manager · 그림 만들기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/figures.md" },
         { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
-        { "label": "3장 Figure 제작소", "quest": "ch3-figure" }
+        { "label": "3장 Figure 만들기", "quest": "ch3-figure" }
       ],
       "check": "논문 하나의 Figure 흐름을 결론 문장으로 정리해봤다면 체크해보세요!",
       "star": "내 원고의 Figure 순서를 교수님과 정해보세요."
@@ -131,7 +131,7 @@
       "links": [
         { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
         { "label": "Lab Manager · 표현", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/phrases.md" },
-        { "label": "3장 AI 연구 도우미", "quest": "ch3-ai" }
+        { "label": "3장 AI 활용하기", "quest": "ch3-ai" }
       ],
       "warn": "미발표 원고는 AI에 넣지 않기",
       "check": "Figure 순서 카드로 Results 단락 첫 문장을 써봤다면 체크해보세요!",
@@ -219,7 +219,7 @@
         "'왜 중요한가'부터 시작하고, 핵심 결과는 3개면 충분해요.",
         "초록을 내기 1주 전에는 꼭 먼저 알려 주세요."
       ],
-      "overview": "**목적** 연구실 밖 청중에게 발표하는 법을 익혀요 (학회 구두, 포스터, 학위 심사).\n\n**할 일**\n- 내 연구로 초록을 써보거나, 학회 구두 발표 구성이나 포스터 배치를 스케치해보기\n\n슬라이드 기본 규칙과 질문받는 법은 [3장 발표 연습실](#/q/ch3-present)에서 다뤘어요.",
+      "overview": "**목적** 연구실 밖 청중에게 발표하는 법을 익혀요 (학회 구두, 포스터, 학위 심사).\n\n**할 일**\n- 내 연구로 초록을 써보거나, 학회 구두 발표 구성이나 포스터 배치를 스케치해보기\n\n슬라이드 기본 규칙과 질문받는 법은 [3장 랩미팅 발표](#/q/ch3-present)에서 다뤘어요.",
       "cards": "ch4-conference.md",
       "cardsSkip": ["나의 발표 기록"],
       "records": ["학회 구두", "포스터", "학위 심사"],

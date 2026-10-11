@@ -31,7 +31,7 @@
     {
       "id": "ch3-passport",
       "mapPos": [18, 58],
-      "title": "교재 여권",
+      "title": "교재로 기초 다지기",
       "icon": "📘",
       "place": "교재 여권 센터",
       "bg": "img/bg/ch3-passport.jpg",
@@ -84,8 +84,8 @@
         "band": "교재 질문은 Slack #help-study에 챕터 링크와 함께"
       },
       "links": [
-        { "label": "3장 분석 스킬 트리", "quest": "ch3-skills" },
-        { "label": "3장 통계 실습실", "quest": "ch3-stats" }
+        { "label": "3장 분석 기본기 익히기", "quest": "ch3-skills" },
+        { "label": "3장 통계 익히기", "quest": "ch3-stats" }
       ],
       "noStar": true,
       "check": "교재 한 권을 공부하고 여권에 도장을 찍어봤다면 체크해보세요!"
@@ -93,7 +93,7 @@
     {
       "id": "ch3-skills",
       "mapPos": [20, 33],
-      "title": "분석 스킬 트리",
+      "title": "분석 기본기 익히기",
       "icon": "📊",
       "place": "분석 스킬 트리관",
       "bg": "img/bg/ch3-skills.jpg",
@@ -103,7 +103,7 @@
         "R과 Python은 둘 중 하나를 먼저 골라도 돼요. 나중에 다른 길도 걸어 보면 좋아요.",
         "막히면 #help-study에 교재 챕터 링크와 함께 물어봐요."
       ],
-      "overview": "**목적** 데이터 분석에 필요한 기본기를 레벨 순서로 익혀요. 신입생 첫 1개월 입문 교육(Linux, R/Python)이 여기예요.\n\n**할 일**\n- 레벨마다 자료를 읽고 따라 해보기\n- 막힌 곳은 Slack #help-study에 질문하기\n\nR과 Python은 나란한 두 길이에요. Lv.4 통계는 [3. 통계 실습실](#/q/ch3-stats)에서 따로 익혀요.",
+      "overview": "**목적** 데이터 분석에 필요한 기본기를 레벨 순서로 익혀요. 신입생 첫 1개월 입문 교육(Linux, R/Python)이 여기예요.\n\n**할 일**\n- 레벨마다 자료를 읽고 따라 해보기\n- 막힌 곳은 Slack #help-study에 질문하기\n\nR과 Python은 나란한 두 길이에요. Lv.4 통계는 [3. 통계 익히기](#/q/ch3-stats)에서 따로 익혀요.",
       "sections": [
         {
           "title": "Lv.1 Linux",
@@ -119,7 +119,7 @@
         },
         {
           "title": "Lv.4 통계",
-          "md": "통계는 따로 **[3. 통계 실습실](#/q/ch3-stats)**에서 익혀요.\n\n가설검정 기초 · 회귀분석 · 고차원 데이터(PCA · 배치 효과) · 결과 검증(다중검정 · FDR · 검정력), 네 스테이션이 있어요."
+          "md": "통계는 따로 **[3. 통계 익히기](#/q/ch3-stats)**에서 익혀요.\n\n가설검정 기초 · 회귀분석 · 고차원 데이터(PCA · 배치 효과) · 결과 검증(다중검정 · FDR · 검정력), 네 스테이션이 있어요."
         },
         {
           "title": "Lv.5 분석 실습 · 검증",
@@ -145,7 +145,7 @@
             { "icon": "🐍", "label": "Lv.2 Python", "sub": "Jupyter", "href": "#/q/ch3-skills/2" }
           ] },
           { "icon": "🧮", "label": "Lv.3 데이터 조작", "sub": "정리 · 합치기 · 그림", "href": "#/q/ch3-skills/3" },
-          { "icon": "∑", "label": "Lv.4 통계", "sub": "3. 통계 실습실", "href": "#/q/ch3-stats" },
+          { "icon": "∑", "label": "Lv.4 통계", "sub": "3. 통계 익히기", "href": "#/q/ch3-stats" },
           { "icon": "🔬", "label": "Lv.5 분석 실습 · 검증", "sub": "한 바퀴 돌리기 · 확인", "href": "#/q/ch3-skills/5" }
         ],
         "band": "R과 Python은 나란한 두 길. 하나를 먼저 골라도 돼요"
@@ -165,7 +165,7 @@
     {
       "id": "ch3-stats",
       "mapPos": [30, 7],
-      "title": "통계 실습실",
+      "title": "통계 익히기",
       "icon": "∑",
       "place": "통계 실습실",
       "bg": "img/bg/ch3-stats.jpg",
@@ -301,7 +301,7 @@
         { "label": "Lab Manager · 공부 · AI 활용 (논문 읽기 3단계)", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/study-ai.md" },
         { "label": "Lab Manager · 통계 검정 · plot 매칭표", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" },
         { "label": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr/" },
-        { "label": "3장 발표 연습실 · Journal club", "href": "#/q/ch3-present/3" }
+        { "label": "3장 랩미팅 발표 · Journal club", "href": "#/q/ch3-present/3" }
       ],
       "check": "논문 하나의 Methods를 Why & What으로 정리해봤다면 체크해보세요!",
       "star": "분석 노트를 Journal club 발표나 내 분석에 써봤다면 기록해보세요."
@@ -309,7 +309,7 @@
     {
       "id": "ch3-figure",
       "mapPos": [73, 16],
-      "title": "Figure 제작소",
+      "title": "Figure 만들기",
       "icon": "🎨",
       "place": "Figure 제작소",
       "bubble": "그리기 전에 결론부터 한 문장으로 써요.",
@@ -352,7 +352,7 @@
     {
       "id": "ch3-ai",
       "mapPos": [81, 36],
-      "title": "AI 연구 도우미",
+      "title": "AI 활용하기",
       "icon": "🤖",
       "place": "AI 연구 도우미실",
       "bg": "img/bg/ch3-ai.jpg",
@@ -396,9 +396,10 @@
     {
       "id": "ch3-present",
       "mapPos": [82, 64],
-      "title": "발표 연습실",
+      "title": "랩미팅 발표",
       "icon": "🎓",
       "place": "발표 홀",
+      "bg": "img/bg/ch3-present.jpg",
       "bubble": "제목에 결론을 쓰니 훨씬 잘 들어와요.",
       "dialog": [
         "랩미팅은 잘된 결과만 보여주는 자리가 아니에요.",

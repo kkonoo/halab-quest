@@ -1,4 +1,4 @@
-# 3장 · 7. 발표 연습실 — 게임 내 가이드 카드
+# 3장 · 7. 랩미팅 발표 — 게임 내 가이드 카드
 
 > 출처: Lab manual(정기 미팅 · Progress report 준비 · Journal club 준비 · Individual meeting 준비), Lab Manager 팁 "발표 · PPT 만들기"
 > 학회 발표 · 포스터 · 학위 심사는 4장에서 다뤄요.

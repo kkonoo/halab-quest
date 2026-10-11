@@ -1,7 +1,7 @@
 'use strict';
 // 퀘스트 화면 하나로 모든 퀘스트를 그려요 (내용은 data/chN.json의 퀘스트 항목)
-// 칸: 좌측 메뉴 | 가운데 장면·읽기 카드 | 우측 정보 패널 + ✓·★
-//     핵심 UI(widget: flow · figcards · lights · passport) | 자료 링크 또는 발표 기록
+// 칸: 좌측 메뉴 | 가운데 장면·읽기 카드 | 우측: 정보 패널 → 자료 링크(또는 발표 기록) → ✓·★
+//     핵심 UI(widget: flow · figcards · lights · passport) |
 //     이전 버튼 | 교수님 대화창                  | 다음 버튼
 
 const cardData = new Map(); // 카드 md 파일 → [{ title, md }] (다 읽으면 다시 그림)
@@ -41,9 +41,9 @@ function viewQuest(q, sec) {
     h('div', 'q-stage', secs[sec].overview ? stageScene(q) : secs[sec].records ? recordsFull(q) : readingCard(secs[sec], q)),
     h('div', 'q-info',
       q.info ? infoPanel(q.info) : null,
+      q.records ? recordsPanel(q) : linksPanel(q),
       checkBoxes(q)),
     q.widget ? h('div', 'q-widget', widget(q.widget)) : null,
-    h('div', 'q-side', q.records ? recordsPanel(q) : linksPanel(q)),
     h('div', 'q-prev', prev ? h('a', { class: 'big-btn', href: `#/q/${prev.id}` }, '‹ ', `이전: ${prev.title}`)
       : h('a', { class: 'big-btn', href: `#/ch/${ch.id}` }, '‹ ', `${ch.no}장 지도`)),
     h('div', 'q-dialog', dialogBox(q.dialog || DEFAULT_DIALOG, q.face || 'explain')),
