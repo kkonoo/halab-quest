@@ -22,6 +22,11 @@ function viewJourney() {
   for (const r of db.records) events.push({ t: Date.parse(r.date) || 0, icon: '🎤', text: `${r.kind} 발표 · ‘${r.text}’` });
   for (const ch of badges) events.push({ t: badgeAt(ch), icon: medal(ch, true), cls: 'pic', text: `${ch.done.badge}` });
   events.sort((a, b) => b.t - a.t);
+  // 최근 한 달은 펼쳐 두고, 그보다 오래된 기록은 접어 둠
+  const monthAgo = Date.now() - 30 * 86400000;
+  const recent = events.filter(e => e.t >= monthAgo), older = events.filter(e => e.t < monthAgo);
+  const timeline = list => h('ul', 'timeline', list.map(e => h('li', null,
+    h('span', `mk ${e.cls || ''}`, e.icon), h('span', 'tl-text', e.text), h('small', null, e.t ? fmtDate(e.t) : ''))));
 
   return h('div', 'screen journey',
     h('div', 'stats-row',
@@ -39,8 +44,9 @@ function viewJourney() {
           chapterAllDone(ch) ? medal(ch, true) : null);
       }))),
     panel('나의 기록',
-      events.length ? h('ul', 'timeline', events.slice(0, 60).map(e => h('li', null,
-        h('span', `mk ${e.cls || ''}`, e.icon), h('span', 'tl-text', e.text), h('small', null, e.t ? fmtDate(e.t) : ''))))
+      events.length ? [
+        recent.length ? timeline(recent) : h('p', 'hint', '최근 한 달 동안의 기록은 없어요.'),
+        older.length ? h('details', 'older', h('summary', null, `한 달 전 기록 ${older.length}개 더 보기`), timeline(older)) : null]
         : h('p', 'hint', '퀘스트를 하나 끝내고 체크하면 여기에 기록이 쌓여요.')),
     h('div', 'row end', h('a', { class: 'btn', href: '#/fish' }, '🎣 투고 낚시터'), h('a', { class: 'btn', href: '#/cv' }, '📜 My CV'), bigBtn('월드맵으로', '#/')));
 }
