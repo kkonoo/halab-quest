@@ -13,7 +13,9 @@ function viewWorld() {
           h('small', null, ch.region),
           h('span', 'region-prog', `✓ ${c.check} / ${c.total}`, c.star ? `  ★ ${c.star}` : ''),
           ch.ready ? null : h('span', 'chip', '준비 중'));
-      }))),
+      }),
+      // 가운데 섬 = 투고 낚시터
+      h('a', { class: 'sign pond-sign', href: '#/fish' }, h('b', 'sign-text', '투고 낚시터')))),
     h('div', 'bottom-row',
       dialogBox(['안녕하세요. 반가워요! 여기는 HaLab이에요.', '연구는 긴 여정이지만, 작은 탐험부터 시작하면 누구나 해낼 수 있어요.',
         '가고 싶은 곳을 골라보세요. 순서는 추천일 뿐, 어디든 먼저 가도 돼요.'], 'smile'),
