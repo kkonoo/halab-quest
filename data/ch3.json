@@ -355,6 +355,7 @@
       "title": "AI 연구 도우미",
       "icon": "🤖",
       "place": "AI 연구 도우미실",
+      "bg": "img/bg/ch3-ai.jpg",
       "pose": "tablet",
       "bubble": "AI 답은 초안이에요. 확인은 내가 해요.",
       "dialog": [

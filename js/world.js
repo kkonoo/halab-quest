@@ -29,11 +29,10 @@ function viewChapter(ch) {
   const firstTodo = ch.quests.find(q => !prog(q.id).check) || ch.quests[0];
   return h('div', `screen chapter c-${ch.id}`,
     h('div', { class: `scene chapter-scene${ch.bg ? ' has-bg' : ''}`, style: ch.bg ? `background-image:url(${ch.bg})` : null },
-      // 이름표는 한 줄: '번호. 장소' (장소가 없으면 '번호. 퀘스트')
+      // 이름표는 한 줄: '번호. 장소' (장소가 없으면 '번호. 퀘스트'), 그림이 장소를 보여 주므로 이모지 없이
       // 퀘스트에 mapPos([가로%, 세로%])가 있으면 그림 속 건물 위에 이름표를 올림 (월드맵처럼), 없으면 위쪽에 나란히
       h('div', `signs${ch.quests.some(q => q.mapPos) ? ' pinned' : ''}`, ch.quests.map((q, i) =>
         h('a', { class: 'sign', href: `#/q/${q.id}`, title: q.title, style: q.mapPos ? `left:${q.mapPos[0]}%;top:${q.mapPos[1]}%` : null },
-          h('span', 'sign-icon', q.icon),
           h('b', 'sign-text', `${i + 1}. ${q.place || q.title}`),
           prog(q.id).check ? h('span', 'sign-done', '✓') : null))),
       prev ? h('a', { class: 'way left', href: `#/ch/${prev.id}` }, `← ${prev.no}장. ${prev.title}`) : null,

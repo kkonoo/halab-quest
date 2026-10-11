@@ -158,7 +158,6 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .chapter-scene { min-height: 380px; padding: 18px 18px 80px; }
 .signs { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; position: relative; z-index: 1; }
 .sign { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: #8B5E3C; color: #FBF1DA; border: 3px solid var(--wood-2); border-radius: 8px; text-decoration: none; box-shadow: 0 3px 0 rgba(0,0,0,.25); position: relative; }
-.sign-icon { font-size: 30px; flex: none; }
 .sign-text { display: grid; word-break: keep-all; }
 .sign small { opacity: .85; }
 .sign-done { position: absolute; top: -8px; right: -8px; background: var(--good); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #fff; }
@@ -467,7 +466,6 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .signs.pinned { position: absolute; inset: 0; display: block; }
 .signs.pinned .sign { position: absolute; width: max-content; transform: translate(-50%, -50%); }
 .signs.pinned .sign { font-size: clamp(12px, 1.05vw, 15px); }
-.signs.pinned .sign-icon { font-size: 2em; }
 .chapter-scene.has-bg .walker { bottom: 13%; } /* 전경 그림 아래 가운데 길 위에 */
 @media (max-width: 900px) {
   /* 폰 · 그림 있는 챕터 맵: 월드맵처럼 그림을 위에 다 보여 주고, 이름표와 길 버튼은 그 아래에 (그림 높이 = 폭 × 941/1672) */
@@ -481,7 +479,6 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
   /* 폰: 이름표를 두 줄로 놓아 그림이 보이게, 캐릭터는 길 버튼 위에 */
   .signs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .sign { gap: 6px; font-size: .85em; }
-  .sign-icon { font-size: 22px; }
   .chapter-scene .walker { bottom: 62px; }
   /* 폰에서는 그림이 작아서 건물 위에 올리지 않고 위쪽에 두 칸씩 */
   .signs.pinned { position: relative; inset: auto; display: grid; }
