@@ -12,14 +12,7 @@
 | 랩미팅 | 주 1회 | Progress report (영어) + Journal club (한국어) |
 | 개인 미팅 | 주 1회 | 연구 진행 점검 |
 
-**발표 자료 올리기**
-- 파일 이름: `YYMMDD_project_title.pptx` / `YYMMDD_journal_title.pptx`
-- 올리는 곳: Lab manual의 랩미팅 자료 폴더
-
-**Journal club 발표자라면**
-- 발표 **3일 전까지** Slack `#team-jc`에 논문 공지
-- 논문 pdf 올리기: `[Year] [Journal 약어] paper title.pdf`
-- JC 논문 표에 추가
+> 발표 자료 올리는 곳 · 파일 이름, JC 논문 공지 방법은 Lab manual에서 확인해요.
 
 **개인 미팅 전에 준비할 것**
 - 핵심 결과 3~5줄 (수치는 정확히: n, cluster 수, 효과 크기 등)
