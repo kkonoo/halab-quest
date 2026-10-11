@@ -502,11 +502,16 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .walker .sprite { height: 120px; width: auto; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0,0,0,.15)); }
 @media (max-width: 900px) { .walker .sprite { height: 90px; } }
 .walker .sprite.cat { height: 54px; margin-left: 2px; }
-/* 앉은 고양이 대기 동작: 네 칸 띠 그림을 한 칸 크기 창으로 보며 옆으로 넘김. 대부분 가만히, 가끔 깜빡 · 꼬리 · 귀 */
+/* 앉은 고양이 대기 동작: 네 칸 띠 그림을 한 칸 크기 창으로 보며 옆으로 넘김. 3초마다 꼬리 · 깜빡 · 귀 */
 .cat-idle { display: inline-block; aspect-ratio: 159 / 200; overflow: hidden; }
-.cat-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: cat-idle 7s step-end infinite; }
-@keyframes cat-idle { 0% { transform: none; } 40% { transform: translateX(-25%); } 43% { transform: none; } 62% { transform: translateX(-50%); } 74% { transform: none; } 85% { transform: translateX(-75%); } 91% { transform: none; } 96% { transform: translateX(-25%); } 98.5%, 100% { transform: none; } }
-@media (prefers-reduced-motion: reduce) { .cat-idle img { animation: none; } }
+.cat-idle img { display: block; height: 100%; width: auto; image-rendering: pixelated; animation: cat-idle 3s step-end infinite; }
+@keyframes cat-idle { 0% { transform: none; } 20% { transform: translateX(-50%); } 42% { transform: none; } 58% { transform: translateX(-25%); } 65% { transform: none; } 78% { transform: translateX(-75%); } 92%, 100% { transform: none; } }
+/* 챕터 지도의 걷는 고양이: 학생 오른쪽 → 더 오른쪽 → 돌아서 학생 앞을 지나 왼쪽 → 다시 제자리. 걸음은 위아래로 콩콩 (거리는 고양이 폭 기준 %) */
+.cat-roam { display: inline-block; animation: cat-roam 9s linear infinite; }
+.cat-roam img { display: block; animation: cat-step .4s steps(2) infinite; }
+@keyframes cat-roam { 0% { translate: 0; scale: 1 1; } 12% { translate: 90% 0; scale: 1 1; } 14% { translate: 90% 0; scale: -1 1; } 62% { translate: -260% 0; scale: -1 1; } 64% { translate: -260% 0; scale: 1 1; } 100% { translate: 0; scale: 1 1; } }
+@keyframes cat-step { 50% { translate: 0 -2px; } }
+@media (prefers-reduced-motion: reduce) { .cat-idle img, .cat-roam, .cat-roam img { animation: none; } }
 @media (max-width: 900px) { .walker .sprite.cat { height: 42px; } }
 .walker .sprite.student { height: 108px; }
 @media (max-width: 900px) { .walker .sprite.student { height: 80px; } }

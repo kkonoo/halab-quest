@@ -39,7 +39,7 @@ function viewChapter(ch) {
           prog(q.id).check ? h('span', 'mk ok', '✓') : null))),
       prev ? h('a', { class: 'way left', href: `#/ch/${prev.id}` }, `← ${prev.no}장. ${prev.title}`) : null,
       next ? h('a', { class: 'way right', href: `#/ch/${next.id}` }, `${next.no}장. ${next.title} →`) : null,
-      h('div', 'walker', studentImg('back'), h('img', { class: 'sprite cat', src: 'img/char/cat-walk.png', alt: '고양이' }))),
+      h('div', 'walker', studentImg('back'), h('span', 'cat-roam', h('img', { class: 'sprite cat', src: 'img/char/cat-walk.png', alt: '고양이' })))),
     h('div', 'bottom-row',
       dialogBox(ch.intro, 'explain'),
       h('section', 'panel quest-list',
