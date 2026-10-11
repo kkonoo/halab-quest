@@ -185,6 +185,8 @@ main { max-width: 1440px; margin: 0 auto; padding: 16px; }
 .q-nav .big-btn { min-height: 64px; font-size: calc(16px * var(--fs)); word-break: keep-all; }
 .screen.quest:not(:has(.q-widget)) { grid-template-areas: "menu stage info"; }
 .q-menu .panel-head, .q-menu nav a { word-break: keep-all; }
+.q-menu .panel-head { display: block; font-size: calc(17px * var(--fs)); } /* 이모지가 칸을 따로 차지하지 않고 글자 바로 뒤에, 한 줄에 들어가게 */
+.q-menu .panel-head .qi { font-size: .85em; }
 .q-menu nav { display: grid; gap: 4px; }
 .q-menu nav a { padding: 9px 10px; border-radius: 6px; text-decoration: none; color: var(--text); border: 1px solid transparent; }
 .q-menu nav a:hover { background: var(--surface-2); }

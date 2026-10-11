@@ -33,7 +33,7 @@ function viewQuest(q, sec) {
   return h('div', `screen quest c-${ch.id}`,
     h('div', 'q-menu',
       h('section', 'panel',
-        h('h2', 'panel-head', q.title, h('span', 'qi', q.icon)),
+        h('h2', 'panel-head', q.title, ' ', h('span', 'qi', q.icon)),
         h('nav', null, secs.map((s, i) => h('a', { class: i === sec ? 'on' : null, href: `#/q/${q.id}/${i}` },
           s.overview ? '⚙️ ' : '', i && !s.records ? `${i}. ` : '', s.title)))),
       h('a', { class: 'map-btn', href: `#/ch/${ch.id}` }, `← ${ch.no}장 지도`),
