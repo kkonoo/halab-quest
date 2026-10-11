@@ -250,6 +250,7 @@
       "mapPos": [74, 5],
       "title": "교수님과 면담하기",
       "icon": "👩‍🏫",
+      "bg": "img/bg/ch2-meeting.jpg",
       "face": "smile",
       "bubble": "오늘 정하고 싶은 것부터 말해 줘요.",
       "dialog": [
