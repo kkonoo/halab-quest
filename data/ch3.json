@@ -7,6 +7,7 @@
   "region": "연구하기",
   "bg": "img/bg/ch3-map.jpg",
   "mapPos": [30, 79],
+  "walkerPos": [50, 83],
   "ready": true,
   "intro": [
     "드디어 3장, 실험실 마을에 도착했어요!",

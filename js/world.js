@@ -40,7 +40,8 @@ function viewChapter(ch) {
           prog(q.id).check ? h('span', 'mk ok', '✓') : null))),
       prev ? h('a', { class: 'way left', href: `#/ch/${prev.id}` }, `← ${prev.no}장. ${prev.title}`) : null,
       next ? h('a', { class: 'way right', href: `#/ch/${next.id}` }, `${next.no}장. ${next.title} →`) : null,
-      h('div', 'walker', studentImg('back'), h('span', { class: 'cat-roam', role: 'img', 'aria-label': '고양이' },
+      // 학생 · 고양이 자리: walkerPos = [가로%, 발 위치 세로%] (그림 속 빈 광장 · 길 위)
+      h('div', { class: 'walker', style: ch.walkerPos ? `--wx:${ch.walkerPos[0]};--wy:${ch.walkerPos[1]}` : null }, studentImg('back'), h('span', { class: 'cat-roam', role: 'img', 'aria-label': '고양이' },
         h('span', 'sprite cat cat-walk', h('img', { src: 'img/char/cat-walk-strip.png', alt: '' })),
         h('span', 'sprite cat cat-idle', h('img', { src: 'img/char/cat-idle.png', alt: '' }))))),
     h('div', 'bottom-row',

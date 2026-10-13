@@ -7,6 +7,7 @@
   "region": "첫 논문 쓰기",
   "bg": "img/bg/ch4-map.jpg",
   "mapPos": [72, 87],
+  "walkerPos": [54, 95],
   "ready": true,
   "intro": [
     "드디어 4장, 논문의 탑에 도착했어요!",

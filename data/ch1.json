@@ -7,6 +7,7 @@
   "region": "분야 탐색",
   "bg": "img/bg/ch1-map.jpg",
   "mapPos": [30, 26],
+  "walkerPos": [50, 86],
   "ready": true,
   "intro": [
     "HaLab에 온 걸 환영해요!",

@@ -35,6 +35,8 @@ HaLab 연구실 인턴 · 대학원생 온보딩용 쯔꾸르풍 웹 RPG예요. 
 
 퀘스트 항목에서 쓰는 칸: `overview`(개요) · `sections` 또는 `cards`(메뉴 칸) · `info`(우측 정보 패널) · `widget`(아래) · `links`(`url` 바깥 링크 / `quest` 다른 퀘스트 / `href` 게임 안 주소 / `note` 글만) · `warn` · `records`(발표 기록 종류) · `check` · `star` · `noStar` · `dialog` · `bubble` · `face` · `pose` · `bg`(장면 그림 주소, 그림이 생기면) · `mapPos`(챕터 맵 그림 속 이름표 위치 [가로%, 세로%], 이름표 가운데 기준. 없으면 이름표를 위쪽에 나란히).
 
+장 항목의 그림 칸: `bg`(장 지도) · `mapPos`(월드맵 이름판 위치 [가로%, 세로%]) · `walkerPos`(장 지도에서 학생 · 고양이가 설 자리 [가로%, 발 위치 세로%], 그림 속 빈 광장 · 길 위로) · `done.bg`(완료 화면) · `done.badgeImg`(수료 메달 그림).
+
 `widget` 종류:
 - `flow` 흐름 — 칸마다 `icon` `label` `sub`, 눌러서 갈 곳 `url`(새 탭) 또는 `href`(게임 안), 나란한 두 길은 `{ "branch": [칸, 칸] }`
 - `figcards` Figure 순서 카드 (4장)
