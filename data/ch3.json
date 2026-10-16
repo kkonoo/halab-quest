@@ -65,7 +65,7 @@
             { "id": "halab-wiki", "name": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr", "desc": "질문을 따라 개념의 구조를 찾는 연구실 공부 가이드: GWAS · Omics · Single-cell · Multi-omics · 질환" }
           ] },
           { "label": "생명과학", "icon": "🧬", "stamp": "img/ui/stamp-dna.png", "color": "#2E7D6B", "books": [
-            { "id": "mcb", "name": "Molecular and Cellular Biology", "url": "https://kkonoo.github.io/0_Molecular_and_Cellular_Biology/", "desc": "컴퓨터 · 통계 등 다른 전공이면 먼저: 시퀀싱 데이터를 읽는 데 필요한 만큼의 분자세포생물학" },
+            { "id": "mcb", "name": "Molecular and Cellular Biology", "url": "https://kkonoo.github.io/0_Molecular_and_Cellular_Biology/", "desc": "컴퓨터 · 통계 등 다른 전공이면 먼저: 시퀀싱 데이터를 읽는 데 필요한 만큼의 분자세포생물학", "note": "생물 전공은 건너뛰어도 돼요" },
             { "id": "human-genetics", "name": "Human genetics", "url": "https://chaek.org/books/human-genetics", "desc": "멘델의 유전 개념부터 유전체 시퀀싱 · 대규모 코호트까지 (안준용, 고려대)" },
             { "id": "immunology", "name": "Immunology", "url": "https://halab-wiki.knu.ac.kr/disease/immunology/index.html", "desc": "Kuby 면역학 8판 흐름: 기초 · 선천면역 · 적응면역 · 질환 · 연구방법 (HaLab Wiki)" }
           ] },
