@@ -180,10 +180,12 @@ function passport(w) {
   return panel(`${w.title} · 스탬프 ${all.filter(stamped).length} / ${all.length}`,
     h('div', 'passport', w.groups.map(g => {
       const next = g.books.find(b => !stamped(b));
+      // 건너뛰어도 되는 교재(alt: '생물 전공이면')가 다음 추천이면, 그 사람들에게는 그다음 교재를 같이 알려 줌
+      const alt = next?.alt ? g.books.slice(g.books.indexOf(next) + 1).find(b => !stamped(b)) : null;
       return h('section', { class: 'pp-page', style: `--ink:${g.color}` },
         h('h3', null, h('span', null, g.label, ' ', g.icon), h('small', null, `${g.books.filter(stamped).length} / ${g.books.length}`)),
         h('div', 'pp-stamps', g.books.map((b, i) => [i ? h('span', 'arrow', '→') : null, stampSlot(g, b, i, g.books[i - 1], b === next, stamped)])),
-        h('p', 'pp-next', next ? ['다음 추천: ', h('b', null, next.name)] : '이 분야 도장을 모두 찍었어요 ✓'));
+        h('p', 'pp-next', next ? ['다음 추천: ', h('b', null, next.name), alt ? [' · ', next.alt, ' ', h('b', null, alt.name)] : null] : '이 분야 도장을 모두 찍었어요 ✓'));
     })),
     w.band ? h('div', 'band', w.band) : null);
 }
