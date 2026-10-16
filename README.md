@@ -45,7 +45,7 @@ HaLab 연구실 인턴 · 대학원생 온보딩용 쯔꾸르풍 웹 RPG예요. 
 - `passport` 교재 여권 — `groups: [{ label, icon, stamp, color, books: [{ id, name, url, desc }] }]` (`stamp` = 찍었을 때 스탬프 그림 `img/ui/stamp-*.png`, 안 찍은 자리는 `stamp-empty.png`). 분야 하나 = 여권 한 쪽, 교재 하나 = 동그라미 스탬프 하나. 적힌 순서가 추천 순서예요. 교재를 더하거나 빼려면 여기만 고쳐요 (`id`를 바꾸면 그 교재 도장 기록이 사라져요)
 
 `sections` 칸에 `missions: [{ text, ask, station }]`을 넣으면 판단 미션 카드가 돼요 (채점 없음). `station`은 `widget.steps`의 순서(0부터)이고, 그 칸의 `url`이 '교재에서 확인' 버튼이 돼요.
-**통계 실습실의 교재 주소는 `data/ch3.json` → `ch3-stats` → `widget.steps[].url`** 네 개예요. 새 기초통계 교재가 생기면 여기와 `links`만 바꾸면 돼요.
+**통계 실습실의 교재 주소는 `data/ch3.json` → `ch3-stats` → `widget.steps[].url`** 네 개예요. 가설검정 기초 · 결과 검증은 [1. Basic Statistics](https://kkonoo.github.io/1_Basic_Statistics/)의 6장 · 10장으로 연결해요. 교재가 바뀌면 여기와 `links`만 바꾸면 돼요.
 
 ## 데이터는 어디에
 

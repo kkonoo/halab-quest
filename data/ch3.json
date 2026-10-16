@@ -65,11 +65,12 @@
             { "id": "halab-wiki", "name": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr", "desc": "질문을 따라 개념의 구조를 찾는 연구실 공부 가이드: GWAS · Omics · Single-cell · Multi-omics · 질환" }
           ] },
           { "label": "생명과학", "icon": "🧬", "stamp": "img/ui/stamp-dna.png", "color": "#2E7D6B", "books": [
+            { "id": "mcb", "name": "Molecular and Cellular Biology", "url": "https://kkonoo.github.io/0_Molecular_and_Cellular_Biology/", "desc": "컴퓨터 · 통계 등 다른 전공이면 먼저: 시퀀싱 데이터를 읽는 데 필요한 만큼의 분자세포생물학" },
             { "id": "human-genetics", "name": "Human genetics", "url": "https://chaek.org/books/human-genetics", "desc": "멘델의 유전 개념부터 유전체 시퀀싱 · 대규모 코호트까지 (안준용, 고려대)" },
             { "id": "immunology", "name": "Immunology", "url": "https://halab-wiki.knu.ac.kr/disease/immunology/index.html", "desc": "Kuby 면역학 8판 흐름: 기초 · 선천면역 · 적응면역 · 질환 · 연구방법 (HaLab Wiki)" }
           ] },
           { "label": "통계", "icon": "📈", "stamp": "img/ui/stamp-stats.png", "color": "#2C4A7A", "books": [
-            { "id": "basic-stats", "name": "Basic statistics", "url": "https://chaek.org/books/basic-stats-omics-labs/README", "desc": "Basic Statistics for Omics: 생물학 학생을 위한 Colab 실습 통계" },
+            { "id": "basic-stats", "name": "Basic statistics", "url": "https://kkonoo.github.io/1_Basic_Statistics/", "desc": "기초통계: 확률변수와 분포에서 p-value · 신뢰구간 · 다중검정까지, 시뮬레이션으로 이해하기 (R)" },
             { "id": "linear-algebra", "name": "Linear algebra", "url": "https://kkonoo.github.io/2_linear_algebra/", "desc": "기하학적 직관으로 읽는 선형대수: 벡터에서 SVD까지" },
             { "id": "linear-regression", "name": "Linear regression", "url": "https://kkonoo.github.io/3_linear_regression/", "desc": "회귀분석: 추정 · 추론 · 진단 · 모형 선택, 생물학 자료로 배우기" },
             { "id": "bayes", "name": "Bayesian statistics", "url": "https://kkonoo.github.io/4_Bayes/", "desc": "생명정보학을 위한 베이지안 통계: 직관으로 이해하고 R로 구현하기" }
@@ -178,7 +179,7 @@
         "스테이션 순서대로 가도 되고, 지금 필요한 곳부터 가도 돼요.",
         "헷갈리면 분석하기 전에 랩미팅에서 한 번 확인받아요."
       ],
-      "overview": "**목적** 연구에 꼭 필요한 통계 개념을 네 스테이션에서 익혀요.\n\n**할 일**\n- 스테이션마다 교재를 읽고 예제를 따라 해보기\n- (선택) 판단 미션: 상황 카드를 보고 무엇을 확인해야 할지 생각해보기\n\n기초통계 교재는 새로 만들고 있어요. 완성되면 스테이션마다 그 교재로 연결해요.",
+      "overview": "**목적** 연구에 꼭 필요한 통계 개념을 네 스테이션에서 익혀요.\n\n**할 일**\n- 스테이션마다 교재를 읽고 예제를 따라 해보기\n- (선택) 판단 미션: 상황 카드를 보고 무엇을 확인해야 할지 생각해보기",
       "sections": [
         {
           "title": "가설검정 기초",
@@ -225,17 +226,19 @@
         "type": "flow",
         "title": "통계 스테이션",
         "steps": [
-          { "icon": "🎯", "label": "가설검정 기초", "sub": "p 값 · 효과 크기", "url": "https://chaek.org/books/basic-stats-omics-labs/README" },
+          { "icon": "🎯", "label": "가설검정 기초", "sub": "p 값 · 효과 크기", "url": "https://kkonoo.github.io/1_Basic_Statistics/chapters/06_hypothesis_testing.html" },
           { "icon": "📈", "label": "회귀분석", "sub": "보정 · 잔차", "url": "https://kkonoo.github.io/3_linear_regression/" },
           { "icon": "🧬", "label": "고차원 데이터", "sub": "PCA · 배치 효과", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part2/W6_EDA.html" },
-          { "icon": "✅", "label": "결과 검증", "sub": "다중검정 · FDR · 검정력", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" }
+          { "icon": "✅", "label": "결과 검증", "sub": "다중검정 · FDR · 검정력", "url": "https://kkonoo.github.io/1_Basic_Statistics/chapters/10_multiple_testing.html" }
         ],
         "band": "심화(선택): 선형대수 · 베이지안"
       },
       "links": [
-        { "label": "기초통계 교재 (새 교재)", "note": "만드는 중" },
         { "label": "Lab Manager · 통계 검정 · plot 매칭표", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/stats.md" },
-        { "label": "Basic statistics", "url": "https://chaek.org/books/basic-stats-omics-labs/README" },
+        { "label": "Basic statistics · 6 가설검정의 논리", "url": "https://kkonoo.github.io/1_Basic_Statistics/chapters/06_hypothesis_testing.html" },
+        { "label": "Basic statistics · 7 오류와 검정력", "url": "https://kkonoo.github.io/1_Basic_Statistics/chapters/07_power.html" },
+        { "label": "Basic statistics · 8 검정 지도", "url": "https://kkonoo.github.io/1_Basic_Statistics/chapters/08_test_map.html" },
+        { "label": "Basic statistics · 10 다중검정", "url": "https://kkonoo.github.io/1_Basic_Statistics/chapters/10_multiple_testing.html" },
         { "label": "Linear regression", "url": "https://kkonoo.github.io/3_linear_regression/" },
         { "label": "RNA-seq analysis · W6 탐색적 데이터 분석", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part2/W6_EDA.html" },
         { "label": "BI for BioMedical Scientists · W4 전사체학", "url": "https://kkonoo.github.io/BI_for_Biomed_KNUmed/ko/chapters/w4_transcriptomics.html" },
