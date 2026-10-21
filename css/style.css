@@ -420,6 +420,9 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 @media (max-width: 520px) {
   .title #titleMain { display: none; }
   .title .sep { display: none; }
+  /* 폰: 로그인 버튼이 있어도 제목 칸이 남게 메뉴 칸을 좁게 */
+  .tool { padding: 4px 5px; }
+  .tools .btn { padding: 4px 8px; font-size: .85em; }
 }
 
 /* ---------- 투고 낚시터 ---------- */
@@ -502,6 +505,7 @@ input, select, textarea { padding: 8px 10px; border: 2px solid var(--line); bord
 .topbar { background: rgba(37, 60, 44, .92); border-bottom: 0; box-shadow: 0 2px 8px rgba(0,0,0,.25); padding: 8px 16px; }
 .title { border: 14px solid transparent; border-width: 14px 20px; border-image: var(--header-img) 22 40 fill / 14px 20px stretch; padding: 0 8px; text-shadow: 0 2px 0 #0E2018; }
 .tools { border: 14px solid transparent; border-image: var(--panel-img) 40 fill / 14px stretch; border-radius: 0; background: none; padding: 0; }
+.tools .btn { white-space: nowrap; flex: none; } /* 로그인 버튼 글자가 세로로 쪼개지지 않게 */
 .place { border: 8px solid transparent; border-width: 8px 12px; border-image: var(--header-img) 22 40 fill / 8px 12px stretch; border-radius: 0; background: none; padding: 0 4px; }
 .way, .sign, .map-btn { border: 10px solid transparent; border-width: 10px 15px; border-image: var(--header-img) 22 40 fill / 10px 15px stretch; border-radius: 0; background: none; box-shadow: none; padding: 2px 4px; }
 .q-menu nav a.on { border: 8px solid transparent; border-width: 8px 12px; border-image: var(--btn-img) 32 48 fill / 8px 12px stretch; background: none; border-radius: 0; padding: 1px 2px; color: #FFF4DE; }

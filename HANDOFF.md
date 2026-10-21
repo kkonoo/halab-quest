@@ -247,7 +247,7 @@ E. 4장 완료 (장소: 탑 꼭대기 테라스)
 
 9. [v4] 구현 현황 (저장소 kkonoo/halab-quest, main 브랜치)
 
-- 주소: https://kkonoo.github.io/halab-quest/ (GitHub Pages)
+- 주소: https://halab-quest.knu.ac.kr/ (GitHub Pages, CNAME). Firebase 승인된 도메인에 이 주소가 있어야 로그인돼요
 - 방식: 내 웹앱 규칙 그대로 (no-build vanilla HTML/CSS/JS, IndexedDB 저장, 해요체 UI, 이모지 아이콘). 자세한 파일 구조는 저장소 README.md
 - 화면: 월드맵 → 챕터 맵 → 퀘스트(공통 틀 하나) → 챕터 완료, My Journey(🎒 가방), My CV, 교수님 진행도 보기, 투고 낚시터
 - 퀘스트 내용은 화면 코드가 아니라 data/ch1~4.json, 가이드 카드는 data/cards/*.md (## 1. 제목 = 메뉴 한 칸)

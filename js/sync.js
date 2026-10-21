@@ -54,7 +54,8 @@ async function start() {
   let user = null, email = '', unsub = null, synced = new Map(), ready = false, timer = null, members = [];
 
   const login = () => A.signInWithPopup(auth, new A.GoogleAuthProvider()).catch(e => {
-    if (e.code !== 'auth/popup-closed-by-user' && e.code !== 'auth/cancelled-popup-request') alert(`로그인하지 못했어요: ${e.code}`);
+    if (e.code === 'auth/unauthorized-domain') alert(`이 주소(${location.hostname})는 아직 로그인이 허용되지 않았어요. 교수님께 알려 주세요.\n(Firebase 콘솔 > Authentication > 설정 > 승인된 도메인에 추가 필요)`);
+    else if (e.code !== 'auth/popup-closed-by-user' && e.code !== 'auth/cancelled-popup-request') alert(`로그인하지 못했어요: ${e.code}`);
   });
   const logout = () => { flush(); A.signOut(auth); };
 

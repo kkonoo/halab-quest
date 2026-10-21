@@ -2,7 +2,9 @@
 
 HaLab 연구실 인턴 · 대학원생 온보딩용 쯔꾸르풍 웹 RPG예요. 연구의 길(분야 탐색 → 주제 찾기 → 연구하기 → 첫 논문)을 퀘스트로 따라가며, 기존 연구실 자료(Wiki · 교재 · Lab Manager · Lab manual)로 공부하고 진행도를 기록해요.
 
-주소: https://kkonoo.github.io/halab-quest/
+주소: https://halab-quest.knu.ac.kr/ (GitHub Pages, 저장소의 `CNAME`)
+
+> 주소(도메인)를 바꾸면 Firebase 콘솔(lab-manager-knumed) > Authentication > 설정 > **승인된 도메인**에 새 주소를 꼭 추가해요. 안 하면 로그인할 때 `auth/unauthorized-domain` 오류가 나요.
 
 ## 화면
 
