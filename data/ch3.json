@@ -115,7 +115,7 @@
         },
         {
           "title": "Lv.2 R · Python",
-          "md": "**목표** 데이터를 불러오고, 자료형을 구분하고, 조건으로 고르고, 간단한 함수를 써요.\n\n**R 길** RNA-seq analysis 교재 **W2 R 기초**\n- 자료형 · 벡터 · factor · data.frame · list\n- 인덱싱, 조건으로 고르기, 정렬\n- 반복문과 함수 기초\n\n**Python 길** 서버의 Jupyter Hub에서 Python 커널로 시작해요 (Lab manual 서버 매뉴얼 3-3). Python 기초 자료는 준비 중이에요.\n\n> 우리 연구실 기준: 처음부터 끝까지 혼자 짜지 못해도 괜찮아요. 코드를 읽고 필요한 부분을 고칠 수 있으면 돼요.\n\n**다 했다면** 작은 표 하나를 불러와서 원하는 행만 골라 저장해 봐요."
+          "md": "**목표** 데이터를 불러오고, 자료형을 구분하고, 조건으로 고르고, 간단한 함수를 써요.\n\n**R 길** RNA-seq analysis 교재 **W2 R 기초**\n- 자료형 · 벡터 · factor · data.frame · list\n- 인덱싱, 조건으로 고르기, 정렬\n- 반복문과 함수 기초\n\n**Python 길** HaLab Quest **[Python 기초](materials/python-basics.html)** (W2 R 기초와 같은 순서)\n- 자료형 · 리스트 · 딕셔너리 · NumPy 배열 · pandas DataFrame · category\n- 인덱싱(0부터 세기), 조건으로 고르기, 정렬, groupby\n- 반복문과 함수 기초, R ↔ Python 대응표\n\n서버의 Jupyter Hub에서 Python 커널로 열어요 (Lab manual 서버 매뉴얼 3-3). 노트북 파일(.ipynb)은 자료 맨 위에서 받아요.\n\n> 우리 연구실 기준: 처음부터 끝까지 혼자 짜지 못해도 괜찮아요. 코드를 읽고 필요한 부분을 고칠 수 있으면 돼요.\n\n**다 했다면** 작은 표 하나를 불러와서 원하는 행만 골라 저장해 봐요."
         },
         {
           "title": "Lv.3 데이터 조작",
@@ -157,7 +157,7 @@
       "links": [
         { "label": "Lv.1 · Lab manual 오믹스 분석 서버 매뉴얼", "url": "https://app.notion.com/p/3d76f5e0b4f9811ea521d772f76192fe" },
         { "label": "Lv.2 R · RNA-seq analysis W2 R 기초", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part1/W2_rbasics.html" },
-        { "label": "Lv.2 Python 기초 자료", "note": "준비 중" },
+        { "label": "Lv.2 Python · HaLab Quest Python 기초", "url": "materials/python-basics.html" },
         { "label": "Lv.3 · RNA-seq analysis W3 데이터 정리와 시각화", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part1/W3_wrangling.html" },
         { "label": "Lv.5 · RNA-seq analysis", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/" },
         { "label": "Lv.5 · advanced BI for clinical studies", "url": "https://kkonoo.github.io/advanced_BI_for_MD_PhD_KNUmed/" },

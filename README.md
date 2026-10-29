@@ -89,3 +89,4 @@ powershell tools/serve.ps1     # http://localhost:8767/
 | `img/char/` | 캐릭터 (교수님 대화창 표정 4 · 전신 3, 학생 4종 정면·뒷모습, 고양이) |
 | `img/bg/` | 배경 (월드맵, 챕터 맵, 퀘스트 장면, 낚시터, 챕터 완료). 데이터의 `bg` 칸으로 연결 |
 | `img/glow/` | 배경 속 등불만 밝게 한 층. 배경 위에 겹쳐 밝았다 어두워졌다 함 (`js/app.js`의 `GLOWS`에 이름이 있을 때만). 새 배경은 `tools/glow-keep.txt`(찾은 등불 중 남길 위치) · `tools/glow-spots.txt`(작아서 못 찾은 등불, 지도용)에 위치(그림 %)를 적고, 장 지도는 `tools/glow-groups.txt`에 건물별로 묶어 `LAYERS=5`로 층을 나눠요 (같은 건물은 함께, 건물끼리는 시간차). `python3 -I tools/glow.py img/bg/이름.jpg img/glow/이름.png` (`KEEP="x,y;x,y"`) |
+| `materials/` | 직접 만든 자료. `python-basics.ipynb`(3장 분석 기본기 Lv.2 Python 길, 실행 결과가 들어 있는 노트북)와 읽기용 `python-basics.html`. 노트북을 고치면 실행 후 `jupyter nbconvert --to html --template lab materials/python-basics.ipynb`로 HTML도 다시 만들어요 |
