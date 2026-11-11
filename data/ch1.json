@@ -217,6 +217,7 @@
         { "label": "PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov/" },
         { "label": "Google Scholar", "url": "https://scholar.google.com/" },
         { "label": "bioRxiv", "url": "https://www.biorxiv.org/" },
+        { "label": "AI 논문 작성법 · W7 문헌 찾기와 인용", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w07_literature.html" },
         { "label": "Lab Manager · 공부 · AI 활용", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/study-ai.md" }
       ],
       "check": "관심 분야의 리뷰 1편과 최신 논문 3편을 골라봤다면 체크해보세요!",

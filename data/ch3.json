@@ -62,7 +62,8 @@
         "groups": [
           { "label": "기초 · 공통", "icon": "📖", "stamp": "img/ui/stamp-book.png", "color": "#2F343B", "books": [
             { "id": "paper-reading", "name": "논문 읽으면서 분야 탐색하기", "url": "https://halab.knu.ac.kr/note.html", "desc": "분야 최신 논문 위클리 카드뉴스 · 수업 자료 · 공부 자료 (연구실 홈페이지 Note)" },
-            { "id": "halab-wiki", "name": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr", "desc": "질문을 따라 개념의 구조를 찾는 연구실 공부 가이드: GWAS · Omics · Single-cell · Multi-omics · 질환" }
+            { "id": "halab-wiki", "name": "HaLab Wiki", "url": "https://halab-wiki.knu.ac.kr", "desc": "질문을 따라 개념의 구조를 찾는 연구실 공부 가이드: GWAS · Omics · Single-cell · Multi-omics · 질환" },
+            { "id": "ai-sci-writing", "name": "AI Scientific Writing", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/", "desc": "AI활용 영어학술논문작성법: 그림 → Methods → Results → Introduction → Discussion → Abstract 순서로 영어 원고 쓰기, AI 사용 규칙 · Cover letter · 리뷰어 답변까지 (대학원 수업)", "note": "논문을 쓰기 시작할 때" }
           ] },
           { "label": "생명과학", "icon": "🧬", "stamp": "img/ui/stamp-dna.png", "color": "#2563C9", "books": [
             { "id": "mcb", "name": "Molecular and Cellular Biology", "url": "https://kkonoo.github.io/0_Molecular_and_Cellular_Biology/", "desc": "컴퓨터 · 통계 등 다른 전공이면 먼저: 시퀀싱 데이터를 읽는 데 필요한 만큼의 분자세포생물학", "note": "생물 전공은 건너뛰어도 돼요", "alt": "생물 전공이면" },
@@ -393,6 +394,8 @@
       },
       "links": [
         { "label": "Lab Manager · 공부 · AI 활용", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/study-ai.md" },
+        { "label": "AI 논문 작성법 · AI 사용 규칙", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/ai_rules.html" },
+        { "label": "AI 논문 작성법 · W2 AI 기본기", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w02_ai_basics.html" },
         { "label": "RNA-seq analysis · W11 바이브코딩 팁", "url": "https://kkonoo.github.io/BI_for_MD_PhD_KNUmed/ko/chapters/part4/W11_Rscript_vibe_coding.html" },
         { "label": "advanced BI · W2 스크립트 · AI · 재현성", "url": "https://kkonoo.github.io/advanced_BI_for_MD_PhD_KNUmed/ko/chapters/part1/w2_scripts_ai.html" }
       ],

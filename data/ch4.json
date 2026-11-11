@@ -73,7 +73,8 @@
       "links": [
         { "label": "Lab Manager · 그림 만들기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/figures.md" },
         { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
-        { "label": "3장 Figure 만들기", "quest": "ch3-figure" }
+        { "label": "3장 Figure 만들기", "quest": "ch3-figure" },
+        { "label": "AI 논문 작성법 · W4 Figure 스토리보드", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w04_figure_storyboard.html" }
       ],
       "check": "논문 하나의 Figure 흐름을 결론 문장으로 정리해봤다면 체크해보세요!",
       "star": "내 원고의 Figure 순서를 교수님과 정해보세요."
@@ -105,7 +106,7 @@
         },
         {
           "title": "부분별 체크",
-          "md": "| 부분 | 무엇을 | 흔한 실수 |\n|---|---|---|\n| Title | 핵심 결과를 짧게 (가능하면 결론형) | 너무 길거나 막연함 |\n| Abstract | 배경 → 질문 → 방법 → 주요 결과(수치) → 결론 | 결과 수치 없이 \"significantly changed\"만 |\n| Introduction | 넓은 배경 → 모르는 것(gap) → 우리 질문 → 이 연구 | 배경만 길고 gap이 흐림 |\n| Methods | 남이 따라 할 수 있게 (데이터 출처, 소프트웨어·버전, 통계) | 통계 방법 빠짐 |\n| Results | 그림 하나 = 단락 하나 | 해석·문헌 비교를 너무 많이 |\n| Discussion | 발견 요약 → 기존 연구와 비교 → 의미 → 한계 → 앞으로 | 결과 반복, 한계 숨기기 |\n| Figure legend | 제목(결론) → 무엇을 보였나 → n·통계 | n과 오차 막대 종류 빠짐 |\n\n> AI가 알려 준 참고문헌은 반드시 PubMed·DOI로 실제 있는지 확인해요."
+          "md": "| 부분 | 무엇을 | 흔한 실수 |\n|---|---|---|\n| Title | 핵심 결과를 짧게 (가능하면 결론형) | 너무 길거나 막연함 |\n| Abstract | 배경 → 질문 → 방법 → 주요 결과(수치) → 결론 | 결과 수치 없이 \"significantly changed\"만 |\n| Introduction | 넓은 배경 → 모르는 것(gap) → 우리 질문 → 이 연구 | 배경만 길고 gap이 흐림 |\n| Methods | 남이 따라 할 수 있게 (데이터 출처, 소프트웨어·버전, 통계) | 통계 방법 빠짐 |\n| Results | 그림 하나 = 단락 하나 | 해석·문헌 비교를 너무 많이 |\n| Discussion | 발견 요약 → 기존 연구와 비교 → 의미 → 한계 → 앞으로 | 결과 반복, 한계 숨기기 |\n| Figure legend | 제목(결론) → 무엇을 보였나 → n·통계 | n과 오차 막대 종류 빠짐 |\n\n**부분마다 자세히** (AI 논문 작성법): [Methods · Figure legend (W5)](https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w05_methods_legends.html) · [Results (W6)](https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w06_results.html) · [Introduction (W9)](https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w09_introduction.html) · [Discussion (W10)](https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w10_discussion.html) · [Abstract · Title (W11)](https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w11_abstract_title.html)\n\n> AI가 알려 준 참고문헌은 반드시 PubMed·DOI로 실제 있는지 확인해요."
         }
       ],
       "info": {
@@ -133,7 +134,11 @@
       "links": [
         { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
         { "label": "Lab Manager · 표현", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/phrases.md" },
-        { "label": "3장 AI 활용하기", "quest": "ch3-ai" }
+        { "label": "3장 AI 활용하기", "quest": "ch3-ai" },
+        { "label": "AI 논문 작성법 (수업 교재 · 쓰는 순서 전체)", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/" },
+        { "label": "AI 논문 작성법 · W3 읽히는 영어 문장", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w03_readable_sentences.html" },
+        { "label": "AI 논문 작성법 · W12 다듬기", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w12_polishing.html" },
+        { "label": "AI 논문 작성법 · 표현 모음 (부분별 영어 표현)", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/phrases.html" }
       ],
       "warn": "미발표 원고는 AI에 넣지 않기",
       "check": "Figure 순서 카드로 Results 단락 첫 문장을 써봤다면 체크해보세요!",
@@ -193,7 +198,9 @@
         { "label": "🎣 투고 낚시터 (내 투고 기록)", "href": "#/fish", "hl": true },
         { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
         { "label": "저널 Guide for Authors", "note": "투고할 저널 사이트에서" },
-        { "label": "공개 리뷰 기록 예시 · Weinand (Nature Communications, 2024)", "url": "https://www.nature.com/articles/s41467-024-48620-7" }
+        { "label": "공개 리뷰 기록 예시 · Weinand (Nature Communications, 2024)", "url": "https://www.nature.com/articles/s41467-024-48620-7" },
+        { "label": "AI 논문 작성법 · W13 투고 준비 · Cover letter", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w13_submission.html" },
+        { "label": "AI 논문 작성법 · W14 리뷰어 답변", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w14_reviewer_response.html" }
       ],
       "warn": "심사 중 · 미발표 원고는 AI에 넣지 않기",
       "fishTips": [

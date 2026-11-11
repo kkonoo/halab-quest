@@ -109,7 +109,8 @@
         { "label": "1장 논문 고르기", "quest": "ch1-guide" },
         { "label": "PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov/" },
         { "label": "bioRxiv", "url": "https://www.biorxiv.org/" },
-        { "label": "Lab Manager · 글쓰기 (Introduction 깔때기)", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" }
+        { "label": "Lab Manager · 글쓰기 (Introduction 깔때기)", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
+        { "label": "AI 논문 작성법 · W7 문헌 찾기와 인용", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w07_literature.html" }
       ],
       "check": "gap 하나를 근거 논문 2편과 함께 써봤다면 체크해보세요!",
       "star": "찾은 gap을 랩미팅이나 면담에서 이야기해보세요."
@@ -241,6 +242,7 @@
       "links": [
         { "label": "Lab Manager · 글쓰기", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/writing.md" },
         { "label": "Lab Manager · 표현", "url": "https://github.com/kkonoo/lab-manager/blob/main/tips/phrases.md" },
+        { "label": "AI 논문 작성법 · W9 Introduction", "url": "https://kkonoo.github.io/AI_Sci_Writing_KNUmed/ko/chapters/w09_introduction.html" },
         { "label": "2장 Research gap 찾기", "quest": "ch2-gap" },
         { "label": "2장 연구 디자인하기", "quest": "ch2-design" }
       ],
